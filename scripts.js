@@ -1,9 +1,8 @@
 //start new audio session. Do this only once
 var context = new window.webkitAudioContext();
-
+ 
 function playSound(note) {
 	oscillator = context.createOscillator();
-	
 	//create volume controller
 	var gainNode = context.createGain();
 	
@@ -23,13 +22,76 @@ function playSound(note) {
  	//starts oscillator. Delayed start can be achieved by adding time(in secs) after currentTime
  	oscillator.start(context.currentTime + 0.01);
  	
- 	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
- 	oscillator.stop(gainNode.gain.setTargetAtTime(0, context.currentTime + 2, 0.015));
+ 	/**
+ 	 *	AUDIO EFFECTS
+ 	 */
+ 	if (document.getElementById('toggleDelay').value == 'true') {
+ 		
+ 		//create delay
+		var delay = context.createDelay();
+		delay.delayTime.value = .5;
+		
+		//create gain
+		gainNode;
+		gainNode.gain.value = 0.8;
+		
+		//create feedback loop
+		oscillator.connect(gainNode);
+		gainNode.connect(delay);
+		delay.connect(gainNode);
+		delay.connect(context.destination);	
+		
+		//decrease gain
+		gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, .015);
+	}
+	
+	if (document.getElementById('toggleDistortion').value == 'true'){
+	
+		var distortion = contect.createWaveShaper();
+				
+		function makeDistortionCurve(amount) {
+		  var k = typeof amount === 'number' ? amount : 50,
+		    n_samples = 44100,
+		    curve = new Float32Array(n_samples),
+		    deg = Math.PI / 180,
+		    i = 0,
+		    x;
+		  for ( ; i < n_samples; ++i ) {
+		    x = i * 2 / n_samples - 1;
+		    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+		  }
+		  return curve;
+		};
+		
+		gainNode;
+		
+		oscillator.connect(gainNode);
+		gainNode.connect(distortion);
+		distortion.connect(context.destination);
+		
+		distortion.curve = makeDistortionCurve(400);
+		distortion.oversample = '4x';
+		
+		gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, .015);
+	}
+			
+ 	//determines note duration
+ 	var sustain = parseFloat(document.getElementById('sustain').value);
  	
+ 	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
+ 	gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
+ 	
+ 	document.getElementById('stop').addEventListener('touchstart', function() { 
+ 		oscillator.stop(); 
+ 		delay.stop();
+ 		gainNode.stop();
+ 	});
  	//for testing
- 	console.log("Hz:" + frequencies[note] * octave + " octave:" + octave + " wave:" + oscillator.type);
+ 	console.log("playSound Hz:" + frequencies[note] * octave + " octave:" + octave + " wave:" + oscillator.type + " duration: " + sustain + " time:" + context.currentTime);
 }
- 
+
+ 	
+
 //Frequencies in Hz of notes to be played. 
 window.frequencies = {
  	'C_1': 130.81,
