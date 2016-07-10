@@ -25,8 +25,8 @@ function playSound(note) {
  	/**
  	 *	AUDIO EFFECTS
  	 */
- 	if (document.getElementById('toggleDelay').value == 'true') {
- 		
+
+ 	function delayNode() {
  		//create delay
 		var delay = context.createDelay();
 		delay.delayTime.value = .5;
@@ -42,18 +42,18 @@ function playSound(note) {
 		delay.connect(context.destination);	
 		
 		//decrease gain
-		gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, .015);
+		quickFadeOut;
 	}
 	
-	if (document.getElementById('toggleDistortion').value == 'true'){
-	
-		var distortion = contect.createWaveShaper();
+	//distortion function taken from MDN which they in turn took from Stack Overflow
+	function distortionNode() {
+		var distortion = context.createWaveShaper();
 				
 		function makeDistortionCurve(amount) {
 		  var k = typeof amount === 'number' ? amount : 50,
 		    n_samples = 44100,
 		    curve = new Float32Array(n_samples),
-		    deg = Math.PI / 180,
+		    deg = Math.PI / 90,
 		    i = 0,
 		    x;
 		  for ( ; i < n_samples; ++i ) {
@@ -63,34 +63,35 @@ function playSound(note) {
 		  return curve;
 		};
 		
+		distortion.curve = makeDistortionCurve(1000);
+		distortion.oversample = '4x';
+		
 		gainNode;
 		
 		oscillator.connect(gainNode);
 		gainNode.connect(distortion);
+		//delay.connect(distortion);
+		//distortion.connect(gainNode);
+		//delay.connect(context.destination);
 		distortion.connect(context.destination);
 		
-		distortion.curve = makeDistortionCurve(400);
-		distortion.oversample = '4x';
-		
-		gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, .015);
+		//decrease gain
+ 		quickFadeOut;
 	}
+	
+	if (document.getElementById('toggleDelay').value == 'true'){delayNode();}	
+	if (document.getElementById('toggleDistortion').value == 'true'){distortionNode();}
 			
  	//determines note duration
  	var sustain = parseFloat(document.getElementById('sustain').value);
  	
  	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
- 	gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
+ 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
  	
- 	document.getElementById('stop').addEventListener('touchstart', function() { 
- 		oscillator.stop(); 
- 		delay.stop();
- 		gainNode.stop();
- 	});
  	//for testing
- 	console.log("playSound Hz:" + frequencies[note] * octave + " octave:" + octave + " wave:" + oscillator.type + " duration: " + sustain + " time:" + context.currentTime);
+ 	console.log('playSound Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime);
 }
 
- 	
 
 //Frequencies in Hz of notes to be played. 
 window.frequencies = {
@@ -123,28 +124,28 @@ window.frequencies = {
  
   
 //triggers playSound() to create note
-document.getElementById("noteC_1").addEventListener("touchstart",function() { playSound('C_1');});
-document.getElementById("noteC#1").addEventListener("touchstart",function() { playSound('C#1');});
-document.getElementById("noteD_1").addEventListener("touchstart",function() { playSound('D_1');});
-document.getElementById("noteD#1").addEventListener("touchstart",function() { playSound('D#1');});
-document.getElementById("noteE_1").addEventListener("touchstart",function() { playSound('E_1');});
-document.getElementById("noteF_1").addEventListener("touchstart",function() { playSound('F_1');});
-document.getElementById("noteF#1").addEventListener("touchstart",function() { playSound('F#1');});
-document.getElementById("noteG_1").addEventListener("touchstart",function() { playSound('G_1');});
-document.getElementById("noteG#1").addEventListener("touchstart",function() { playSound('G#1');});
-document.getElementById("noteA_1").addEventListener("touchstart",function() { playSound('A_1');});
-document.getElementById("noteA#1").addEventListener("touchstart",function() { playSound('A#1');});
-document.getElementById("noteB_1").addEventListener("touchstart",function() { playSound('B_1');});
-document.getElementById("noteC_2").addEventListener("touchstart",function() { playSound('C_2');});
-document.getElementById("noteC#2").addEventListener("touchstart",function() { playSound('C#2');});
-document.getElementById("noteD_2").addEventListener("touchstart",function() { playSound('D_2');});
-document.getElementById("noteD#2").addEventListener("touchstart",function() { playSound('D#2');});
-document.getElementById("noteE_2").addEventListener("touchstart",function() { playSound('E_2');});
-document.getElementById("noteF_2").addEventListener("touchstart",function() { playSound('F_2');});
-document.getElementById("noteF#2").addEventListener("touchstart",function() { playSound('F#2');});
-document.getElementById("noteG_2").addEventListener("touchstart",function() { playSound('G_2');});
-document.getElementById("noteG#2").addEventListener("touchstart",function() { playSound('G#2');});
-document.getElementById("noteA_2").addEventListener("touchstart",function() { playSound('A_2');});
-document.getElementById("noteA#2").addEventListener("touchstart",function() { playSound('A#2');});
-document.getElementById("noteB_2").addEventListener("touchstart",function() { playSound('B_2');});
-document.getElementById("noteC_3").addEventListener("touchstart",function() { playSound('C_3');});
+document.getElementById('noteC_1').addEventListener('touchstart',function() { playSound('C_1');});
+document.getElementById('noteC#1').addEventListener('touchstart',function() { playSound('C#1');});
+document.getElementById('noteD_1').addEventListener('touchstart',function() { playSound('D_1');});
+document.getElementById('noteD#1').addEventListener('touchstart',function() { playSound('D#1');});
+document.getElementById('noteE_1').addEventListener('touchstart',function() { playSound('E_1');});
+document.getElementById('noteF_1').addEventListener('touchstart',function() { playSound('F_1');});
+document.getElementById('noteF#1').addEventListener('touchstart',function() { playSound('F#1');});
+document.getElementById('noteG_1').addEventListener('touchstart',function() { playSound('G_1');});
+document.getElementById('noteG#1').addEventListener('touchstart',function() { playSound('G#1');});
+document.getElementById('noteA_1').addEventListener('touchstart',function() { playSound('A_1');});
+document.getElementById('noteA#1').addEventListener('touchstart',function() { playSound('A#1');});
+document.getElementById('noteB_1').addEventListener('touchstart',function() { playSound('B_1');});
+document.getElementById('noteC_2').addEventListener('touchstart',function() { playSound('C_2');});
+document.getElementById('noteC#2').addEventListener('touchstart',function() { playSound('C#2');});
+document.getElementById('noteD_2').addEventListener('touchstart',function() { playSound('D_2');});
+document.getElementById('noteD#2').addEventListener('touchstart',function() { playSound('D#2');});
+document.getElementById('noteE_2').addEventListener('touchstart',function() { playSound('E_2');});
+document.getElementById('noteF_2').addEventListener('touchstart',function() { playSound('F_2');});
+document.getElementById('noteF#2').addEventListener('touchstart',function() { playSound('F#2');});
+document.getElementById('noteG_2').addEventListener('touchstart',function() { playSound('G_2');});
+document.getElementById('noteG#2').addEventListener('touchstart',function() { playSound('G#2');});
+document.getElementById('noteA_2').addEventListener('touchstart',function() { playSound('A_2');});
+document.getElementById('noteA#2').addEventListener('touchstart',function() { playSound('A#2');});
+document.getElementById('noteB_2').addEventListener('touchstart',function() { playSound('B_2');});
+document.getElementById('noteC_3').addEventListener('touchstart',function() { playSound('C_3');});
