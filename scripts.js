@@ -19,6 +19,10 @@ function playSound(note) {
  	//oscillator wave type
  	oscillator.type = document.getElementById('waveSelect').value;
  	
+ 	//initialize gain at 0 and ramp up to full volume very quikcly (prevents audible 'pop')
+ 	gainNode.gain.value = 0
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(1, context.currentTime, 0.1);
+ 	
  	//starts oscillator. Delayed start can be achieved by adding time(in secs) after currentTime
  	oscillator.start(context.currentTime + 0.01);
  	
@@ -33,7 +37,8 @@ function playSound(note) {
 		
 		//create gain
 		gainNode;
-		gainNode.gain.value = 0.8;
+		//gainNode.gain.value = 0.8;
+		quickFadeIn;
 		
 		//create feedback loop
 		oscillator.connect(gainNode);
@@ -63,10 +68,12 @@ function playSound(note) {
 		  return curve;
 		};
 		
-		distortion.curve = makeDistortionCurve(1000);
+		distortion.curve = makeDistortionCurve(900);
 		distortion.oversample = '4x';
 		
 		gainNode;
+		
+		quickFadeIn;
 		
 		oscillator.connect(gainNode);
 		gainNode.connect(distortion);
@@ -149,3 +156,5 @@ document.getElementById('noteA_2').addEventListener('touchstart',function() { pl
 document.getElementById('noteA#2').addEventListener('touchstart',function() { playSound('A#2');});
 document.getElementById('noteB_2').addEventListener('touchstart',function() { playSound('B_2');});
 document.getElementById('noteC_3').addEventListener('touchstart',function() { playSound('C_3');});
+
+
