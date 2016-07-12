@@ -121,7 +121,7 @@ function playSoundb(note) {
  	
  	//initialize gain at 0 and ramp up to full volume very quikcly (prevents audible 'pop')
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(1, context.currentTime, 0.1);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.75, context.currentTime, 0.1);
  	
  	//starts oscillator. Delayed start can be achieved by adding time(in secs) after currentTime
  	oscillator.start(context.currentTime + .05);
