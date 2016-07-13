@@ -13,7 +13,7 @@ body {
 	font-size: 1em;
 	width: 100%;
 	height: 25px;
-	padding: 2% 7% 2%;
+	padding: 2% 7% 5%;
 	background-color: #4f3cf7;
 }
 
@@ -21,8 +21,8 @@ body {
 	margin: 0 auto 20px;
 	font-size: 1em;
 	width: 100%;
-	height: 25px;
-	padding: 2% 7% 4%;
+	height: 20px;
+	padding: 0 7% 3%;
 	background-color: #4f3cf7;
 }
 
@@ -33,7 +33,7 @@ body {
 	height: 280px;
 	background-color: #4f3cf7;
 	display: flex;
-	padding: 2% 7% 0;
+	padding: 0 7% 0;
 }
 
 .keyboardb {
@@ -43,7 +43,7 @@ body {
 	height: 280px;
 	background-color: #4f3cf7;
 	display: flex;
-	padding: 2% 7% 0;
+	padding: 0% 7% 0;
 }
 
 .white-keys {
