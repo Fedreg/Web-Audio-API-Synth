@@ -199,6 +199,22 @@ function playSoundb(note) {
  	console.log('playSound*B* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime);
 }
 
+//reveals 2nd keyboard
+function displayKeyboard2(lowersynth, uppersynth) {
+	var bottom = document.getElementById(lowersynth);
+	var top = document.getElementById(uppersynth);
+	
+	if (bottom.style.display == 'block') {
+		bottom.style.display = 'none';
+		top.style.marginTop = '150px';	
+	}
+
+	else {
+		bottom.style.display = 'block';
+		top.style.marginTop = '0';
+	}	
+}
+
 
 
 //Frequencies in Hz of notes to be played. 

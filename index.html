@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
 	</head>
 	<body>
-		<div class="uppersynth">
+		<div id="uppersynth">
 			<div class="topsection">
 				<select class="lists" id="waveSelect" text="Wave Type"> Wave Type:
 				    <option value="sine">WAVE: SINE</option>
@@ -25,14 +25,14 @@
 				</select>
 				<select class="lists" id="sustain">
 					<option value="0.5">EIGHTH NOTE</option>
-					<option value="1.0">QUARTER NOTE</option>
+					<option selected="selected" value="1.0">QUARTER NOTE</option>
 					<option value="2.0">HALF NOTE</option>
 					<option value="4.0">WHOLE NOTE</option>				
 					<option value="16.0">4 WHOLE NOTE</option>	
 				</select>
 				<select class="lists" id="toggleDelay">
 					<option value="false">DELAY OFF</option>
-					<option value="true">DELAY ON</option>
+					<option selected="selected" value="true">DELAY ON</option>
 				</select>
 				<select class="lists" id="toggleDistortion">
 					<option value="false">DISTORTION OFF</option>
@@ -68,26 +68,26 @@
 				<div class="white-keys" id="noteC_3"></div>
 			</div>
 		</div>
-		
-		<div class="lowersynth">
+		<a href="#" onclick="displayKeyboard2('lowersynth', 'uppersynth');" id="addKeyboard" >TOGGLE SECOND KEYBOARD</a>
+		<div id="lowersynth" style="display:none;">
 			<div class="topsectionb">
 				<select class="listsb" id="waveSelectb" text="Wave Type"> Wave Type:
 				    <option value="sine">WAVE: SINE</option>
 				    <option value="square">WAVE: SQUARE</option>
-				    <option value="triangle">WAVE: TRIANGLE</option>
+				    <option selected="selected" value="triangle">WAVE: TRIANGLE</option>
 				    <option value="sawtooth">WAVE: SAWTOOTH</option>
 				</select>
 				<select class="listsb" id="octaveb">
 					<option value="2.0">OCTAVE 0</option>
-					<option value="1.0">OCTAVE -1</option>
-					<option selected="selected" value="0.5">OCTAVE -2</option>
+					<option selected="selected" value="1.0">OCTAVE -1</option>
+					<option value="0.5">OCTAVE -2</option>
 					<option value="4.0">OCTAVE +1</option>
 					<option value="8.0">OCTAVE +2</option>				
 				</select>
 				<select class="listsb" id="sustainb">
 					<option value="0.5">EIGHTH NOTE</option>
 					<option value="1.0">QUARTER NOTE</option>
-					<option value="2.0">HALF NOTE</option>
+					<option selected="selected" value="2.0">HALF NOTE</option>
 					<option value="4.0">WHOLE NOTE</option>				
 					<option value="16.0">4 WHOLE NOTE</option>	
 				</select>
