@@ -81,23 +81,6 @@ body {
 	border-right: 2px solid #fff;
 }
 
-.white-keys:hover {
-	background-color: #eee;
-}
-
-.black-keys:hover, .black-keys:focus {
-	background-color: #888;
-}
-
-
-.white-keysb:hover {
-	background-color: #eee;
-}
-
-.black-keysb:hover, .black-keys:focus {
-	background-color: #888;
-}
-
 .black-keys {
 	margin-left: -15px;
 	float: left;

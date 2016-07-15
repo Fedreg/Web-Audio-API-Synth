@@ -3,6 +3,7 @@ var context = new window.webkitAudioContext();
  
 function playSound(note) {
 	oscillator = context.createOscillator();
+	
 	//create volume controller
 	var gainNode = context.createGain();
 	
@@ -51,10 +52,10 @@ function playSound(note) {
 		quickFadeOut;
 	}
 	
-	//distortion function taken from MDN which they in turn took from Stack Overflow
 	function distortionNode() {
 		var distortion = context.createWaveShaper();
 				
+	//distortion curve taken from MDN which they in turn took from Stack Overflow
 		function makeDistortionCurve(amount) {
 		  var k = typeof amount === 'number' ? amount : 50,
 		    n_samples = 44100,
@@ -78,13 +79,10 @@ function playSound(note) {
 		
 		oscillator.connect(gainNode);
 		gainNode.connect(distortion);
-		//delay.connect(distortion);
-		//distortion.connect(gainNode);
-		//delay.connect(context.destination);
 		distortion.connect(context.destination);
 		
 		//decrease gain
- 		quickFadeOut;
+ 		quickFadeOut;	
 	}
 	
 	if (document.getElementById('toggleDelay').value == 'true'){delayNode();}	
@@ -96,34 +94,34 @@ function playSound(note) {
  	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
  	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
  	
+	//change key color on keypress
+	var divId = "note" + String(note);
+    var element = document.getElementById(divId);
+    var currentColor = element.style.backgroundColor;
+    element.style.backgroundColor = '#3cf7ac';
+    setTimeout(function () {
+        element.style.backgroundColor = currentColor
+     }, 1000 * sustain);
+    
+
  	//for testing
- 	console.log('playSound Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime);
+ 	console.log('playSound Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime.toFixed(2));
 }
 
- 
+ //controls 2nd keyboard.  Same logic as playSound()
 function playSoundb(note) {
 	oscillator = context.createOscillator();
-	//create volume controller
 	var gainNode = context.createGain();
-	
-	//connect signal to audio output(speakers by default)
  	oscillator.connect(gainNode);
  	gainNode.connect(context.destination);
  	
- 	//adjusts frequency played by 50%, 100% or 200% 
 	var octaveb = document.getElementById('octaveb').value;
-		
-	//sets oscillator frequency
  	oscillator.frequency.value = frequencies[note] * octaveb;
  	
- 	//oscillator wave type
  	oscillator.type = document.getElementById('waveSelectb').value;
  	
- 	//initialize gain at 0 and ramp up to full volume very quikcly (prevents audible 'pop')
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.75, context.currentTime, 0.1);
- 	
- 	//starts oscillator. Delayed start can be achieved by adding time(in secs) after currentTime
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.75, context.currentTime, 1);
  	oscillator.start(context.currentTime + .05);
  	
  	/**
@@ -131,13 +129,10 @@ function playSoundb(note) {
  	 */
 
  	function delayNode() {
- 		//create delay
 		var delay = context.createDelay();
 		delay.delayTime.value = .5;
 		
-		//create gain
 		gainNode;
-		//gainNode.gain.value = 0.8;
 		quickFadeIn;
 		
 		//create feedback loop
@@ -150,7 +145,6 @@ function playSoundb(note) {
 		quickFadeOut;
 	}
 	
-	//distortion function taken from MDN which they in turn took from Stack Overflow
 	function distortionNode() {
 		var distortion = context.createWaveShaper();
 				
@@ -172,31 +166,33 @@ function playSoundb(note) {
 		distortion.oversample = '4x';
 		
 		gainNode;
-		
 		quickFadeIn;
 		
 		oscillator.connect(gainNode);
 		gainNode.connect(distortion);
-		//delay.connect(distortion);
-		//distortion.connect(gainNode);
-		//delay.connect(context.destination);
 		distortion.connect(context.destination);
 		
-		//decrease gain
  		quickFadeOut;
 	}
 	
 	if (document.getElementById('toggleDelayb').value == 'true'){delayNode();}
 	if (document.getElementById('toggleDistortionb').value == 'true'){distortionNode();}		
  	
- 	//determines note duration
   	var sustainb = parseFloat(document.getElementById('sustainb').value);
  	
- 	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
  	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustainb, 0.0015);
  	
- 	//for testing
- 	console.log('playSound*B* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime);
+ 	//change key color on keypress
+	var divId = "note" + String(note) + "b";
+    var element = document.getElementById(divId);
+    var currentColor = element.style.backgroundColor;
+    element.style.backgroundColor = '#3ce4f7';
+    setTimeout(function () {
+        element.style.backgroundColor = currentColor
+     }, 1000 * sustainb);
+ 	
+	//for testing
+ 	console.log('playSound*B* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
 }
 
 //reveals 2nd keyboard
@@ -215,10 +211,8 @@ function displayKeyboard2(lowersynth, uppersynth) {
 	}	
 }
 
-
-
 //Frequencies in Hz of notes to be played. 
-window.frequencies = {
+var frequencies = {
  	'C_1': 130.81,
  	'C#1': 139.00,
  	'D_1': 146.83,
@@ -246,8 +240,7 @@ window.frequencies = {
  	'C_3': 523.25,
  };
  
-  
-//triggers playSound() to create note
+ //triggers playSound() to create note
 document.getElementById('noteC_1').addEventListener('touchstart',function() { playSound('C_1');});
 document.getElementById('noteC#1').addEventListener('touchstart',function() { playSound('C#1');});
 document.getElementById('noteD_1').addEventListener('touchstart',function() { playSound('D_1');});
