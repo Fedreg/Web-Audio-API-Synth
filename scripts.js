@@ -121,7 +121,7 @@ function playSoundb(note) {
  	oscillator.type = document.getElementById('waveSelectb').value;
  	
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.75, context.currentTime, 1);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.75, context.currentTime, .1);
  	oscillator.start(context.currentTime + .05);
  	
  	/**
