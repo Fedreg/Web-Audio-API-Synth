@@ -101,12 +101,13 @@ function playSound(note) {
     	var element = document.getElementById(divId);
     
     	//change background color for durarion of note length
-    	var currentColor = 'rgba(0,0,0,0)';
+    	var currentColor = element.style.backgroundColor;
     	element.style.backgroundColor = '#3cf7ac';
     	setTimeout(function () {
+    	if (currentColor != 'rgb(60, 247, 172)') {
         	element.style.backgroundColor = currentColor
-     	}, 1000 * sustain);
-    
+        }
+     }, 1000 * sustain);    
 
  	//for testing
  	console.log('playSound Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime.toFixed(2));
@@ -189,11 +190,13 @@ function playSoundb(note) {
  	//change key color on keypress
 	var divId = "note" + String(note) + "b";
     var element = document.getElementById(divId);
-    var currentColor = 'rgba(0,0,0,0)';
+    var currentColor = element.style.backgroundColor;
     element.style.backgroundColor = '#3ce4f7';
     setTimeout(function () {
-      element.style.backgroundColor = currentColor
-    }, 1000 * sustainb);
+    	if (currentColor != 'rgb(60, 228, 247)') {
+        	element.style.backgroundColor = currentColor
+        }
+     }, 1000 * sustainb);
  	
 	//for testing
  	console.log('playSound*B* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
