@@ -95,13 +95,17 @@ function playSound(note) {
  	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
  	
 	//change key color on keypress
-	var divId = "note" + String(note);
-    var element = document.getElementById(divId);
-    var currentColor = element.style.backgroundColor;
-    element.style.backgroundColor = '#3cf7ac';
-    setTimeout(function () {
-        element.style.backgroundColor = currentColor
-     }, 1000 * sustain);
+	
+		//append the word "note" to the object.name note to identify the correct key div
+		var divId = "note" + String(note);
+    	var element = document.getElementById(divId);
+    
+    	//change background color for durarion of note length
+    	var currentColor = 'rgba(0,0,0,0)';
+    	element.style.backgroundColor = '#3cf7ac';
+    	setTimeout(function () {
+        	element.style.backgroundColor = currentColor
+     	}, 1000 * sustain);
     
 
  	//for testing
@@ -185,11 +189,11 @@ function playSoundb(note) {
  	//change key color on keypress
 	var divId = "note" + String(note) + "b";
     var element = document.getElementById(divId);
-    var currentColor = element.style.backgroundColor;
+    var currentColor = 'rgba(0,0,0,0)';
     element.style.backgroundColor = '#3ce4f7';
     setTimeout(function () {
-        element.style.backgroundColor = currentColor
-     }, 1000 * sustainb);
+      element.style.backgroundColor = currentColor
+    }, 1000 * sustainb);
  	
 	//for testing
  	console.log('playSound*B* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
