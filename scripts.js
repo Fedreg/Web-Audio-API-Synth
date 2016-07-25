@@ -273,56 +273,66 @@ var frequencies = {
  	'C_3': 523.25,
  };
  
+ //check for touchscreen and provide correct event for listener
+function ifTouch() {
+    if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
+    return 'touchstart';
+    
+    else {
+    return 'click';
+	}
+}
+
  //triggers playSound() to create note
-document.getElementById('noteC_1').addEventListener(('click' || 'touchstart'),function() { playSound('C_1');});
-document.getElementById('noteC#1').addEventListener(('click' || 'touchstart'),function() { playSound('C#1');});
-document.getElementById('noteD_1').addEventListener(('click' || 'touchstart'),function() { playSound('D_1');});
-document.getElementById('noteD#1').addEventListener(('click' || 'touchstart'),function() { playSound('D#1');});
-document.getElementById('noteE_1').addEventListener(('click' || 'touchstart'),function() { playSound('E_1');});
-document.getElementById('noteF_1').addEventListener(('click' || 'touchstart'),function() { playSound('F_1');});
-document.getElementById('noteF#1').addEventListener(('click' || 'touchstart'),function() { playSound('F#1');});
-document.getElementById('noteG_1').addEventListener(('click' || 'touchstart'),function() { playSound('G_1');});
-document.getElementById('noteG#1').addEventListener(('click' || 'touchstart'),function() { playSound('G#1');});
-document.getElementById('noteA_1').addEventListener(('click' || 'touchstart'),function() { playSound('A_1');});
-document.getElementById('noteA#1').addEventListener(('click' || 'touchstart'),function() { playSound('A#1');});
-document.getElementById('noteB_1').addEventListener(('click' || 'touchstart'),function() { playSound('B_1');});
-document.getElementById('noteC_2').addEventListener(('click' || 'touchstart'),function() { playSound('C_2');});
-document.getElementById('noteC#2').addEventListener(('click' || 'touchstart'),function() { playSound('C#2');});
-document.getElementById('noteD_2').addEventListener(('click' || 'touchstart'),function() { playSound('D_2');});
-document.getElementById('noteD#2').addEventListener(('click' || 'touchstart'),function() { playSound('D#2');});
-document.getElementById('noteE_2').addEventListener(('click' || 'touchstart'),function() { playSound('E_2');});
-document.getElementById('noteF_2').addEventListener(('click' || 'touchstart'),function() { playSound('F_2');});
-document.getElementById('noteF#2').addEventListener(('click' || 'touchstart'),function() { playSound('F#2');});
-document.getElementById('noteG_2').addEventListener(('click' || 'touchstart'),function() { playSound('G_2');});
-document.getElementById('noteG#2').addEventListener(('click' || 'touchstart'),function() { playSound('G#2');});
-document.getElementById('noteA_2').addEventListener(('click' || 'touchstart'),function() { playSound('A_2');});
-document.getElementById('noteA#2').addEventListener(('click' || 'touchstart'),function() { playSound('A#2');});
-document.getElementById('noteB_2').addEventListener(('click' || 'touchstart'),function() { playSound('B_2');});
-document.getElementById('noteC_3').addEventListener(('click' || 'touchstart'),function() { playSound('C_3');});
+document.getElementById('noteC_1').addEventListener(ifTouch() ,function() { playSound('C_1');});
+document.getElementById('noteC#1').addEventListener(ifTouch() ,function() { playSound('C#1');});
+document.getElementById('noteD_1').addEventListener(ifTouch() ,function() { playSound('D_1');});
+document.getElementById('noteD#1').addEventListener(ifTouch() ,function() { playSound('D#1');});
+document.getElementById('noteE_1').addEventListener(ifTouch() ,function() { playSound('E_1');});
+document.getElementById('noteF_1').addEventListener(ifTouch() ,function() { playSound('F_1');});
+document.getElementById('noteF#1').addEventListener(ifTouch() ,function() { playSound('F#1');});
+document.getElementById('noteG_1').addEventListener(ifTouch() ,function() { playSound('G_1');});
+document.getElementById('noteG#1').addEventListener(ifTouch() ,function() { playSound('G#1');});
+document.getElementById('noteA_1').addEventListener(ifTouch() ,function() { playSound('A_1');});
+document.getElementById('noteA#1').addEventListener(ifTouch() ,function() { playSound('A#1');});
+document.getElementById('noteB_1').addEventListener(ifTouch() ,function() { playSound('B_1');});
+document.getElementById('noteC_2').addEventListener(ifTouch() ,function() { playSound('C_2');});
+document.getElementById('noteC#2').addEventListener(ifTouch() ,function() { playSound('C#2');});
+document.getElementById('noteD_2').addEventListener(ifTouch() ,function() { playSound('D_2');});
+document.getElementById('noteD#2').addEventListener(ifTouch() ,function() { playSound('D#2');});
+document.getElementById('noteE_2').addEventListener(ifTouch() ,function() { playSound('E_2');});
+document.getElementById('noteF_2').addEventListener(ifTouch() ,function() { playSound('F_2');});
+document.getElementById('noteF#2').addEventListener(ifTouch() ,function() { playSound('F#2');});
+document.getElementById('noteG_2').addEventListener(ifTouch() ,function() { playSound('G_2');});
+document.getElementById('noteG#2').addEventListener(ifTouch() ,function() { playSound('G#2');});
+document.getElementById('noteA_2').addEventListener(ifTouch() ,function() { playSound('A_2');});
+document.getElementById('noteA#2').addEventListener(ifTouch() ,function() { playSound('A#2');});
+document.getElementById('noteB_2').addEventListener(ifTouch() ,function() { playSound('B_2');});
+document.getElementById('noteC_3').addEventListener(ifTouch() ,function() { playSound('C_3');});
 
 
-document.getElementById('noteC_1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('C_1');});
-document.getElementById('noteC#1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('C#1');});
-document.getElementById('noteD_1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('D_1');});
-document.getElementById('noteD#1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('D#1');});
-document.getElementById('noteE_1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('E_1');});
-document.getElementById('noteF_1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('F_1');});
-document.getElementById('noteF#1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('F#1');});
-document.getElementById('noteG_1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('G_1');});
-document.getElementById('noteG#1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('G#1');});
-document.getElementById('noteA_1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('A_1');});
-document.getElementById('noteA#1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('A#1');});
-document.getElementById('noteB_1b').addEventListener(('click' || 'touchstart'),function() { playSoundb('B_1');});
-document.getElementById('noteC_2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('C_2');});
-document.getElementById('noteC#2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('C#2');});
-document.getElementById('noteD_2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('D_2');});
-document.getElementById('noteD#2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('D#2');});
-document.getElementById('noteE_2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('E_2');});
-document.getElementById('noteF_2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('F_2');});
-document.getElementById('noteF#2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('F#2');});
-document.getElementById('noteG_2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('G_2');});
-document.getElementById('noteG#2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('G#2');});
-document.getElementById('noteA_2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('A_2');});
-document.getElementById('noteA#2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('A#2');});
-document.getElementById('noteB_2b').addEventListener(('click' || 'touchstart'),function() { playSoundb('B_2');});
-document.getElementById('noteC_3b').addEventListener(('click' || 'touchstart'),function() { playSoundb('C_3');});
+document.getElementById('noteC_1b').addEventListener(ifTouch() ,function() { playSoundb('C_1');});
+document.getElementById('noteC#1b').addEventListener(ifTouch() ,function() { playSoundb('C#1');});
+document.getElementById('noteD_1b').addEventListener(ifTouch() ,function() { playSoundb('D_1');});
+document.getElementById('noteD#1b').addEventListener(ifTouch() ,function() { playSoundb('D#1');});
+document.getElementById('noteE_1b').addEventListener(ifTouch() ,function() { playSoundb('E_1');});
+document.getElementById('noteF_1b').addEventListener(ifTouch() ,function() { playSoundb('F_1');});
+document.getElementById('noteF#1b').addEventListener(ifTouch() ,function() { playSoundb('F#1');});
+document.getElementById('noteG_1b').addEventListener(ifTouch() ,function() { playSoundb('G_1');});
+document.getElementById('noteG#1b').addEventListener(ifTouch() ,function() { playSoundb('G#1');});
+document.getElementById('noteA_1b').addEventListener(ifTouch() ,function() { playSoundb('A_1');});
+document.getElementById('noteA#1b').addEventListener(ifTouch() ,function() { playSoundb('A#1');});
+document.getElementById('noteB_1b').addEventListener(ifTouch() ,function() { playSoundb('B_1');});
+document.getElementById('noteC_2b').addEventListener(ifTouch() ,function() { playSoundb('C_2');});
+document.getElementById('noteC#2b').addEventListener(ifTouch() ,function() { playSoundb('C#2');});
+document.getElementById('noteD_2b').addEventListener(ifTouch() ,function() { playSoundb('D_2');});
+document.getElementById('noteD#2b').addEventListener(ifTouch() ,function() { playSoundb('D#2');});
+document.getElementById('noteE_2b').addEventListener(ifTouch() ,function() { playSoundb('E_2');});
+document.getElementById('noteF_2b').addEventListener(ifTouch() ,function() { playSoundb('F_2');});
+document.getElementById('noteF#2b').addEventListener(ifTouch() ,function() { playSoundb('F#2');});
+document.getElementById('noteG_2b').addEventListener(ifTouch() ,function() { playSoundb('G_2');});
+document.getElementById('noteG#2b').addEventListener(ifTouch() ,function() { playSoundb('G#2');});
+document.getElementById('noteA_2b').addEventListener(ifTouch() ,function() { playSoundb('A_2');});
+document.getElementById('noteA#2b').addEventListener(ifTouch() ,function() { playSoundb('A#2');});
+document.getElementById('noteB_2b').addEventListener(ifTouch() ,function() { playSoundb('B_2');});
+document.getElementById('noteC_3b').addEventListener(ifTouch() ,function() { playSoundb('C_3');});
