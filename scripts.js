@@ -228,15 +228,19 @@ function playSoundb(note) {
 function displayKeyboard2(lowersynth, uppersynth) {
 	var bottom = document.getElementById(lowersynth);
 	var top = document.getElementById(uppersynth);
+	var bod = document.getElementById(bod);
 	
 	if (bottom.style.display == 'block') {
 		bottom.style.display = 'none';
 		top.style.marginTop = '150px';	
+		bod.style.height = '110vh'
 	}
 
 	else {
 		bottom.style.display = 'block';
 		top.style.marginTop = '0';
+		bod.style.height = '100vh'
+
 	}	
 }
 
