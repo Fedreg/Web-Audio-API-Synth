@@ -1,15 +1,26 @@
 //start new audio session. Do this only once
 var context = new (window.webkitAudioContext || window.AudioContext || window.mozAudioContext)
-  
+
+//main function for crearing sound
 function playSound(note) {
 	oscillator = context.createOscillator();
 	
+	// Create a compressor node to minimize clipping and distortion
+	var compressor = context.createDynamicsCompressor();
+	compressor.threshold.value = -50;
+	compressor.knee.value = 40;
+	compressor.ratio.value = 12;
+	compressor.reduction.value = -20;
+	compressor.attack.value = 0;
+	compressor.release.value = 0.25;
+	compressor.connect(context.destination);
+
 	//create volume controller
 	var gainNode = context.createGain();
 	
-	//connect signal to audio output(speakers by default)
+	//connect signal to audio to gain; gain to compressor (compressor to output)
  	oscillator.connect(gainNode);
- 	gainNode.connect(context.destination);
+ 	gainNode.connect(compressor); 	
  	
  	//adjusts frequency played by 50%, 100% or 200% 
 	var octave = document.getElementById('octave').value;
@@ -46,7 +57,7 @@ function playSound(note) {
 		oscillator.connect(gainNode);
 		gainNode.connect(delay);
 		delay.connect(gainNode);
-		delay.connect(context.destination);	
+		delay.connect(compressor);	
 		
 		//decrease gain
 		quickFadeOut;
@@ -79,7 +90,7 @@ function playSound(note) {
 		
 		oscillator.connect(gainNode);
 		gainNode.connect(distortion);
-		distortion.connect(context.destination);
+		distortion.connect(compressor);
 		
 		//decrease gain
  		quickFadeOut;	
@@ -117,8 +128,18 @@ function playSound(note) {
 function playSoundb(note) {
 	oscillator = context.createOscillator();
 	var gainNode = context.createGain();
- 	oscillator.connect(gainNode);
- 	gainNode.connect(context.destination);
+	
+	var compressor = context.createDynamicsCompressor();
+	compressor.threshold.value = -50;
+	compressor.knee.value = 40;
+	compressor.ratio.value = 12;
+	compressor.reduction.value = -20;
+	compressor.attack.value = 0;
+	compressor.release.value = 0.25;
+	compressor.connect(context.destination);
+
+	oscillator.connect(gainNode);
+ 	gainNode.connect(compressor);
  	
 	var octaveb = document.getElementById('octaveb').value;
  	oscillator.frequency.value = frequencies[note] * octaveb;
@@ -144,7 +165,7 @@ function playSoundb(note) {
 		oscillator.connect(gainNode);
 		gainNode.connect(delay);
 		delay.connect(gainNode);
-		delay.connect(context.destination);	
+		delay.connect(compressor);	
 		
 		//decrease gain
 		quickFadeOut;
@@ -175,7 +196,7 @@ function playSoundb(note) {
 		
 		oscillator.connect(gainNode);
 		gainNode.connect(distortion);
-		distortion.connect(context.destination);
+		distortion.connect(compressor);
 		
  		quickFadeOut;
 	}
