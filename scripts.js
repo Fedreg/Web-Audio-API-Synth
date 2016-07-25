@@ -34,7 +34,7 @@ function playSound(note) {
  	
  	//initialize gain at 0 and ramp up to full volume very quikcly (prevents audible 'pop')
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, 0.1);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.35, context.currentTime, 0.1);
  	
  	//starts oscillator. Delayed start can be achieved by adding time(in secs) after currentTime
  	oscillator.start(context.currentTime + .05);
@@ -50,7 +50,7 @@ function playSound(note) {
 		
 		//create gain
 		gainNode;
-		gainNode.gain.value =  0.4; 
+		gainNode.gain.value =  0.25; 
 		quickFadeIn;
 		
 		//create feedback loop
@@ -147,7 +147,7 @@ function playSoundb(note) {
  	oscillator.type = document.getElementById('waveSelectb').value;
  	
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, .1);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.35, context.currentTime, .1);
  	oscillator.start(context.currentTime + .05);
  	
  	/**
@@ -159,7 +159,7 @@ function playSoundb(note) {
 		delay.delayTime.value = .5;
 		
 		gainNode;
-		gainNode.gain.value =  0.4;
+		gainNode.gain.value =  0.25;
 		quickFadeIn;
 		
 		//create feedback loop
