@@ -33,12 +33,13 @@
 				</select>
 				<select class="lists" id="toggleDelay">
 					<option value="false">DELAY OFF</option>
-					<option selected="selected" value="true">DELAY ON</option>
+					<option value="true">DELAY ON</option>
 				</select>
 				<select class="lists" id="toggleDistortion">
 					<option value="false">DISTORTION OFF</option>
 					<option value="true">DISTORTION ON</option>
 				</select>
+			<a href="#" onclick="ezMode('black-keys', 'black_keysb');" class="lists" >EZ MODE</a>
 			</div>
 			
 			<div class="keyboard">
@@ -69,7 +70,7 @@
 				<div class="white-keys" id="noteC_3"></div>
 			</div>
 		</div>
-		<a href="#" onclick="displayKeyboard2('lowersynth', 'uppersynth');" id="addKeyboard" >TOGGLE SECOND KEYBOARD</a>
+		<a href="#" onclick="displayKeyboard2('lowersynth', 'uppersynth', 'bod');" id="addKeyboard" >TOGGLE SECOND KEYBOARD</a>
 		<div id="lowersynth" style="display:none;">
 			<div class="topsectionb">
 				<select class="listsb" id="waveSelectb" text="Wave Type"> Wave Type:
