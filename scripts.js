@@ -1,12 +1,7 @@
 //start new audio session. Do this only once
 var context = new (window.webkitAudioContext || window.AudioContext || window.mozAudioContext)
 
-//main function for crearing sound
-function playSound(note) {
-	oscillator = context.createOscillator();
-	
-	// Create a compressor node to minimize clipping and distortion
-	var compressor = context.createDynamicsCompressor();
+var compressor = context.createDynamicsCompressor();
 	compressor.threshold.value = -50;
 	compressor.knee.value = 40;
 	compressor.ratio.value = 12;
@@ -15,6 +10,11 @@ function playSound(note) {
 	compressor.release.value = 0.25;
 	compressor.connect(context.destination);
 
+
+//main function for crearing sound
+function playSound(note) {
+	oscillator = context.createOscillator();
+	
 	//create volume controller
 	var gainNode = context.createGain();
 	
@@ -34,7 +34,7 @@ function playSound(note) {
  	
  	//initialize gain at 0 and ramp up to full volume very quikcly (prevents audible 'pop')
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.35, context.currentTime, 0.1);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.25, context.currentTime, 0.1);
  	
  	//starts oscillator. Delayed start can be achieved by adding time(in secs) after currentTime
  	oscillator.start(context.currentTime + .05);
@@ -93,8 +93,8 @@ function playSound(note) {
 		distortion.connect(compressor);
 		
 		//decrease gain
- 		quickFadeOut;	
-	}
+ 		quickFadeOut;
+	} 
 	
 	if (document.getElementById('toggleDelay').value == 'true'){delayNode();}	
 	if (document.getElementById('toggleDistortion').value == 'true'){distortionNode();}
@@ -104,6 +104,7 @@ function playSound(note) {
  	
  	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
  	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
+ 	oscillator.stop(context.currentTime + sustain + .05);
  	
 	//change key color on keypress
 	
@@ -129,15 +130,6 @@ function playSoundb(note) {
 	oscillator = context.createOscillator();
 	var gainNode = context.createGain();
 	
-	var compressor = context.createDynamicsCompressor();
-	compressor.threshold.value = -50;
-	compressor.knee.value = 40;
-	compressor.ratio.value = 12;
-	compressor.reduction.value = -20;
-	compressor.attack.value = 0;
-	compressor.release.value = 0.25;
-	compressor.connect(context.destination);
-
 	oscillator.connect(gainNode);
  	gainNode.connect(compressor);
  	
