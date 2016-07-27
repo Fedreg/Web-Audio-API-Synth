@@ -7,32 +7,68 @@
 body {
 	width: 100%;
 	height: 100vh;
-	background: linear-gradient(to bottom right, #4f3cf7 40%, #3cf7ac);
-	overflow: hidden;
-} 
+	overflow-x: hidden;} 
+
+.navigation {
+    list-style: none;
+    background: #444;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.wrapper {
+    min-width: 100%;
+    min-height: 100%;
+    background: linear-gradient(to bottom right, #4f3cf7 40%, #3cf7ac);
+    position: relative;
+    top: 0;
+    bottom: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+.nav-trigger {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+label[for="nav-trigger"] {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+}
+
+label[for="nav-trigger"] {
+    width: 30px;
+    height: 30px;
+    font-size: 2em;
+    color: white;
+    background-size: contain;
+}
+
+.nav-trigger:checked + label {
+    left: 250px;
+}
+
+.nav-trigger:checked ~ .wrapper {
+    left: 250px;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
+}
+
+.nav-trigger + label, .wrapper {
+    transition: left 0.5s;
+}
 
 #uppersynth {
-	margin-top: 150px;
-}
-
-.topsection {
-	margin: 0auto;
-	font-size: 1em;
-	width: 100%;
-	height: 25px;
-	padding: 2% 7% 5%;
-	background-color: rgba(0,0,0,0);
-}
-
-.topsectionb {
-	margin: 0 auto 20px;
-	font-size: 1em;
-	width: 100%;
-	height: 20px;
-	padding: 0 7% 3%;
-	background-color: rgba(0,0,0,0);
-
-}
+	padding-top: 150px;
+} 
 
 .keyboard {
 	position: relative;
@@ -86,12 +122,24 @@ body {
 	display: block;
 }
 
-.lists {
+li select {
 	background: none;
-	color: #ddd;
-	border: 1px solid #fff;
-	padding: .8em;
+	color: #fff;
+	border: none;
 	border-radius: 0;
+	padding: .6em .6em .6em 0;
+	margin: 5px;
+	width: 150px;
+}
+
+li a {
+	background: none;
+	color: #3ce4f7;
+	font-size: 1.5em;
+	border: 2px solid #3ce4f7;
+	border-radius: 0;
+	padding: .5em;
+	width: 150px;
 }
 
 #addKeyboard {
@@ -103,4 +151,14 @@ body {
 	margin: 0 auto;
 	text-decoration: none;
 	transition: display .75s ease;
-	}
+}
+
+#menu {
+padding-bottom: 25px;
+}
+
+#menub {
+padding-top: 25px;
+}
+
+

@@ -301,23 +301,25 @@ var frequencies = {
 
 
 //reveals 2nd keyboard
-function displayKeyboard2(lowersynth, uppersynth, bod) {
+function displayKeyboard2(lowersynth, uppersynth, menub) {
 	var bottom = document.getElementById(lowersynth);
 	var top = document.getElementById(uppersynth);
 	var bod = document.getElementById(bod);
-	
+	var menub = document.getElementById(menub);
+
 	if (bottom.style.display == 'block') {
 		bottom.style.display = 'none';
-		top.style.marginTop = '150px';	
-		bod.style.height = '110vh'
+		top.style.paddingTop = '150px';
+		menub.style.display = 'none';
 	}
 
 	else {
 		bottom.style.display = 'block';
-		top.style.marginTop = '0';
-		bod.style.height = '100vh';
+		top.style.paddingTop = '3em';
+		menub.style.display = 'block';
 	}	
 }
+console.log(menub.style.display);
 
 //hides the chromatic notes of the keyboard
 function ezMode() {
