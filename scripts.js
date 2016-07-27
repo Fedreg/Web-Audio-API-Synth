@@ -322,19 +322,16 @@ function displayKeyboard2(lowersynth, uppersynth, bod) {
 //hides the chromatic notes of the keyboard
 function ezMode() {
 	var chromaticNotes = document.getElementsByClassName('black-keys');
-	var chromaticNotesb = document.getElementsByClassName('black-keysb');
-	
+		
 	for (var i = 0; i < chromaticNotes.length; i++) {
 		if (chromaticNotes[i].style.display == 'block') {
 			chromaticNotes[i].style.display = 'none';
-			chromaticNotesb[i].style.display = 'none';
 			document.getElementById('noteC_2').style.backgroundColor = 'rgba(0,0,0,.2)';
 			document.getElementById('noteC_2b').style.backgroundColor = 'rgba(0,0,0,.2)';
 		}
 		
 		else {
 			chromaticNotes[i].style.display = 'block';
-			chromaticNotesb[i].style.display = 'block';
 			document.getElementById('noteC_2').style.backgroundColor = 'rgba(0,0,0,0)';
 			document.getElementById('noteC_2b').style.backgroundColor = 'rgba(0,0,0,0)';	
 		}
@@ -344,9 +341,9 @@ function ezMode() {
 //check for touchscreen and provide correct event for listener
 function ifTouch() {
     if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
-    return 'touchstart';
+    	return 'touchstart';
     
     else {
-    return 'click';
+    	return 'click';
 	}
 }
