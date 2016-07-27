@@ -1,3 +1,9 @@
-Early experimentation in Web Audio API.  GUI is very rough at the moment
+A full working synthesizeer built with the Web Audio API
+
+Features:
+2 keyboards
+"EZ Mode" removes chromatic notes for easier manipulation
+Select from 4 wave types
+Delay and Distortion effects
 
 demo available at https://fedreg.github.io/Web-Audio-API-Synth/
