@@ -216,55 +216,7 @@ function playSoundb(note) {
  	console.log('playSound*B* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
 }
 
-//reveals 2nd keyboard
-function displayKeyboard2(lowersynth, uppersynth, bod) {
-	var bottom = document.getElementById(lowersynth);
-	var top = document.getElementById(uppersynth);
-	var bod = document.getElementById(bod);
-	
-	if (bottom.style.display == 'block') {
-		bottom.style.display = 'none';
-		top.style.marginTop = '150px';	
-		bod.style.height = '110vh'
-	}
-
-	else {
-		bottom.style.display = 'block';
-		top.style.marginTop = '0';
-		bod.style.height = '100vh';
-	}	
-}
-
-//hides the chromatic notes of the keyboard
-function ezMode() {
-	var chromaticNotes = document.getElementsByClassName('black-keys');
-	var chromaticNotesb = document.getElementsByClassName('black-keysb');
-		
-	for (var i = 0; i < chromaticNotes.length; i++) {
-		if (chromaticNotes[i].style.display == 'block') {
-			chromaticNotes[i].style.display = 'none';
-			chromaticNotesb[i].style.display = 'none';
-		}
-		
-		else {
-			chromaticNotes[i].style.display = 'block';
-			chromaticNotesb[i].style.display = 'block';
-		}
-	}
-}
- 
-//check for touchscreen and provide correct event for listener
-function ifTouch() {
-    if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
-    return 'touchstart';
-    
-    else {
-    return 'click';
-	}
-}
-
-
- //triggers playSound() to create note
+//triggers playSound() to create note
 document.getElementById('noteC_1').addEventListener(ifTouch() ,function() { playSound('C_1');});
 document.getElementById('noteC#1').addEventListener(ifTouch() ,function() { playSound('C#1');});
 document.getElementById('noteD_1').addEventListener(ifTouch() ,function() { playSound('D_1');});
@@ -346,3 +298,55 @@ var frequencies = {
  	'B_2': 493.88,
  	'C_3': 523.25,
  };
+
+
+//reveals 2nd keyboard
+function displayKeyboard2(lowersynth, uppersynth, bod) {
+	var bottom = document.getElementById(lowersynth);
+	var top = document.getElementById(uppersynth);
+	var bod = document.getElementById(bod);
+	
+	if (bottom.style.display == 'block') {
+		bottom.style.display = 'none';
+		top.style.marginTop = '150px';	
+		bod.style.height = '110vh'
+	}
+
+	else {
+		bottom.style.display = 'block';
+		top.style.marginTop = '0';
+		bod.style.height = '100vh';
+	}	
+}
+
+//hides the chromatic notes of the keyboard
+function ezMode() {
+	var chromaticNotes = document.getElementsByClassName('black-keys');
+	var chromaticNotesb = document.getElementsByClassName('black-keysb');
+	
+	for (var i = 0; i < chromaticNotes.length; i++) {
+		if (chromaticNotes[i].style.display == 'block') {
+			chromaticNotes[i].style.display = 'none';
+			chromaticNotesb[i].style.display = 'none';
+			document.getElementById('noteC_2').style.backgroundColor = 'rgba(0,0,0,.2)';
+			document.getElementById('noteC_2b').style.backgroundColor = 'rgba(0,0,0,.2)';
+		}
+		
+		else {
+			chromaticNotes[i].style.display = 'block';
+			chromaticNotesb[i].style.display = 'block';
+			document.getElementById('noteC_2').style.backgroundColor = 'rgba(0,0,0,0)';
+			document.getElementById('noteC_2b').style.backgroundColor = 'rgba(0,0,0,0)';	
+		}
+	}
+}
+
+//check for touchscreen and provide correct event for listener
+function ifTouch() {
+    if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
+    return 'touchstart';
+    
+    else {
+    return 'click';
+	}
+}
