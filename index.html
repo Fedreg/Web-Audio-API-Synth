@@ -6,9 +6,10 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	</head>
 	<body id="bod">
-		<ul class="navigation">
+		<ul id="navigation">
 			<div id="menu">
 				<li class="nav-item">
 					<select id="waveSelect" text="Wave Type"> Wave Type:
@@ -93,10 +94,16 @@
 					</select>
 				</li>
 			</div>
+			<li class="nav-item">
+				<select id="theme" onchange="themeChange();">
+					<option value="true">LIGHT</option>
+					<option selected="selected" value="false">DARK</option>
+				</select>
+			</li>
 		</ul>
 		<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-		<label for="nav-trigger">&#9776;</label>
-		<div class="wrapper">
+		<label id="burger" for="nav-trigger">&#9776;</label>
+		<div id="wrapper">
 			<div id="uppersynth">
 				<div class="keyboard">
 					<div class="white-keys" id="noteC_1"></div>

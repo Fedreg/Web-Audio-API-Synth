@@ -2,6 +2,7 @@
 	box-sizing: border-box;
 	text-decoration: none;
 	transition: background .75s ease;
+	font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -9,9 +10,9 @@ body {
 	height: 100vh;
 	overflow-x: hidden;} 
 
-.navigation {
+#navigation {
     list-style: none;
-    background: #444;
+    background: #000;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -21,12 +22,13 @@ body {
     left: 0;
     z-index: 0;
     margin: 0;
+    padding: 40px;
 }
 
-.wrapper {
+#wrapper {
     min-width: 100%;
     min-height: 100%;
-    background: linear-gradient(to bottom right, #4f3cf7 40%, #3cf7ac);
+    background: linear-gradient(to bottom right, #333 40%, #000);
     position: relative;
     top: 0;
     bottom: 100%;
@@ -55,15 +57,15 @@ label[for="nav-trigger"] {
 }
 
 .nav-trigger:checked + label {
-    left: 250px;
+    left: 230px;
 }
 
-.nav-trigger:checked ~ .wrapper {
-    left: 250px;
+.nav-trigger:checked ~ #wrapper {
+    left: 230px;
     box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
 }
 
-.nav-trigger + label, .wrapper {
+.nav-trigger + label, #wrapper {
     transition: left 0.5s;
 }
 
@@ -99,16 +101,16 @@ label[for="nav-trigger"] {
 	width: 60px;
 	height: 240px;
 	max-height: 400px;
-	border: 2px solid #fff;
+	border: 1px solid #555;
 	border-right: 0;
 }
 
 #noteC_3 {
-	border-right: 2px solid #fff;
+	border-right: 2px solid #555;
 }
 
 #noteC_3b {
-	border-right: 2px solid #fff;
+	border-right: 2px solid #555;
 }
 
 .black-keys {
@@ -118,8 +120,8 @@ label[for="nav-trigger"] {
 	width: 30px;
 	height: 140px;
 	padding-right: 20px;
-	background-color: #fff;
-	border: 2px solid #fff;
+	background-color: #555;
+	border: 1px solid #555;
 	display: block;
 }
 
@@ -128,9 +130,8 @@ li select {
 	color: #fff;
 	border: none;
 	border-radius: 0;
-	padding: .6em .6em .6em 0;
-	margin: 5px;
-	width: 150px;
+	padding: .5em;
+	width: 170px;
 }
 
 li a {
@@ -140,14 +141,14 @@ li a {
 	border: 2px solid #3ce4f7;
 	border-radius: 0;
 	padding: .5em;
-	width: 150px;
+	width: 170px;
 }
 
 #addKeyboard {
-	color: #ccc;
+	color: #999;
 	font-size: 1.2em;
 	display: block;
-	padding-bottom: 3px;
+	padding-bottom: 10px;
 	text-align: center;
 	margin: 0 auto;
 	text-decoration: none;
@@ -162,4 +163,7 @@ padding-bottom: 25px;
 padding-top: 25px;
 }
 
-
+#theme {
+margin-top: 20px;
+font-size: 1.2em;
+}

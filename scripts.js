@@ -319,7 +319,6 @@ function displayKeyboard2(lowersynth, uppersynth, menub) {
 		menub.style.display = 'block';
 	}	
 }
-console.log(menub.style.display);
 
 //hides the chromatic notes of the keyboard
 function ezMode() {
@@ -339,6 +338,26 @@ function ezMode() {
 		}
 	}
 }
+
+function themeChange() {
+	var skin = document.getElementById('wrapper');
+	var nav = document.getElementById('navigation');
+	var toggleTheme = document.getElementById('theme');
+	var burger = document.getElementById('burger');
+	
+	if (toggleTheme.value == 'true') {
+		skin.style.background = 'linear-gradient(to bottom right, #fff 40%, #bbb)';
+		nav.style.backgroundColor = '#777';
+		burger.style.color ='#555';
+	}
+	
+	else {
+		skin.style.background = 'linear-gradient(to bottom right, #333 40%, #000)';
+		nav.style.backgroundColor = '#000';
+		burger.style.color ='#777';
+	}
+}
+	
 
 //check for touchscreen and provide correct event for listener
 function ifTouch() {
