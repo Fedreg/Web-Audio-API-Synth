@@ -339,22 +339,30 @@ function ezMode() {
 	}
 }
 
+//change UI color theme
 function themeChange() {
 	var skin = document.getElementById('wrapper');
 	var nav = document.getElementById('navigation');
 	var toggleTheme = document.getElementById('theme');
-	var burger = document.getElementById('burger');
+	var burger = document.getElementById('burger');	
+	var select = document.getElementsByTagName('select');
 	
-	if (toggleTheme.value == 'true') {
-		skin.style.background = 'linear-gradient(to bottom right, #fff 40%, #bbb)';
-		nav.style.backgroundColor = '#777';
-		burger.style.color ='#555';
-	}
-	
-	else {
-		skin.style.background = 'linear-gradient(to bottom right, #333 40%, #000)';
-		nav.style.backgroundColor = '#000';
-		burger.style.color ='#777';
+	for (var i = 0; i < select.length; i++) {
+
+		if (toggleTheme.value == 'true') {
+			skin.style.background = '#fff';
+			nav.style.backgroundColor = '#bbb';
+			burger.style.color ='#555';
+			select[i].style.color ='#000';
+		}
+		
+		else {
+			skin.style.background = 'linear-gradient(to bottom right, #333 40%, #000)';
+			nav.style.backgroundColor = '#000';
+			burger.style.color ='#777';
+			select[i].style.color ='#fff';
+			
+		}console.log(i);
 	}
 }
 	
