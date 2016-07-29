@@ -350,8 +350,8 @@ function themeChange() {
 	for (var i = 0; i < select.length; i++) {
 
 		if (toggleTheme.value == 'true') {
-			skin.style.background = '#fff';
-			nav.style.backgroundColor = '#bbb';
+			skin.style.background = 'linear-gradient(to bottom right, #ddd 40%, #bbb)';
+			nav.style.backgroundColor = '#fff';
 			burger.style.color ='#555';
 			select[i].style.color ='#000';
 		}
