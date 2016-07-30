@@ -184,7 +184,7 @@ function playSoundb(note) {
 		};
 		
 		distortion.curve = makeDistortionCurve(300);
-		distortion.oversample = '1x';
+		distortion.oversample = '3x';
 		
 		gainNode;
 		quickFadeIn;
@@ -301,7 +301,10 @@ var frequencies = {
  	'C_3': 523.25,
  };
 
-
+/**
+ *	UI
+ */
+ 	 
 //reveals 2nd keyboard
 function displayKeyboard2(lowersynth, uppersynth, menub) {
 	var bottom = document.getElementById(lowersynth);

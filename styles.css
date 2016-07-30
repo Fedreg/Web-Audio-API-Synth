@@ -79,7 +79,6 @@ label[for="nav-trigger"] {
 	width: 100%;
 	height: 260px;
 	background-color: rgba(0,0,0,0);
-
 	display: flex;
 	padding: 0 7% 0;
 }
@@ -106,11 +105,11 @@ label[for="nav-trigger"] {
 }
 
 #noteC_3 {
-	border-right: 2px solid #555;
+	border-right: 1px solid #555;
 }
 
 #noteC_3b {
-	border-right: 2px solid #555;
+	border-right: 1px solid #555;
 }
 
 .black-keys {
