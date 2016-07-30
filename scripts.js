@@ -50,13 +50,13 @@ function playSound(note) {
 		
 		//create gain
 		gainNode;
-		gainNode.gain.value =  0.25; 
+		gainNode.gain.value =  0; 
 		quickFadeIn;
 		
 		//create feedback loop
-		oscillator.connect(gainNode);
 		gainNode.connect(delay);
 		delay.connect(gainNode);
+		compressor.connect(gainNode);
 		delay.connect(compressor);	
 		
 		//decrease gain
@@ -147,17 +147,19 @@ function playSoundb(note) {
  	 */
 
  	function delayNode() {
+	//create delay
 		var delay = context.createDelay();
 		delay.delayTime.value = .5;
 		
+		//create gain
 		gainNode;
-		gainNode.gain.value =  0.25;
+		gainNode.gain.value =  0; 
 		quickFadeIn;
 		
 		//create feedback loop
-		oscillator.connect(gainNode);
 		gainNode.connect(delay);
 		delay.connect(gainNode);
+		compressor.connect(gainNode);
 		delay.connect(compressor);	
 		
 		//decrease gain
