@@ -68,7 +68,7 @@ function playSound(note) {
 				
 	//distortion curve taken from MDN which they in turn took from Stack Overflow
 		function makeDistortionCurve(amount) {
-		  var k = typeof amount === 'number' ? amount : 50,
+		  var k = typeof amount === 'number' ? amount : 25,
 		    n_samples = 44100,
 		    curve = new Float32Array(n_samples),
 		    deg = Math.PI / 90,
@@ -81,14 +81,14 @@ function playSound(note) {
 		  return curve;
 		};
 		
-		distortion.curve = makeDistortionCurve(500);
-		distortion.oversample = '4x';
+		distortion.curve = makeDistortionCurve(300);
+		distortion.oversample = '3x';
 		
 		gainNode;
-		
+		gainNode.gain.value =  0; 
 		quickFadeIn;
-		
-		oscillator.connect(gainNode);
+	
+		compressor.connect(gainNode);
 		gainNode.connect(distortion);
 		distortion.connect(compressor);
 		
@@ -170,7 +170,7 @@ function playSoundb(note) {
 		var distortion = context.createWaveShaper();
 				
 		function makeDistortionCurve(amount) {
-		  var k = typeof amount === 'number' ? amount : 50,
+		  var k = typeof amount === 'number' ? amount : 25,
 		    n_samples = 44100,
 		    curve = new Float32Array(n_samples),
 		    deg = Math.PI / 90,
@@ -183,13 +183,13 @@ function playSoundb(note) {
 		  return curve;
 		};
 		
-		distortion.curve = makeDistortionCurve(900);
-		distortion.oversample = '4x';
+		distortion.curve = makeDistortionCurve(300);
+		distortion.oversample = '1x';
 		
 		gainNode;
 		quickFadeIn;
 		
-		oscillator.connect(gainNode);
+		compressor.connect(gainNode);
 		gainNode.connect(distortion);
 		distortion.connect(compressor);
 		
