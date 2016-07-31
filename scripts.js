@@ -54,9 +54,9 @@ function playSound(note) {
 		quickFadeIn;
 		
 		//create feedback loop
+		compressor.connect(gainNode);
 		gainNode.connect(delay);
 		delay.connect(gainNode);
-		compressor.connect(gainNode);
 		delay.connect(compressor);	
 		
 		//decrease gain
@@ -107,19 +107,20 @@ function playSound(note) {
  	oscillator.stop(context.currentTime + sustain + .05);
  	
 	//change key color on keypress
-	
-		//append the word "note" to the object.name note to identify the correct key div
-		var divId = "note" + String(note);
-    	var element = document.getElementById(divId);
+
+	//append the word "note" to the object.name note to identify the correct key div
+	var divId = "note" + String(note);
+	var element = document.getElementById(divId);
     
-    	//change background color for durarion of note length
-    	var currentColor = element.style.backgroundColor;
-    	element.style.backgroundColor = '#3cf7ac';
-    	setTimeout(function () {
-    	if (currentColor != 'rgb(60, 247, 172)') {
-        	element.style.backgroundColor = currentColor
-        }
-     }, 1000 * sustain);    
+	//change background color for durarion of note length
+	var currentColor = element.style.backgroundColor;
+	element.style.backgroundColor = '#3cf7ac';
+	
+	setTimeout(function () {
+		if (currentColor != 'rgb(60, 247, 172)') {
+    		element.style.backgroundColor = currentColor
+  	  	}
+ 	}, 1000 * sustain);    
 
  	//for testing
  	console.log('playSound Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime.toFixed(2));
@@ -133,13 +134,13 @@ function playSoundb(note) {
 	oscillator.connect(gainNode);
  	gainNode.connect(compressor);
  	
-	var octaveb = document.getElementById('octaveb').value;
- 	oscillator.frequency.value = frequencies[note] * octaveb;
+	var octave = document.getElementById('octaveb').value;
+ 	oscillator.frequency.value = frequencies[note] * octave;
  	
  	oscillator.type = document.getElementById('waveSelectb').value;
  	
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.35, context.currentTime, .1);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.25, context.currentTime, .1);
  	oscillator.start(context.currentTime + .05);
  	
  	/**
@@ -199,9 +200,9 @@ function playSoundb(note) {
 	if (document.getElementById('toggleDelayb').value == 'true'){delayNode();}
 	if (document.getElementById('toggleDistortionb').value == 'true'){distortionNode();}		
  	
-  	var sustainb = parseFloat(document.getElementById('sustainb').value);
+  	var sustain = parseFloat(document.getElementById('sustainb').value);
  	
- 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustainb, 0.0015);
+ 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
  	
  	//change key color on keypress
 	var divId = "note" + String(note) + "b";
@@ -212,7 +213,7 @@ function playSoundb(note) {
     	if (currentColor != 'rgb(60, 228, 247)') {
         	element.style.backgroundColor = currentColor
         }
-     }, 1000 * sustainb);
+     }, 1000 * sustain);
  	
 	//for testing
  	console.log('playSound*B* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
