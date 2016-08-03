@@ -313,14 +313,14 @@ function displayKeyboard2(lowersynth, uppersynth, menub) {
 	var bod = document.getElementById(bod);
 	var menub = document.getElementById(menub);
 
-	if (bottom.style.display == 'block') {
+	if (bottom.style.display == 'flex') {
 		bottom.style.display = 'none';
 		top.style.paddingTop = '11em';
 		menub.style.display = 'none';
 	}
 
 	else {
-		bottom.style.display = 'block';
+		bottom.style.display = 'flex';
 		top.style.paddingTop = '3em';
 		menub.style.display = 'block';
 	}	
