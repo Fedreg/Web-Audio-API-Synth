@@ -315,13 +315,13 @@ function displayKeyboard2(lowersynth, uppersynth, menub) {
 
 	if (bottom.style.display == 'block') {
 		bottom.style.display = 'none';
-		top.style.paddingTop = '150px';
+		top.style.paddingTop = '20%';
 		menub.style.display = 'none';
 	}
 
 	else {
 		bottom.style.display = 'block';
-		top.style.paddingTop = '3em';
+		top.style.paddingTop = '5%';
 		menub.style.display = 'block';
 	}	
 }

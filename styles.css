@@ -46,9 +46,6 @@ label[for="nav-trigger"] {
     top: 15px;
     left: 15px;
     z-index: 2;
-}
-
-label[for="nav-trigger"] {
     width: 30px;
     height: 30px;
     font-size: 2em;
@@ -70,13 +67,18 @@ label[for="nav-trigger"] {
 }
 
 #uppersynth {
-	padding-top: 150px;
+	padding-top: 20%;
 	display: flex;
+	justify-content: center;
 } 
 
-.keyboard {
+#lowersynth {
+	display: flex;
+	justify-content: center;
+} 
+
+.keyboard, .keyboardb {
 	position: relative;
-	font-size: 1em;
 	width: 100%;
 	height: 260px;
 	background-color: rgba(0,0,0,0);
@@ -84,19 +86,9 @@ label[for="nav-trigger"] {
 	padding: 0 7% 0;
 }
 
-.keyboardb {
-	position: relative;
-	font-size: 5em;
-	width: 100%;
-	height: 280px;
-	background-color: rgba(0,0,0,0);
-	display: flex;
-	padding: 0% 7% 0;
-}
-
 .white-keys {
 	flex-orientation: row;
-	flex-basis: 50%;
+	flex-;
 	border: .5px solid #fff;
 	background-color: rgba(0, 0, 0, 0);
 	width: 60px;
@@ -106,11 +98,7 @@ label[for="nav-trigger"] {
 	border-right: 0;
 }
 
-#noteC_3 {
-	border-right: 1px solid #555;
-}
-
-#noteC_3b {
+#noteC_3, #noteC_3b{
 	border-right: 1px solid #555;
 }
 
@@ -118,7 +106,7 @@ label[for="nav-trigger"] {
 	margin-left: -15px;
 	float: left;
 	position: absolute;
-	width: 30px;
+	width: 1.875em;
 	height: 140px;
 	padding-right: 20px;
 	background-color: #555;
