@@ -8,3 +8,21 @@ Select from 4 wave types
 Delay and Distortion effects
 
 demo available at https://fedreg.github.io/Web-Audio-API-Synth/
+
+OPTIONS
+Each keyboard has the following oprions:
+
+WAVE selects the type of sound wave produced: Sine (default), Triangle, Square, or Sawtooth.
+
+OCTAVE selects the frequency range.  can be set from -2 to 2.
+
+DURATION determines length of each note.  Range is sixteenth note (.25 of 1 beat) to 4 whole notes (16 beats).
+
+DELAY toggles delay effect off or on.
+
+
+DISTORTION toggles distortion effect off or on.
+
+EZ MODE hides all of the chromatic "black" notes for simplified playing.
+
+BLACK UI/LIGHT UI switches overall color scheme.
