@@ -76,7 +76,7 @@ function playSound(note) {
 		    x;
 		  for ( ; i < n_samples; ++i ) {
 		    x = i * 2 / n_samples - 1;
-		    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+		    curve[i] = ( 3 + k ) * x * 3 * deg / ( Math.PI + k * Math.abs(x) );
 		  }
 		  return curve;
 		};
@@ -178,7 +178,7 @@ function playSoundb(note) {
 		    x;
 		  for ( ; i < n_samples; ++i ) {
 		    x = i * 2 / n_samples - 1;
-		    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+		    curve[i] = ( 3 + k ) * x * 3 * deg / ( Math.PI + k * Math.abs(x) );
 		  }
 		  return curve;
 		};
@@ -271,7 +271,7 @@ function playSoundc(note) {
 		    x;
 		  for ( ; i < n_samples; ++i ) {
 		    x = i * 2 / n_samples - 1;
-		    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+		    curve[i] = ( 3 + k ) * x * 3 * deg / ( Math.PI + k * Math.abs(x) );
 		  }
 		  return curve;
 		};
@@ -364,7 +364,7 @@ function playSoundd(note) {
 		    x;
 		  for ( ; i < n_samples; ++i ) {
 		    x = i * 2 / n_samples - 1;
-		    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+		    curve[i] = ( 3 + k ) * x * 3 * deg / ( Math.PI + k * Math.abs(x) );
 		  }
 		  return curve;
 		};
