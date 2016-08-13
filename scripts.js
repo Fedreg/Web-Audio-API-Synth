@@ -104,7 +104,6 @@ function playSound(note) {
  	
  	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
  	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
- 	oscillator.stop(context.currentTime + sustain + .05);
  	
 	//change key color on keypress
 
@@ -219,6 +218,193 @@ function playSoundb(note) {
  	console.log('playSound*B* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
 }
 
+//third keyboard
+function playSoundc(note) {
+	oscillator = context.createOscillator();
+	var gainNode = context.createGain();
+	
+	oscillator.connect(gainNode);
+ 	gainNode.connect(compressor);
+ 	
+	var octave = document.getElementById('octavec').value;
+ 	oscillator.frequency.value = frequencies[note] * octave;
+ 	
+ 	oscillator.type = document.getElementById('waveSelectc').value;
+ 	
+ 	gainNode.gain.value = 0
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.25, context.currentTime, .1);
+ 	oscillator.start(context.currentTime + .05);
+ 	
+ 	/**
+ 	 *	AUDIO EFFECTS
+ 	 */
+
+ 	function delayNode() {
+	//create delay
+		var delay = context.createDelay();
+		delay.delayTime.value = .5;
+		
+		//create gain
+		gainNode;
+		gainNode.gain.value =  0; 
+		quickFadeIn;
+		
+		//create feedback loop
+		gainNode.connect(delay);
+		delay.connect(gainNode);
+		compressor.connect(gainNode);
+		delay.connect(compressor);	
+		
+		//decrease gain
+		quickFadeOut;
+	}
+	
+	function distortionNode() {
+		var distortion = context.createWaveShaper();
+				
+		function makeDistortionCurve(amount) {
+		  var k = typeof amount === 'number' ? amount : 25,
+		    n_samples = 44100,
+		    curve = new Float32Array(n_samples),
+		    deg = Math.PI / 90,
+		    i = 0,
+		    x;
+		  for ( ; i < n_samples; ++i ) {
+		    x = i * 2 / n_samples - 1;
+		    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+		  }
+		  return curve;
+		};
+		
+		distortion.curve = makeDistortionCurve(300);
+		distortion.oversample = '3x';
+		
+		gainNode;
+		quickFadeIn;
+		
+		compressor.connect(gainNode);
+		gainNode.connect(distortion);
+		distortion.connect(compressor);
+		
+ 		quickFadeOut;
+	}
+	
+	if (document.getElementById('toggleDelayc').value == 'true'){delayNode();}
+	if (document.getElementById('toggleDistortionc').value == 'true'){distortionNode();}		
+ 	
+  	var sustain = parseFloat(document.getElementById('sustainc').value);
+ 	
+ 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
+ 	
+ 	//change key color on keypress
+	var divId = "note" + String(note) + "c";
+    var element = document.getElementById(divId);
+    var currentColor = element.style.backgroundColor;
+    element.style.backgroundColor = '#fa0a8b';
+    setTimeout(function () {
+    	if (currentColor != 'rgb(250, 10, 139)') {
+        	element.style.backgroundColor = currentColor
+        }
+     }, 1000 * sustain);
+ 	
+	//for testing
+ 	console.log('playSound*C* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
+}
+
+//fourth keyboard
+function playSoundd(note) {
+	oscillator = context.createOscillator();
+	var gainNode = context.createGain();
+	
+	oscillator.connect(gainNode);
+ 	gainNode.connect(compressor);
+ 	
+	var octave = document.getElementById('octaved').value;
+ 	oscillator.frequency.value = frequencies[note] * octave;
+ 	
+ 	oscillator.type = document.getElementById('waveSelectd').value;
+ 	
+ 	gainNode.gain.value = 0
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.25, context.currentTime, .1);
+ 	oscillator.start(context.currentTime + .05);
+ 	
+ 	/**
+ 	 *	AUDIO EFFECTS
+ 	 */
+
+ 	function delayNode() {
+	//create delay
+		var delay = context.createDelay();
+		delay.delayTime.value = .5;
+		
+		//create gain
+		gainNode;
+		gainNode.gain.value =  0; 
+		quickFadeIn;
+		
+		//create feedback loop
+		gainNode.connect(delay);
+		delay.connect(gainNode);
+		compressor.connect(gainNode);
+		delay.connect(compressor);	
+		
+		//decrease gain
+		quickFadeOut;
+	}
+	
+	function distortionNode() {
+		var distortion = context.createWaveShaper();
+				
+		function makeDistortionCurve(amount) {
+		  var k = typeof amount === 'number' ? amount : 25,
+		    n_samples = 44100,
+		    curve = new Float32Array(n_samples),
+		    deg = Math.PI / 90,
+		    i = 0,
+		    x;
+		  for ( ; i < n_samples; ++i ) {
+		    x = i * 2 / n_samples - 1;
+		    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+		  }
+		  return curve;
+		};
+		
+		distortion.curve = makeDistortionCurve(300);
+		distortion.oversample = '3x';
+		
+		gainNode;
+		quickFadeIn;
+		
+		compressor.connect(gainNode);
+		gainNode.connect(distortion);
+		distortion.connect(compressor);
+		
+ 		quickFadeOut;
+	}
+	
+	if (document.getElementById('toggleDelayd').value == 'true'){delayNode();}
+	if (document.getElementById('toggleDistortiond').value == 'true'){distortionNode();}		
+ 	
+  	var sustain = parseFloat(document.getElementById('sustaind').value);
+ 	
+ 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.0015);
+ 	
+ 	//change key color on keypress
+	var divId = "note" + String(note) + "d";
+    var element = document.getElementById(divId);
+    var currentColor = element.style.backgroundColor;
+    element.style.backgroundColor = '#ad3cf7';
+    setTimeout(function () {
+    	if (currentColor != 'rgb(173, 60, 247)') {
+        	element.style.backgroundColor = currentColor
+        }
+     }, 1000 * sustain);
+ 	
+	//for testing
+ 	console.log('playSound*D* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
+}
+
+
 //triggers playSound() to create note
 document.getElementById('noteC_1').addEventListener(ifTouch() ,function() { playSound('C_1');});
 document.getElementById('noteC#1').addEventListener(ifTouch() ,function() { playSound('C#1');});
@@ -246,7 +432,7 @@ document.getElementById('noteA#2').addEventListener(ifTouch() ,function() { play
 document.getElementById('noteB_2').addEventListener(ifTouch() ,function() { playSound('B_2');});
 document.getElementById('noteC_3').addEventListener(ifTouch() ,function() { playSound('C_3');});
 
-//lower keyboard
+//second keyboard
 document.getElementById('noteC_1b').addEventListener(ifTouch() ,function() { playSoundb('C_1');});
 document.getElementById('noteC#1b').addEventListener(ifTouch() ,function() { playSoundb('C#1');});
 document.getElementById('noteD_1b').addEventListener(ifTouch() ,function() { playSoundb('D_1');});
@@ -272,6 +458,60 @@ document.getElementById('noteA_2b').addEventListener(ifTouch() ,function() { pla
 document.getElementById('noteA#2b').addEventListener(ifTouch() ,function() { playSoundb('A#2');});
 document.getElementById('noteB_2b').addEventListener(ifTouch() ,function() { playSoundb('B_2');});
 document.getElementById('noteC_3b').addEventListener(ifTouch() ,function() { playSoundb('C_3');});
+
+//third keyboard
+document.getElementById('noteC_1c').addEventListener(ifTouch() ,function() { playSoundc('C_1');});
+document.getElementById('noteC#1c').addEventListener(ifTouch() ,function() { playSoundc('C#1');});
+document.getElementById('noteD_1c').addEventListener(ifTouch() ,function() { playSoundc('D_1');});
+document.getElementById('noteD#1c').addEventListener(ifTouch() ,function() { playSoundc('D#1');});
+document.getElementById('noteE_1c').addEventListener(ifTouch() ,function() { playSoundc('E_1');});
+document.getElementById('noteF_1c').addEventListener(ifTouch() ,function() { playSoundc('F_1');});
+document.getElementById('noteF#1c').addEventListener(ifTouch() ,function() { playSoundc('F#1');});
+document.getElementById('noteG_1c').addEventListener(ifTouch() ,function() { playSoundc('G_1');});
+document.getElementById('noteG#1c').addEventListener(ifTouch() ,function() { playSoundc('G#1');});
+document.getElementById('noteA_1c').addEventListener(ifTouch() ,function() { playSoundc('A_1');});
+document.getElementById('noteA#1c').addEventListener(ifTouch() ,function() { playSoundc('A#1');});
+document.getElementById('noteB_1c').addEventListener(ifTouch() ,function() { playSoundc('B_1');});
+document.getElementById('noteC_2c').addEventListener(ifTouch() ,function() { playSoundc('C_2');});
+document.getElementById('noteC#2c').addEventListener(ifTouch() ,function() { playSoundc('C#2');});
+document.getElementById('noteD_2c').addEventListener(ifTouch() ,function() { playSoundc('D_2');});
+document.getElementById('noteD#2c').addEventListener(ifTouch() ,function() { playSoundc('D#2');});
+document.getElementById('noteE_2c').addEventListener(ifTouch() ,function() { playSoundc('E_2');});
+document.getElementById('noteF_2c').addEventListener(ifTouch() ,function() { playSoundc('F_2');});
+document.getElementById('noteF#2c').addEventListener(ifTouch() ,function() { playSoundc('F#2');});
+document.getElementById('noteG_2c').addEventListener(ifTouch() ,function() { playSoundc('G_2');});
+document.getElementById('noteG#2c').addEventListener(ifTouch() ,function() { playSoundc('G#2');});
+document.getElementById('noteA_2c').addEventListener(ifTouch() ,function() { playSoundc('A_2');});
+document.getElementById('noteA#2c').addEventListener(ifTouch() ,function() { playSoundc('A#2');});
+document.getElementById('noteB_2c').addEventListener(ifTouch() ,function() { playSoundc('B_2');});
+document.getElementById('noteC_3c').addEventListener(ifTouch() ,function() { playSoundc('C_3');});
+
+//fourth keyboard
+document.getElementById('noteC_1d').addEventListener(ifTouch() ,function() { playSoundd('C_1');});
+document.getElementById('noteC#1d').addEventListener(ifTouch() ,function() { playSoundd('C#1');});
+document.getElementById('noteD_1d').addEventListener(ifTouch() ,function() { playSoundd('D_1');});
+document.getElementById('noteD#1d').addEventListener(ifTouch() ,function() { playSoundd('D#1');});
+document.getElementById('noteE_1d').addEventListener(ifTouch() ,function() { playSoundd('E_1');});
+document.getElementById('noteF_1d').addEventListener(ifTouch() ,function() { playSoundd('F_1');});
+document.getElementById('noteF#1d').addEventListener(ifTouch() ,function() { playSoundd('F#1');});
+document.getElementById('noteG_1d').addEventListener(ifTouch() ,function() { playSoundd('G_1');});
+document.getElementById('noteG#1d').addEventListener(ifTouch() ,function() { playSoundd('G#1');});
+document.getElementById('noteA_1d').addEventListener(ifTouch() ,function() { playSoundd('A_1');});
+document.getElementById('noteA#1d').addEventListener(ifTouch() ,function() { playSoundd('A#1');});
+document.getElementById('noteB_1d').addEventListener(ifTouch() ,function() { playSoundd('B_1');});
+document.getElementById('noteC_2d').addEventListener(ifTouch() ,function() { playSoundd('C_2');});
+document.getElementById('noteC#2d').addEventListener(ifTouch() ,function() { playSoundd('C#2');});
+document.getElementById('noteD_2d').addEventListener(ifTouch() ,function() { playSoundd('D_2');});
+document.getElementById('noteD#2d').addEventListener(ifTouch() ,function() { playSoundd('D#2');});
+document.getElementById('noteE_2d').addEventListener(ifTouch() ,function() { playSoundd('E_2');});
+document.getElementById('noteF_2d').addEventListener(ifTouch() ,function() { playSoundd('F_2');});
+document.getElementById('noteF#2d').addEventListener(ifTouch() ,function() { playSoundd('F#2');});
+document.getElementById('noteG_2d').addEventListener(ifTouch() ,function() { playSoundd('G_2');});
+document.getElementById('noteG#2d').addEventListener(ifTouch() ,function() { playSoundd('G#2');});
+document.getElementById('noteA_2d').addEventListener(ifTouch() ,function() { playSoundd('A_2');});
+document.getElementById('noteA#2d').addEventListener(ifTouch() ,function() { playSoundd('A#2');});
+document.getElementById('noteB_2d').addEventListener(ifTouch() ,function() { playSoundd('B_2');});
+document.getElementById('noteC_3d').addEventListener(ifTouch() ,function() { playSoundd('C_3');});
 
 //Frequencies in Hz of notes to be played. 
 var frequencies = {
@@ -305,26 +545,7 @@ var frequencies = {
 /**
  *	UI
  */
- 	 
-//reveals 2nd keyboard
-function displayKeyboard2(lowersynth, uppersynth, menub) {
-	var bottom = document.getElementById(lowersynth);
-	var top = document.getElementById(uppersynth);
-	var bod = document.getElementById(bod);
-	var menub = document.getElementById(menub);
-
-	if (bottom.style.display == 'flex') {
-		bottom.style.display = 'none';
-		top.style.paddingTop = '11em';
-		menub.style.display = 'none';
-	}
-
-	else {
-		bottom.style.display = 'flex';
-		top.style.paddingTop = '3em';
-		menub.style.display = 'block';
-	}	
-}
+ 
 
 //hides the chromatic notes of the keyboard
 function ezMode() {
@@ -335,12 +556,16 @@ function ezMode() {
 			chromaticNotes[i].style.display = 'none';
 			document.getElementById('noteC_2').style.backgroundColor = 'rgba(0,0,0,.2)';
 			document.getElementById('noteC_2b').style.backgroundColor = 'rgba(0,0,0,.2)';
+			document.getElementById('noteC_2c').style.backgroundColor = 'rgba(0,0,0,.2)';
+			document.getElementById('noteC_2d').style.backgroundColor = 'rgba(0,0,0,.2)';
 		}
 		
 		else {
 			chromaticNotes[i].style.display = 'block';
 			document.getElementById('noteC_2').style.backgroundColor = 'rgba(0,0,0,0)';
 			document.getElementById('noteC_2b').style.backgroundColor = 'rgba(0,0,0,0)';	
+			document.getElementById('noteC_2c').style.backgroundColor = 'rgba(0,0,0,0)';
+			document.getElementById('noteC_2d').style.backgroundColor = 'rgba(0,0,0,0)';	
 		}
 	}
 }

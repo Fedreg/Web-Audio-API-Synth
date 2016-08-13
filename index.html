@@ -2,20 +2,24 @@
 <html>
 
 	<head>
+	
 		<title>Web Audio API Keyboard</title>
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	</head>
 	<body id="bod">
 		<ul id="navigation">
+			<li class="nav-item">
+				<a href="#" onclick="ezMode('black-keys', 'black_keysb', 'black_keysc', 'black_keysd');" >EZ MODE</a>
+			</li>
 			<div id="menu">
 				<li class="nav-item">
 					<select id="waveSelect" text="Wave Type"> Wave Type:
 					    <option value="sine">WAVE: SINE</option>
 					    <option value="square">WAVE: SQUARE</option>
-					    <option value="triangle">WAVE: TRIANGLE</option>
+					    <option selected="selected" value="triangle">WAVE: TRIANGLE</option>
 					    <option value="sawtooth">WAVE: SAWTOOTH</option>
 					</select>
 				</li>
@@ -24,15 +28,15 @@
 						<option value="2.0">OCTAVE 0</option>
 						<option value="1.0">OCTAVE -1</option>
 						<option value="0.5">OCTAVE -2</option>
-						<option value="4.0">OCTAVE +1</option>
+						<option selected="selected" value="4.0">OCTAVE +1</option>
 						<option value="8.0">OCTAVE +2</option>				
 					</select>
 				</li>
 				<li class="nav-item">
 					<select id="sustain">
 						<option value="0.25">SIXTEENTH NOTE</option>
-						<option value="0.5">EIGHTH NOTE</option>
-						<option selected="selected" value="1.0">QUARTER NOTE</option>
+						<option selected="selected" value="0.5">EIGHTH NOTE</option>
+						<option value="1.0">QUARTER NOTE</option>
 						<option value="2.0">HALF NOTE</option>
 						<option value="4.0">WHOLE NOTE</option>				
 						<option value="16.0">4 WHOLE NOTE</option>	
@@ -51,22 +55,19 @@
 					</select>
 				</li>
 			</div>
-			<li class="nav-item">
-				<a href="#" onclick="ezMode('black-keys', 'black_keysb');" >EZ MODE</a>
-			</li>
-			<div id="menub" style="display: none;">
+			<div id="menub">
 				<li class="nav-item">
 					<select id="waveSelectb" text="Wave Type"> Wave Type:
-					    <option selected="selected" value="sine">WAVE: SINE</option>
+					    <option value="sine">WAVE: SINE</option>
 					    <option value="square">WAVE: SQUARE</option>
-					    <option value="triangle">WAVE: TRIANGLE</option>
+					    <option selected="selected" value="triangle">WAVE: TRIANGLE</option>
 					    <option value="sawtooth">WAVE: SAWTOOTH</option>
 					</select>
 				</li>
 				<li class="nav-item">
 					<select id="octaveb">
-						<option value="2.0">OCTAVE 0</option>
-						<option selected="selected" value="1.0">OCTAVE -1</option>
+						<option selected="selected" value="2.0">OCTAVE 0</option>
+						<option value="1.0">OCTAVE -1</option>
 						<option value="0.5">OCTAVE -2</option>
 						<option value="4.0">OCTAVE +1</option>
 						<option value="8.0">OCTAVE +2</option>				
@@ -75,8 +76,8 @@
 				<li class="nav-item">
 					<select id="sustainb">
 						<option value="0.5">EIGHTH NOTE</option>
-						<option value="1.0">QUARTER NOTE</option>
-						<option selected="selected" value="2.0">HALF NOTE</option>
+						<option selected="selected" value="1.0">QUARTER NOTE</option>
+						<option value="2.0">HALF NOTE</option>
 						<option value="4.0">WHOLE NOTE</option>				
 						<option value="16.0">4 WHOLE NOTE</option>	
 					</select>
@@ -94,86 +95,215 @@
 					</select>
 				</li>
 			</div>
+			<div id="menuc">
+				<li class="nav-item">
+					<select id="waveSelectc" text="Wave Type"> Wave Type:
+					    <option value="sine">WAVE: SINE</option>
+					    <option value="square">WAVE: SQUARE</option>
+					    <option selected="selected" value="triangle">WAVE: TRIANGLE</option>
+					    <option value="sawtooth">WAVE: SAWTOOTH</option>
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="octavec">
+						<option value="2.0">OCTAVE 0</option>
+						<option selected="selected" value="1.0">OCTAVE -1</option>
+						<option value="0.5">OCTAVE -2</option>
+						<option value="4.0">OCTAVE +1</option>
+						<option value="8.0">OCTAVE +2</option>				
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="sustainc">
+						<option value="0.5">EIGHTH NOTE</option>
+						<option value="1.0">QUARTER NOTE</option>
+						<option selected="selected" value="2.0">HALF NOTE</option>
+						<option value="4.0">WHOLE NOTE</option>				
+						<option value="16.0">4 WHOLE NOTE</option>	
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="toggleDelayc">
+						<option value="false">DELAY OFF</option>
+						<option value="true">DELAY ON</option>
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="toggleDistortionc">
+						<option value="false">DISTORTION OFF</option>
+						<option value="true">DISTORTION ON</option>
+					</select>
+				</li>
+			</div>
+			<div id="menud">
+				<li class="nav-item">
+					<select id="waveSelectd" text="Wave Type"> Wave Type:
+					    <option value="sine">WAVE: SINE</option>
+					    <option value="square">WAVE: SQUARE</option>
+					    <option selected="selected" value="triangle">WAVE: TRIANGLE</option>
+					    <option value="sawtooth">WAVE: SAWTOOTH</option>
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="octaved">
+						<option value="2.0">OCTAVE 0</option>
+						<option value="1.0">OCTAVE -1</option>
+						<option selected="selected" value="0.5">OCTAVE -2</option>
+						<option value="4.0">OCTAVE +1</option>
+						<option value="8.0">OCTAVE +2</option>				
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="sustaind">
+						<option value="0.5">EIGHTH NOTE</option>
+						<option value="1.0">QUARTER NOTE</option>
+						<option selected="selected" value="2.0">HALF NOTE</option>
+						<option value="4.0">WHOLE NOTE</option>				
+						<option value="16.0">4 WHOLE NOTE</option>	
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="toggleDelayd">
+						<option value="false">DELAY OFF</option>
+						<option value="true">DELAY ON</option>
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="toggleDistortiond">
+						<option value="false">DISTORTION OFF</option>
+						<option value="true">DISTORTION ON</option>
+					</select>
+				</li>
+			</div>
+			
 			<li class="nav-item">
 				<select id="theme" onchange="themeChange();">
 					<option value="true">LIGHT UI</option>
 					<option selected="selected" value="false">DARK UI</option>
 				</select>
 			</li>
-			<li><div onclick="playSound('C_1'); playSound('E_1'); playSound('G_1');" style="color: white;"> I </div>
-			</li>
-			<li><div onclick="playSound('F_1'); playSound('A_1'); playSound('C_1');" style="color: white;"> IV </div>
-			</li>
-			<li><div onclick="playSound('G_1'); playSound('B_1'); playSound('D_1');" style="color: white;"> V </div>
-			</li>
-			<li><div onclick="playSound('E_1'); playSound('G_1'); playSound('B_1');" style="color: white;"> VI </div>
-			</li>
 		</ul>
-		
-
-
 		<input type="checkbox" id="nav-trigger" class="nav-trigger" />
 		<label id="burger" for="nav-trigger">&#9776;</label>
 		<div id="wrapper">
-			<div id="uppersynth">
-				<div class="keyboard">
-					<div class="white-keys" id="noteC_1"></div>
-					<div class="black-keys" id="noteC#1"></div>
-					<div class="white-keys" id="noteD_1"></div>
-					<div class="black-keys" id="noteD#1"></div>
-					<div class="white-keys" id="noteE_1"></div>
-					<div class="white-keys" id="noteF_1"></div>
-					<div class="black-keys" id="noteF#1"></div>
-					<div class="white-keys" id="noteG_1"></div>
-					<div class="black-keys" id="noteG#1"></div>
-					<div class="white-keys" id="noteA_1"></div>
-					<div class="black-keys" id="noteA#1"></div>
-					<div class="white-keys" id="noteB_1"></div>
-					<div class="white-keys" id="noteC_2"></div>
-					<div class="black-keys" id="noteC#2"></div>
-					<div class="white-keys" id="noteD_2"></div>
-					<div class="black-keys" id="noteD#2"></div>
-					<div class="white-keys" id="noteE_2"></div>
-					<div class="white-keys" id="noteF_2"></div>
-					<div class="black-keys" id="noteF#2"></div>
-					<div class="white-keys" id="noteG_2"></div>
-					<div class="black-keys" id="noteG#2"></div>
-					<div class="white-keys" id="noteA_2"></div>
-					<div class="black-keys" id="noteA#2"></div>
-					<div class="white-keys" id="noteB_2"></div>
-					<div class="white-keys" id="noteC_3"></div>
-				</div>
+			<div class="keyboard">
+				<div class="white-keys" id="noteC_1"></div>
+				<div class="black-keys" id="noteC#1"></div>
+				<div class="white-keys" id="noteD_1"></div>
+				<div class="black-keys" id="noteD#1"></div>
+				<div class="white-keys" id="noteE_1"></div>
+				<div class="white-keys" id="noteF_1"></div>
+				<div class="black-keys" id="noteF#1"></div>
+				<div class="white-keys" id="noteG_1"></div>
+				<div class="black-keys" id="noteG#1"></div>
+				<div class="white-keys" id="noteA_1"></div>
+				<div class="black-keys" id="noteA#1"></div>
+				<div class="white-keys" id="noteB_1"></div>
+				<div class="white-keys" id="noteC_2"></div>
+				<div class="black-keys" id="noteC#2"></div>
+				<div class="white-keys" id="noteD_2"></div>
+				<div class="black-keys" id="noteD#2"></div>
+				<div class="white-keys" id="noteE_2"></div>
+				<div class="white-keys" id="noteF_2"></div>
+				<div class="black-keys" id="noteF#2"></div>
+				<div class="white-keys" id="noteG_2"></div>
+				<div class="black-keys" id="noteG#2"></div>
+				<div class="white-keys" id="noteA_2"></div>
+				<div class="black-keys" id="noteA#2"></div>
+				<div class="white-keys" id="noteB_2"></div>
+				<div class="white-keys" id="noteC_3"></div>
 			</div>
-			<a href="#" onclick="displayKeyboard2('lowersynth', 'uppersynth', 'menub');" id="addKeyboard" >TOGGLE SECOND KEYBOARD</a>
-			<div id="lowersynth" style="display:none;">
-					<div class="keyboardb">
-					<div class="white-keys" id="noteC_1b"></div>
-					<div class="black-keys" id="noteC#1b"></div>
-					<div class="white-keys" id="noteD_1b"></div>
-					<div class="black-keys" id="noteD#1b"></div>
-					<div class="white-keys" id="noteE_1b"></div>
-					<div class="white-keys" id="noteF_1b"></div>
-					<div class="black-keys" id="noteF#1b"></div>
-					<div class="white-keys" id="noteG_1b"></div>
-					<div class="black-keys" id="noteG#1b"></div>
-					<div class="white-keys" id="noteA_1b"></div>
-					<div class="black-keys" id="noteA#1b"></div>
-					<div class="white-keys" id="noteB_1b"></div>
-					<div class="white-keys" id="noteC_2b"></div>
-					<div class="black-keys" id="noteC#2b"></div>
-					<div class="white-keys" id="noteD_2b"></div>
-					<div class="black-keys" id="noteD#2b"></div>
-					<div class="white-keys" id="noteE_2b"></div>
-					<div class="white-keys" id="noteF_2b"></div>
-					<div class="black-keys" id="noteF#2b"></div>
-					<div class="white-keys" id="noteG_2b"></div>
-					<div class="black-keys" id="noteG#2b"></div>
-					<div class="white-keys" id="noteA_2b"></div>
-					<div class="black-keys" id="noteA#2b"></div>
-					<div class="white-keys" id="noteB_2b"></div>
-					<div class="white-keys" id="noteC_3b"></div>
-				</div>
+			<div class="keyboardb">
+				<div class="white-keys" id="noteC_1b"></div>
+				<div class="black-keys" id="noteC#1b"></div>
+				<div class="white-keys" id="noteD_1b"></div>
+				<div class="black-keys" id="noteD#1b"></div>
+				<div class="white-keys" id="noteE_1b"></div>
+				<div class="white-keys" id="noteF_1b"></div>
+				<div class="black-keys" id="noteF#1b"></div>
+				<div class="white-keys" id="noteG_1b"></div>
+				<div class="black-keys" id="noteG#1b"></div>
+				<div class="white-keys" id="noteA_1b"></div>
+				<div class="black-keys" id="noteA#1b"></div>
+				<div class="white-keys" id="noteB_1b"></div>
+				<div class="white-keys" id="noteC_2b"></div>
+				<div class="black-keys" id="noteC#2b"></div>
+				<div class="white-keys" id="noteD_2b"></div>
+				<div class="black-keys" id="noteD#2b"></div>
+				<div class="white-keys" id="noteE_2b"></div>
+				<div class="white-keys" id="noteF_2b"></div>
+				<div class="black-keys" id="noteF#2b"></div>
+				<div class="white-keys" id="noteG_2b"></div>
+				<div class="black-keys" id="noteG#2b"></div>
+				<div class="white-keys" id="noteA_2b"></div>
+				<div class="black-keys" id="noteA#2b"></div>
+				<div class="white-keys" id="noteB_2b"></div>
+				<div class="white-keys" id="noteC_3b"></div>
 			</div>
+			<div class="keyboardc">
+				<div class="white-keys" id="noteC_1c"></div>
+				<div class="black-keys" id="noteC#1c"></div>
+				<div class="white-keys" id="noteD_1c"></div>
+				<div class="black-keys" id="noteD#1c"></div>
+				<div class="white-keys" id="noteE_1c"></div>
+				<div class="white-keys" id="noteF_1c"></div>
+				<div class="black-keys" id="noteF#1c"></div>
+				<div class="white-keys" id="noteG_1c"></div>
+				<div class="black-keys" id="noteG#1c"></div>
+				<div class="white-keys" id="noteA_1c"></div>
+				<div class="black-keys" id="noteA#1c"></div>
+				<div class="white-keys" id="noteB_1c"></div>
+				<div class="white-keys" id="noteC_2c"></div>
+				<div class="black-keys" id="noteC#2c"></div>
+				<div class="white-keys" id="noteD_2c"></div>
+				<div class="black-keys" id="noteD#2c"></div>
+				<div class="white-keys" id="noteE_2c"></div>
+				<div class="white-keys" id="noteF_2c"></div>
+				<div class="black-keys" id="noteF#2c"></div>
+				<div class="white-keys" id="noteG_2c"></div>
+				<div class="black-keys" id="noteG#2c"></div>
+				<div class="white-keys" id="noteA_2c"></div>
+				<div class="black-keys" id="noteA#2c"></div>
+				<div class="white-keys" id="noteB_2c"></div>
+				<div class="white-keys" id="noteC_3c"></div>
+			</div>
+			<div class="keyboardd">
+				<div class="white-keys" id="noteC_1d"></div>
+				<div class="black-keys" id="noteC#1d"></div>
+				<div class="white-keys" id="noteD_1d"></div>
+				<div class="black-keys" id="noteD#1d"></div>
+				<div class="white-keys" id="noteE_1d"></div>
+				<div class="white-keys" id="noteF_1d"></div>
+				<div class="black-keys" id="noteF#1d"></div>
+				<div class="white-keys" id="noteG_1d"></div>
+				<div class="black-keys" id="noteG#1d"></div>
+				<div class="white-keys" id="noteA_1d"></div>
+				<div class="black-keys" id="noteA#1d"></div>
+				<div class="white-keys" id="noteB_1d"></div>
+				<div class="white-keys" id="noteC_2d"></div>
+				<div class="black-keys" id="noteC#2d"></div>
+				<div class="white-keys" id="noteD_2d"></div>
+				<div class="black-keys" id="noteD#2d"></div>
+				<div class="white-keys" id="noteE_2d"></div>
+				<div class="white-keys" id="noteF_2d"></div>
+				<div class="black-keys" id="noteF#2d"></div>
+				<div class="white-keys" id="noteG_2d"></div>
+				<div class="black-keys" id="noteG#2d"></div>
+				<div class="white-keys" id="noteA_2d"></div>
+				<div class="black-keys" id="noteA#2d"></div>
+				<div class="white-keys" id="noteB_2d"></div>
+				<div class="white-keys" id="noteC_3d"></div>
+			</div>
+			<ul id="chordDegree">
+				<li><div onclick="playSoundd('C_1'); playSoundc('E_1'); playSoundc('G_1');"> I </div>
+				</li>
+				<li><div onclick="playSoundd('F_1'); playSoundc('A_1'); playSoundc('C_1');"> IV </div>
+				</li>
+				<li><div onclick="playSoundd('G_1'); playSoundc('B_1'); playSoundc('D_1');"> V </div>
+				</li>
+				<li><div onclick="playSoundd('E_1'); playSoundc('G_1'); playSoundc('B_1');"> VI </div>
+				</li>
+			</ul>
 		<script type="text/javascript" src="scripts.js"></script>
 		</div>
 	</body>
