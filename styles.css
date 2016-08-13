@@ -30,7 +30,7 @@ body {
 #wrapper {
 	display: flex;
 	flex-orientation: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	flex-wrap: wrap;
     min-width: 100%;
     min-height: 100%;
