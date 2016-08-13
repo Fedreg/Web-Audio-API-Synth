@@ -1,7 +1,7 @@
 * {
 	box-sizing: border-box;
 	text-decoration: none;
-	transition: background .75s ease;
+	transition: background 2s ease-out;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 }
@@ -40,7 +40,7 @@ body {
     bottom: 100%;
     left: 0;
     z-index: 1;
-    padding: 20px;
+    padding: 5%;
 }
 
 .nav-trigger {
@@ -76,7 +76,7 @@ label[for="nav-trigger"] {
 .keyboard, .keyboardb, .keyboardc, .keyboardd {
 	display: flex;
 	flex-orientation: row;
-	margin: 1% 1% 0;
+	margin: 0;
 	position: relative;
 	height: 200px;
 	min-height: 100px;
@@ -87,7 +87,7 @@ label[for="nav-trigger"] {
 }
 
 .white-keys {
-	border: 1px solid #222;
+	border: 1px solid #111;
 	background-color: rgba(0, 0, 0, 0);
 	width: 6.67%;
 	height: 100%;
@@ -101,12 +101,13 @@ label[for="nav-trigger"] {
 	width: 4.0%;
 	position: absolute;
 	height: 55%;
-	background-color: #222;
-	border: 1px solid #222;
+	background-color: #111;
+	border: 1px solid #111;
+	display: none;
 }
 
 #noteC_3, #noteC_3b, #noteC_3c, #noteC_3d {
-	border-right: 1px solid #222;
+	border-right: 1px solid #111;
 }
 
 
