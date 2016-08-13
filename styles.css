@@ -1,7 +1,7 @@
 * {
 	box-sizing: border-box;
 	text-decoration: none;
-	transition: background .75s ease;
+	transition: background 1s ease;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 }
