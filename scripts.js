@@ -1,3 +1,4 @@
+
 //start new audio session. Do this only once
 var context = new (window.webkitAudioContext || window.AudioContext || window.mozAudioContext)
 
@@ -104,22 +105,12 @@ function playSound(note) {
  	
  	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
  	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
- 	
-	//change key color on keypress
 
 	//append the word "note" to the object.name note to identify the correct key div
-	var divId = "note" + String(note);
+	var divId = "n" + String(note);
 	var element = document.getElementById(divId);
     
 	//change background color for durarion of note length
-	var currentColor = element.style.backgroundColor;
-	element.style.backgroundColor = '#3cf7ac';
-	
-	setTimeout(function () {
-		if (currentColor != 'rgb(60, 247, 172)') {
-    		element.style.backgroundColor = currentColor
-  	  	}
- 	}, 1000 * sustain);    
 
  	//for testing
  	console.log('playSound Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime.toFixed(2));
@@ -404,142 +395,52 @@ function playSoundd(note) {
  	console.log('playSound*D* Hz:' + frequencies[note] * octave + ' octave:' + octave + ' wave:' + oscillator.type + ' duration: ' + sustain + ' time:' + context.currentTime); 
 }
 
+//change key color on keypress
+function keyCol(color) {
+	var currentColor = element.style.backgroundColor;
+	element.style.backgroundColor = color;
+	
+	setTimeout(function () {
+		if (currentColor != 'rgb(60, 247, 172)') {
+    		element.style.backgroundColor = currentColor
+  	  	}
+ 	}, 1000 * sustain);    
+}
 
-//triggers playSound() to create note
-document.getElementById('noteC_1').addEventListener(ifTouch() ,function() { playSound('C_1');});
-document.getElementById('noteC#1').addEventListener(ifTouch() ,function() { playSound('C#1');});
-document.getElementById('noteD_1').addEventListener(ifTouch() ,function() { playSound('D_1');});
-document.getElementById('noteD#1').addEventListener(ifTouch() ,function() { playSound('D#1');});
-document.getElementById('noteE_1').addEventListener(ifTouch() ,function() { playSound('E_1');});
-document.getElementById('noteF_1').addEventListener(ifTouch() ,function() { playSound('F_1');});
-document.getElementById('noteF#1').addEventListener(ifTouch() ,function() { playSound('F#1');});
-document.getElementById('noteG_1').addEventListener(ifTouch() ,function() { playSound('G_1');});
-document.getElementById('noteG#1').addEventListener(ifTouch() ,function() { playSound('G#1');});
-document.getElementById('noteA_1').addEventListener(ifTouch() ,function() { playSound('A_1');});
-document.getElementById('noteA#1').addEventListener(ifTouch() ,function() { playSound('A#1');});
-document.getElementById('noteB_1').addEventListener(ifTouch() ,function() { playSound('B_1');});
-document.getElementById('noteC_2').addEventListener(ifTouch() ,function() { playSound('C_2');});
-document.getElementById('noteC#2').addEventListener(ifTouch() ,function() { playSound('C#2');});
-document.getElementById('noteD_2').addEventListener(ifTouch() ,function() { playSound('D_2');});
-document.getElementById('noteD#2').addEventListener(ifTouch() ,function() { playSound('D#2');});
-document.getElementById('noteE_2').addEventListener(ifTouch() ,function() { playSound('E_2');});
-document.getElementById('noteF_2').addEventListener(ifTouch() ,function() { playSound('F_2');});
-document.getElementById('noteF#2').addEventListener(ifTouch() ,function() { playSound('F#2');});
-document.getElementById('noteG_2').addEventListener(ifTouch() ,function() { playSound('G_2');});
-document.getElementById('noteG#2').addEventListener(ifTouch() ,function() { playSound('G#2');});
-document.getElementById('noteA_2').addEventListener(ifTouch() ,function() { playSound('A_2');});
-document.getElementById('noteA#2').addEventListener(ifTouch() ,function() { playSound('A#2');});
-document.getElementById('noteB_2').addEventListener(ifTouch() ,function() { playSound('B_2');});
-document.getElementById('noteC_3').addEventListener(ifTouch() ,function() { playSound('C_3');});
+//Vue
+new Vue({ el: '#keyboarda', methods: {play: function(note){playSound(note)}}})
+new Vue({ el: '#keyboardb', methods: {play: function(note){playSound(note)}}})
+new Vue({ el: '#keyboardc', methods: {play: function(note){playSound(note)}}})
+new Vue({ el: '#keyboardd', methods: {play: function(note){playSound(note)}}})
 
-//second keyboard
-document.getElementById('noteC_1b').addEventListener(ifTouch() ,function() { playSoundb('C_1');});
-document.getElementById('noteC#1b').addEventListener(ifTouch() ,function() { playSoundb('C#1');});
-document.getElementById('noteD_1b').addEventListener(ifTouch() ,function() { playSoundb('D_1');});
-document.getElementById('noteD#1b').addEventListener(ifTouch() ,function() { playSoundb('D#1');});
-document.getElementById('noteE_1b').addEventListener(ifTouch() ,function() { playSoundb('E_1');});
-document.getElementById('noteF_1b').addEventListener(ifTouch() ,function() { playSoundb('F_1');});
-document.getElementById('noteF#1b').addEventListener(ifTouch() ,function() { playSoundb('F#1');});
-document.getElementById('noteG_1b').addEventListener(ifTouch() ,function() { playSoundb('G_1');});
-document.getElementById('noteG#1b').addEventListener(ifTouch() ,function() { playSoundb('G#1');});
-document.getElementById('noteA_1b').addEventListener(ifTouch() ,function() { playSoundb('A_1');});
-document.getElementById('noteA#1b').addEventListener(ifTouch() ,function() { playSoundb('A#1');});
-document.getElementById('noteB_1b').addEventListener(ifTouch() ,function() { playSoundb('B_1');});
-document.getElementById('noteC_2b').addEventListener(ifTouch() ,function() { playSoundb('C_2');});
-document.getElementById('noteC#2b').addEventListener(ifTouch() ,function() { playSoundb('C#2');});
-document.getElementById('noteD_2b').addEventListener(ifTouch() ,function() { playSoundb('D_2');});
-document.getElementById('noteD#2b').addEventListener(ifTouch() ,function() { playSoundb('D#2');});
-document.getElementById('noteE_2b').addEventListener(ifTouch() ,function() { playSoundb('E_2');});
-document.getElementById('noteF_2b').addEventListener(ifTouch() ,function() { playSoundb('F_2');});
-document.getElementById('noteF#2b').addEventListener(ifTouch() ,function() { playSoundb('F#2');});
-document.getElementById('noteG_2b').addEventListener(ifTouch() ,function() { playSoundb('G_2');});
-document.getElementById('noteG#2b').addEventListener(ifTouch() ,function() { playSoundb('G#2');});
-document.getElementById('noteA_2b').addEventListener(ifTouch() ,function() { playSoundb('A_2');});
-document.getElementById('noteA#2b').addEventListener(ifTouch() ,function() { playSoundb('A#2');});
-document.getElementById('noteB_2b').addEventListener(ifTouch() ,function() { playSoundb('B_2');});
-document.getElementById('noteC_3b').addEventListener(ifTouch() ,function() { playSoundb('C_3');});
-
-//third keyboard
-document.getElementById('noteC_1c').addEventListener(ifTouch() ,function() { playSoundc('C_1');});
-document.getElementById('noteC#1c').addEventListener(ifTouch() ,function() { playSoundc('C#1');});
-document.getElementById('noteD_1c').addEventListener(ifTouch() ,function() { playSoundc('D_1');});
-document.getElementById('noteD#1c').addEventListener(ifTouch() ,function() { playSoundc('D#1');});
-document.getElementById('noteE_1c').addEventListener(ifTouch() ,function() { playSoundc('E_1');});
-document.getElementById('noteF_1c').addEventListener(ifTouch() ,function() { playSoundc('F_1');});
-document.getElementById('noteF#1c').addEventListener(ifTouch() ,function() { playSoundc('F#1');});
-document.getElementById('noteG_1c').addEventListener(ifTouch() ,function() { playSoundc('G_1');});
-document.getElementById('noteG#1c').addEventListener(ifTouch() ,function() { playSoundc('G#1');});
-document.getElementById('noteA_1c').addEventListener(ifTouch() ,function() { playSoundc('A_1');});
-document.getElementById('noteA#1c').addEventListener(ifTouch() ,function() { playSoundc('A#1');});
-document.getElementById('noteB_1c').addEventListener(ifTouch() ,function() { playSoundc('B_1');});
-document.getElementById('noteC_2c').addEventListener(ifTouch() ,function() { playSoundc('C_2');});
-document.getElementById('noteC#2c').addEventListener(ifTouch() ,function() { playSoundc('C#2');});
-document.getElementById('noteD_2c').addEventListener(ifTouch() ,function() { playSoundc('D_2');});
-document.getElementById('noteD#2c').addEventListener(ifTouch() ,function() { playSoundc('D#2');});
-document.getElementById('noteE_2c').addEventListener(ifTouch() ,function() { playSoundc('E_2');});
-document.getElementById('noteF_2c').addEventListener(ifTouch() ,function() { playSoundc('F_2');});
-document.getElementById('noteF#2c').addEventListener(ifTouch() ,function() { playSoundc('F#2');});
-document.getElementById('noteG_2c').addEventListener(ifTouch() ,function() { playSoundc('G_2');});
-document.getElementById('noteG#2c').addEventListener(ifTouch() ,function() { playSoundc('G#2');});
-document.getElementById('noteA_2c').addEventListener(ifTouch() ,function() { playSoundc('A_2');});
-document.getElementById('noteA#2c').addEventListener(ifTouch() ,function() { playSoundc('A#2');});
-document.getElementById('noteB_2c').addEventListener(ifTouch() ,function() { playSoundc('B_2');});
-document.getElementById('noteC_3c').addEventListener(ifTouch() ,function() { playSoundc('C_3');});
-
-//fourth keyboard
-document.getElementById('noteC_1d').addEventListener(ifTouch() ,function() { playSoundd('C_1');});
-document.getElementById('noteC#1d').addEventListener(ifTouch() ,function() { playSoundd('C#1');});
-document.getElementById('noteD_1d').addEventListener(ifTouch() ,function() { playSoundd('D_1');});
-document.getElementById('noteD#1d').addEventListener(ifTouch() ,function() { playSoundd('D#1');});
-document.getElementById('noteE_1d').addEventListener(ifTouch() ,function() { playSoundd('E_1');});
-document.getElementById('noteF_1d').addEventListener(ifTouch() ,function() { playSoundd('F_1');});
-document.getElementById('noteF#1d').addEventListener(ifTouch() ,function() { playSoundd('F#1');});
-document.getElementById('noteG_1d').addEventListener(ifTouch() ,function() { playSoundd('G_1');});
-document.getElementById('noteG#1d').addEventListener(ifTouch() ,function() { playSoundd('G#1');});
-document.getElementById('noteA_1d').addEventListener(ifTouch() ,function() { playSoundd('A_1');});
-document.getElementById('noteA#1d').addEventListener(ifTouch() ,function() { playSoundd('A#1');});
-document.getElementById('noteB_1d').addEventListener(ifTouch() ,function() { playSoundd('B_1');});
-document.getElementById('noteC_2d').addEventListener(ifTouch() ,function() { playSoundd('C_2');});
-document.getElementById('noteC#2d').addEventListener(ifTouch() ,function() { playSoundd('C#2');});
-document.getElementById('noteD_2d').addEventListener(ifTouch() ,function() { playSoundd('D_2');});
-document.getElementById('noteD#2d').addEventListener(ifTouch() ,function() { playSoundd('D#2');});
-document.getElementById('noteE_2d').addEventListener(ifTouch() ,function() { playSoundd('E_2');});
-document.getElementById('noteF_2d').addEventListener(ifTouch() ,function() { playSoundd('F_2');});
-document.getElementById('noteF#2d').addEventListener(ifTouch() ,function() { playSoundd('F#2');});
-document.getElementById('noteG_2d').addEventListener(ifTouch() ,function() { playSoundd('G_2');});
-document.getElementById('noteG#2d').addEventListener(ifTouch() ,function() { playSoundd('G#2');});
-document.getElementById('noteA_2d').addEventListener(ifTouch() ,function() { playSoundd('A_2');});
-document.getElementById('noteA#2d').addEventListener(ifTouch() ,function() { playSoundd('A#2');});
-document.getElementById('noteB_2d').addEventListener(ifTouch() ,function() { playSoundd('B_2');});
-document.getElementById('noteC_3d').addEventListener(ifTouch() ,function() { playSoundd('C_3');});
 
 //Frequencies in Hz of notes to be played. 
 var frequencies = {
- 	'C_1': 130.81,
- 	'C#1': 139.00,
- 	'D_1': 146.83,
- 	'D#1': 156.00,
- 	'E_1': 164.81,
- 	'F_1': 174.61,
- 	'F#1': 185.00,
- 	'G_1': 196.00,
- 	'G#1': 208.00,
- 	'A_1': 220.00,
- 	'A#1': 233.00,
- 	'B_1': 246.94,
- 	'C_2': 261.63,
- 	'C#2': 277.00,
- 	'D_2': 293.66,
- 	'D#2': 311.00,
- 	'E_2': 329.63,
- 	'F_2': 349.23,
- 	'F#2': 370.00,
- 	'G_2': 392.00,
- 	'G#2': 415.00,
- 	'A_2': 440.00,
- 	'A#2': 466.00,
- 	'B_2': 493.88,
- 	'C_3': 523.25,
+ 	'n1': 130.81, //c
+ 	'n2': 139.00, //c#
+ 	'n3': 146.83, //d
+ 	'n4': 156.00, //d#
+ 	'n5': 164.81, //e
+ 	'n6': 174.61, //f
+ 	'n7': 185.00, //f#
+ 	'n8': 196.00, //g
+ 	'n9': 208.00, //g#
+ 	'n10': 220.00, //a
+ 	'n11': 233.00, //a#
+ 	'n12': 246.94, //b
+ 	'n13': 261.63, //c
+ 	'n14': 277.00, //c#
+ 	'n15': 293.66, //d
+ 	'n16': 311.00, //d#
+ 	'n17': 329.63, //e
+ 	'n18': 349.23, //f
+ 	'n19': 370.00, //f#
+ 	'n20': 392.00, //g
+ 	'n21': 415.00, //g#
+ 	'n22': 440.00, //a
+ 	'n23': 466.00, //a#
+ 	'n24': 493.88, //b
+ 	'n25': 523.25, //c
  };
 
 /**
@@ -552,21 +453,11 @@ function ezMode() {
 	var chromaticNotes = document.getElementsByClassName('black-keys');
 		
 	for (var i = 0; i < chromaticNotes.length; i++) {
-		if (chromaticNotes[i].style.display == 'block') {
-			chromaticNotes[i].style.display = 'none';
-			document.getElementById('noteC_2').style.backgroundColor = 'rgba(0,0,0,.2)';
-			document.getElementById('noteC_2b').style.backgroundColor = 'rgba(0,0,0,.2)';
-			document.getElementById('noteC_2c').style.backgroundColor = 'rgba(0,0,0,.2)';
-			document.getElementById('noteC_2d').style.backgroundColor = 'rgba(0,0,0,.2)';
-		}
+		if (chromaticNotes[i].style.display == 'block')
+		chromaticNotes[i].style.display = 'none';
 		
-		else {
-			chromaticNotes[i].style.display = 'block';
-			document.getElementById('noteC_2').style.backgroundColor = 'rgba(0,0,0,0)';
-			document.getElementById('noteC_2b').style.backgroundColor = 'rgba(0,0,0,0)';	
-			document.getElementById('noteC_2c').style.backgroundColor = 'rgba(0,0,0,0)';
-			document.getElementById('noteC_2d').style.backgroundColor = 'rgba(0,0,0,0)';	
-		}
+		else 
+		chromaticNotes[i].style.display = 'block';
 	}
 }
 
@@ -606,4 +497,4 @@ function ifTouch() {
     else {
     	return 'click';
 	}
-}
+} 

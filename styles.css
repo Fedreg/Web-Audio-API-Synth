@@ -73,7 +73,7 @@ label[for="nav-trigger"] {
     transition: left 0.5s;
 }
 
-.keyboard, .keyboardb, .keyboardc, .keyboardd {
+#keyboarda, #keyboardb, #keyboardc, #keyboardd {
 	display: flex;
 	flex-orientation: row;
 	margin: 0;
@@ -87,7 +87,7 @@ label[for="nav-trigger"] {
 }
 
 .white-keys {
-	border: 1px solid #111;
+	border: 1px solid #333;
 	background-color: rgba(0, 0, 0, 0);
 	width: 6.67%;
 	height: 100%;
@@ -101,13 +101,13 @@ label[for="nav-trigger"] {
 	width: 4.0%;
 	position: absolute;
 	height: 55%;
-	background-color: #111;
-	border: 1px solid #111;
+	background-color: #333;
+	border: 1px solid #333;
 	display: none;
 }
 
-#noteC_3, #noteC_3b, #noteC_3c, #noteC_3d {
-	border-right: 1px solid #111;
+.n25 {
+	border-right: 1px solid #333;
 }
 
 

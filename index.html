@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+		
 	</head>
 	<body id="bod">
 		<ul id="navigation">
@@ -179,113 +180,113 @@
 		<input type="checkbox" id="nav-trigger" class="nav-trigger" />
 		<label id="burger" for="nav-trigger">&#9776;</label>
 		<div id="wrapper">
-			<div class="keyboard">
-				<div class="white-keys" id="noteC_1"></div>
-				<div class="black-keys" id="noteC#1"></div>
-				<div class="white-keys" id="noteD_1"></div>
-				<div class="black-keys" id="noteD#1"></div>
-				<div class="white-keys" id="noteE_1"></div>
-				<div class="white-keys" id="noteF_1"></div>
-				<div class="black-keys" id="noteF#1"></div>
-				<div class="white-keys" id="noteG_1"></div>
-				<div class="black-keys" id="noteG#1"></div>
-				<div class="white-keys" id="noteA_1"></div>
-				<div class="black-keys" id="noteA#1"></div>
-				<div class="white-keys" id="noteB_1"></div>
-				<div class="white-keys" id="noteC_2"></div>
-				<div class="black-keys" id="noteC#2"></div>
-				<div class="white-keys" id="noteD_2"></div>
-				<div class="black-keys" id="noteD#2"></div>
-				<div class="white-keys" id="noteE_2"></div>
-				<div class="white-keys" id="noteF_2"></div>
-				<div class="black-keys" id="noteF#2"></div>
-				<div class="white-keys" id="noteG_2"></div>
-				<div class="black-keys" id="noteG#2"></div>
-				<div class="white-keys" id="noteA_2"></div>
-				<div class="black-keys" id="noteA#2"></div>
-				<div class="white-keys" id="noteB_2"></div>
-				<div class="white-keys" id="noteC_3"></div>
+			<div id="keyboarda">
+				<div @click="play('n1', '#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n2'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n3'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n4'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n5'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n6'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n7'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n8'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n9'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n10'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n11'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n12'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n13'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n14'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n15'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n16'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n17'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n18'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n19'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n20'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n21'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n22'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n23'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n24'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n25'), keyCol('#3cf7ac')" class="white-keys n25"></div>
 			</div>
-			<div class="keyboardb">
-				<div class="white-keys" id="noteC_1b"></div>
-				<div class="black-keys" id="noteC#1b"></div>
-				<div class="white-keys" id="noteD_1b"></div>
-				<div class="black-keys" id="noteD#1b"></div>
-				<div class="white-keys" id="noteE_1b"></div>
-				<div class="white-keys" id="noteF_1b"></div>
-				<div class="black-keys" id="noteF#1b"></div>
-				<div class="white-keys" id="noteG_1b"></div>
-				<div class="black-keys" id="noteG#1b"></div>
-				<div class="white-keys" id="noteA_1b"></div>
-				<div class="black-keys" id="noteA#1b"></div>
-				<div class="white-keys" id="noteB_1b"></div>
-				<div class="white-keys" id="noteC_2b"></div>
-				<div class="black-keys" id="noteC#2b"></div>
-				<div class="white-keys" id="noteD_2b"></div>
-				<div class="black-keys" id="noteD#2b"></div>
-				<div class="white-keys" id="noteE_2b"></div>
-				<div class="white-keys" id="noteF_2b"></div>
-				<div class="black-keys" id="noteF#2b"></div>
-				<div class="white-keys" id="noteG_2b"></div>
-				<div class="black-keys" id="noteG#2b"></div>
-				<div class="white-keys" id="noteA_2b"></div>
-				<div class="black-keys" id="noteA#2b"></div>
-				<div class="white-keys" id="noteB_2b"></div>
-				<div class="white-keys" id="noteC_3b"></div>
+			<div id="keyboardb">
+				<div @click="play('n1'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n2'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n3'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n4'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n5'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n6'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n7'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n8'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n9'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n10'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n11'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n12'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n13'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n14'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n15'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n16'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n17'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n18'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n19'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n20'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n21'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n22'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n23'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n24'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n25'), keyCol('#3cf7ac')" class="white-keys n25"></div>
 			</div>
-			<div class="keyboardc">
-				<div class="white-keys" id="noteC_1c"></div>
-				<div class="black-keys" id="noteC#1c"></div>
-				<div class="white-keys" id="noteD_1c"></div>
-				<div class="black-keys" id="noteD#1c"></div>
-				<div class="white-keys" id="noteE_1c"></div>
-				<div class="white-keys" id="noteF_1c"></div>
-				<div class="black-keys" id="noteF#1c"></div>
-				<div class="white-keys" id="noteG_1c"></div>
-				<div class="black-keys" id="noteG#1c"></div>
-				<div class="white-keys" id="noteA_1c"></div>
-				<div class="black-keys" id="noteA#1c"></div>
-				<div class="white-keys" id="noteB_1c"></div>
-				<div class="white-keys" id="noteC_2c"></div>
-				<div class="black-keys" id="noteC#2c"></div>
-				<div class="white-keys" id="noteD_2c"></div>
-				<div class="black-keys" id="noteD#2c"></div>
-				<div class="white-keys" id="noteE_2c"></div>
-				<div class="white-keys" id="noteF_2c"></div>
-				<div class="black-keys" id="noteF#2c"></div>
-				<div class="white-keys" id="noteG_2c"></div>
-				<div class="black-keys" id="noteG#2c"></div>
-				<div class="white-keys" id="noteA_2c"></div>
-				<div class="black-keys" id="noteA#2c"></div>
-				<div class="white-keys" id="noteB_2c"></div>
-				<div class="white-keys" id="noteC_3c"></div>
+			<div id="keyboardc">
+				<div @click="play('n1'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n2'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n3'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n4'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n5'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n6'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n7'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n8'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n9'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n10'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n11'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n12'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n13'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n14'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n15'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n16'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n17'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n18'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n19'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n20'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n21'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n22'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n23'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n24'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n25'), keyCol('#3cf7ac')" class="white-keys n25"></div>
 			</div>
-			<div class="keyboardd">
-				<div class="white-keys" id="noteC_1d"></div>
-				<div class="black-keys" id="noteC#1d"></div>
-				<div class="white-keys" id="noteD_1d"></div>
-				<div class="black-keys" id="noteD#1d"></div>
-				<div class="white-keys" id="noteE_1d"></div>
-				<div class="white-keys" id="noteF_1d"></div>
-				<div class="black-keys" id="noteF#1d"></div>
-				<div class="white-keys" id="noteG_1d"></div>
-				<div class="black-keys" id="noteG#1d"></div>
-				<div class="white-keys" id="noteA_1d"></div>
-				<div class="black-keys" id="noteA#1d"></div>
-				<div class="white-keys" id="noteB_1d"></div>
-				<div class="white-keys" id="noteC_2d"></div>
-				<div class="black-keys" id="noteC#2d"></div>
-				<div class="white-keys" id="noteD_2d"></div>
-				<div class="black-keys" id="noteD#2d"></div>
-				<div class="white-keys" id="noteE_2d"></div>
-				<div class="white-keys" id="noteF_2d"></div>
-				<div class="black-keys" id="noteF#2d"></div>
-				<div class="white-keys" id="noteG_2d"></div>
-				<div class="black-keys" id="noteG#2d"></div>
-				<div class="white-keys" id="noteA_2d"></div>
-				<div class="black-keys" id="noteA#2d"></div>
-				<div class="white-keys" id="noteB_2d"></div>
-				<div class="white-keys" id="noteC_3d"></div>
+			<div id="keyboardd">
+				<div @click="play('n1'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n2'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n3'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n4'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n5'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n6'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n7'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n8'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n9'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n10'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n11'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n12'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n13'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n14'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n15'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n16'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n17'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n18'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n19'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n20'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n21'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n22'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n23'), keyCol('#3cf7ac')" class="black-keys"></div>
+				<div @click="play('n24'), keyCol('#3cf7ac')" class="white-keys"></div>
+				<div @click="play('n25'), keyCol('#3cf7ac')" class="white-keys n25"></div>
 			</div>
 			<ul id="chordDegree">
 				<li><div onclick="playSoundd('C_1'); playSoundc('E_1'); playSoundc('G_1');"> I </div>
@@ -303,6 +304,7 @@
 				<li><div onclick="playSoundd('B_1'); playSoundc('D_2'); playSoundc('F_1');"> vii </div>
 				</li>
 			</ul>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>
 		</div>
 	</body>
