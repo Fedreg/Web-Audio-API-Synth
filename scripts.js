@@ -12,12 +12,12 @@ Vue.component('keyboard', {
   	},
 	methods: {
 		play(note){
-		console.log(note);//for testing
-		
 		//adjusts frequency played by 50%, 100% or 200% 
 		var octave = this.octave;
  		//determines note duration
  		var sustain = parseInt(this.sustain);
+ 		//determines color to change to
+ 		var colorChanger = this.color;
 		//compressor evens out min/max volume
 		var compressor = context.createDynamicsCompressor();
 		compressor.threshold.value = -24;
@@ -44,8 +44,14 @@ Vue.component('keyboard', {
 	 	var quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
 	 	oscillator.start(context.currentTime + .05);
  		var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
-		}
-	}
+ 		//references current element to change its color
+ 		var currentDiv = event.currentTarget;
+ 		//change background color for durarion of note length
+		currentDiv.style.backgroundColor = colorChanger;
+		setTimeout(function () {
+    			currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
+ 		}, 1000 * sustain);  
+	}}
 });
 	
 var vm = new Vue({

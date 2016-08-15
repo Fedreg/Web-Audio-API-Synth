@@ -11,16 +11,17 @@
 		<div id="app">
 			<div id="wrapper">
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="4" sustain="4"></keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="4" sustain="4" color="#3cf7ac"</keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="4"></keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="4" color="#3ce4f7"></keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="2" sustain="4"></keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="2" sustain="4" color="#fa0a8b"></keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="4"></keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="4" 
+						color="#ad3cf7"></keyboard>
 				</div>			
 				<template id="keyboard-template">
 					<div  class="white-keys" @click="play(frequency.note)"></div>
