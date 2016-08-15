@@ -1,312 +1,34 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
-	
 		<title>Web Audio API Keyboard</title>
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-		
 	</head>
 	<body id="bod">
-		<ul id="navigation">
-			<li class="nav-item">
-				<a href="#" onclick="ezMode('black-keys', 'black_keysb', 'black_keysc', 'black_keysd');" ># / b</a>
-			</li>
-			<div id="menu">
-				<li class="nav-item">
-					<select id="waveSelect" text="Wave Type"> Wave Type:
-					    <option selected="selected" value="sine">WAVE: SINE</option>
-					    <option value="square">WAVE: SQUARE</option>
-					    <option value="triangle">WAVE: TRIANGLE</option>
-					    <option value="sawtooth">WAVE: SAWTOOTH</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="octave">
-						<option value="2.0">OCTAVE 0</option>
-						<option value="1.0">OCTAVE -1</option>
-						<option value="0.5">OCTAVE -2</option>
-						<option selected="selected" value="4.0">OCTAVE +1</option>
-						<option value="8.0">OCTAVE +2</option>				
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="sustain">
-						<option value="0.25">SIXTEENTH NOTE</option>
-						<option selected="selected" value="0.5">EIGHTH NOTE</option>
-						<option value="1.0">QUARTER NOTE</option>
-						<option value="2.0">HALF NOTE</option>
-						<option value="4.0">WHOLE NOTE</option>				
-						<option value="16.0">4 WHOLE NOTE</option>	
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="toggleDelay">
-						<option value="false">DELAY OFF</option>
-						<option value="true">DELAY ON</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="toggleDistortion">
-						<option value="false">DISTORTION OFF</option>
-						<option value="true">DISTORTION ON</option>
-					</select>
-				</li>
+		<div id="app">
+			<div id="wrapper">
+				<div class="keyboard">
+					<keyboard v-for="frequency in frequencies" :frequency="frequency"></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard v-for="frequency in frequencies" :frequency="frequency"></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard v-for="frequency in frequencies" :frequency="frequency"></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard v-for="frequency in frequencies" :frequency="frequency"></keyboard>
+				</div>			
+				<template id="keyboard-template">
+					<div  class="white-keys" @click="play(frequency.note)"></div>
+				</template>	
 			</div>
-			<div id="menub">
-				<li class="nav-item">
-					<select id="waveSelectb" text="Wave Type"> Wave Type:
-					    <option selected="selected" value="sine">WAVE: SINE</option>
-					    <option value="square">WAVE: SQUARE</option>
-					    <option value="triangle">WAVE: TRIANGLE</option>
-					    <option value="sawtooth">WAVE: SAWTOOTH</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="octaveb">
-						<option selected="selected" value="2.0">OCTAVE 0</option>
-						<option value="1.0">OCTAVE -1</option>
-						<option value="0.5">OCTAVE -2</option>
-						<option value="4.0">OCTAVE +1</option>
-						<option value="8.0">OCTAVE +2</option>				
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="sustainb">
-						<option value="0.5">EIGHTH NOTE</option>
-						<option selected="selected" value="1.0">QUARTER NOTE</option>
-						<option value="2.0">HALF NOTE</option>
-						<option value="4.0">WHOLE NOTE</option>				
-						<option value="16.0">4 WHOLE NOTE</option>	
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="toggleDelayb">
-						<option value="false">DELAY OFF</option>
-						<option value="true">DELAY ON</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="toggleDistortionb">
-						<option value="false">DISTORTION OFF</option>
-						<option value="true">DISTORTION ON</option>
-					</select>
-				</li>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
+			<script type="text/javascript" src="scripts.js"></script>
 			</div>
-			<div id="menuc">
-				<li class="nav-item">
-					<select id="waveSelectc" text="Wave Type"> Wave Type:
-					    <option value="sine">WAVE: SINE</option>
-					    <option value="square">WAVE: SQUARE</option>
-					    <option selected="selected" value="triangle">WAVE: TRIANGLE</option>
-					    <option value="sawtooth">WAVE: SAWTOOTH</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="octavec">
-						<option value="2.0">OCTAVE 0</option>
-						<option selected="selected" value="1.0">OCTAVE -1</option>
-						<option value="0.5">OCTAVE -2</option>
-						<option value="4.0">OCTAVE +1</option>
-						<option value="8.0">OCTAVE +2</option>				
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="sustainc">
-						<option value="0.5">EIGHTH NOTE</option>
-						<option value="1.0">QUARTER NOTE</option>
-						<option selected="selected" value="2.0">HALF NOTE</option>
-						<option value="4.0">WHOLE NOTE</option>				
-						<option value="16.0">4 WHOLE NOTE</option>	
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="toggleDelayc">
-						<option value="false">DELAY OFF</option>
-						<option value="true">DELAY ON</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="toggleDistortionc">
-						<option value="false">DISTORTION OFF</option>
-						<option value="true">DISTORTION ON</option>
-					</select>
-				</li>
-			</div>
-			<div id="menud">
-				<li class="nav-item">
-					<select id="waveSelectd" text="Wave Type"> Wave Type:
-					    <option value="sine">WAVE: SINE</option>
-					    <option value="square">WAVE: SQUARE</option>
-					    <option selected="selected" value="triangle">WAVE: TRIANGLE</option>
-					    <option value="sawtooth">WAVE: SAWTOOTH</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="octaved">
-						<option value="2.0">OCTAVE 0</option>
-						<option value="1.0">OCTAVE -1</option>
-						<option selected="selected" value="0.5">OCTAVE -2</option>
-						<option value="4.0">OCTAVE +1</option>
-						<option value="8.0">OCTAVE +2</option>				
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="sustaind">
-						<option value="0.5">EIGHTH NOTE</option>
-						<option value="1.0">QUARTER NOTE</option>
-						<option selected="selected" value="2.0">HALF NOTE</option>
-						<option value="4.0">WHOLE NOTE</option>				
-						<option value="16.0">4 WHOLE NOTE</option>	
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="toggleDelayd">
-						<option value="false">DELAY OFF</option>
-						<option value="true">DELAY ON</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="toggleDistortiond">
-						<option value="false">DISTORTION OFF</option>
-						<option value="true">DISTORTION ON</option>
-					</select>
-				</li>
-			</div>
-		</ul>
-		<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-		<label id="burger" for="nav-trigger">&#9776;</label>
-		<div id="wrapper">
-			<div id="keyboarda">
-				<div @click="play('n1', '#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n2'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n3'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n4'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n5'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n6'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n7'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n8'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n9'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n10'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n11'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n12'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n13'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n14'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n15'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n16'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n17'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n18'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n19'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n20'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n21'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n22'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n23'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n24'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n25'), keyCol('#3cf7ac')" class="white-keys n25"></div>
-			</div>
-			<div id="keyboardb">
-				<div @click="play('n1'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n2'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n3'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n4'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n5'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n6'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n7'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n8'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n9'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n10'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n11'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n12'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n13'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n14'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n15'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n16'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n17'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n18'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n19'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n20'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n21'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n22'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n23'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n24'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n25'), keyCol('#3cf7ac')" class="white-keys n25"></div>
-			</div>
-			<div id="keyboardc">
-				<div @click="play('n1'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n2'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n3'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n4'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n5'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n6'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n7'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n8'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n9'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n10'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n11'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n12'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n13'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n14'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n15'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n16'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n17'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n18'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n19'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n20'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n21'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n22'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n23'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n24'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n25'), keyCol('#3cf7ac')" class="white-keys n25"></div>
-			</div>
-			<div id="keyboardd">
-				<div @click="play('n1'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n2'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n3'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n4'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n5'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n6'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n7'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n8'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n9'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n10'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n11'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n12'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n13'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n14'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n15'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n16'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n17'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n18'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n19'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n20'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n21'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n22'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n23'), keyCol('#3cf7ac')" class="black-keys"></div>
-				<div @click="play('n24'), keyCol('#3cf7ac')" class="white-keys"></div>
-				<div @click="play('n25'), keyCol('#3cf7ac')" class="white-keys n25"></div>
-			</div>
-			<ul id="chordDegree">
-				<li><div onclick="playSoundd('C_1'); playSoundc('E_1'); playSoundc('G_1');"> I </div>
-				</li>
-				<li><div onclick="playSoundd('D_1'); playSoundc('F_1'); playSoundc('A_1');"> ii </div>
-				</li>
-				<li><div onclick="playSoundd('E_1'); playSoundc('G_1'); playSoundc('B_1');"> iii </div>
-				</li>
-				<li><div onclick="playSoundd('F_1'); playSoundc('A_1'); playSoundc('C_1');"> IV </div>
-				</li>
-				<li><div onclick="playSoundd('G_1'); playSoundc('B_1'); playSoundc('D_1');"> V </div>
-				</li>
-				<li><div onclick="playSoundd('A_1'); playSoundc('C_2'); playSoundc('E_1');"> VI </div>
-				</li>
-				<li><div onclick="playSoundd('B_1'); playSoundc('D_2'); playSoundc('F_1');"> vii </div>
-				</li>
-			</ul>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
-		<script type="text/javascript" src="scripts.js"></script>
 		</div>
 	</body>
-
 </html>
