@@ -4,7 +4,7 @@ var context = new (window.webkitAudioContext || window.AudioContext || window.mo
 //Vue
 Vue.component('keyboard', {
 	template: '#keyboard-template',
-	props: ['frequency'],
+	props: ['frequency', 'octave', 'sustain', 'color'],
 	data: function() {
     	return {
       		frequencies: []
@@ -15,9 +15,9 @@ Vue.component('keyboard', {
 		console.log(note);//for testing
 		
 		//adjusts frequency played by 50%, 100% or 200% 
-		var octave = 4;
+		var octave = this.octave;
  		//determines note duration
- 		var sustain = 1;
+ 		var sustain = parseInt(this.sustain);
 		//compressor evens out min/max volume
 		var compressor = context.createDynamicsCompressor();
 		compressor.threshold.value = -24;
