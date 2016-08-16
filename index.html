@@ -4,32 +4,44 @@
 		<title>Web Audio API Keyboard</title>
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/1.2.0/normalize.css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	</head>
 	<body id="bod">
 		<div id="app">
 			<div id="wrapper">
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="4" sustain="4" color="#3cf7ac"</keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="1" color="#FF1744"</keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="4" color="#3ce4f7"></keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="1" color="#651FFF"></keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="2" sustain="4" color="#fa0a8b"></keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="4" sustain="1" color="#3D5AFE"></keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="4" 
-						color="#ad3cf7"></keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="2" sustain="1" 
+						color="#2979FF"></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="1" color="#00E5FF"</keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="1" color="#1DE9B6"></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="2" sustain="1" color="#76FF03"></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="1" 
+						color="#FF3D00"></keyboard>
 				</div>			
 				<template id="keyboard-template">
 					<div  class="white-keys" @click="play(frequency.note)"></div>
 				</template>	
 			</div>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 			<script type="text/javascript" src="scripts.js"></script>
-			</div>
 		</div>
 	</body>
 </html>

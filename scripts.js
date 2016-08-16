@@ -11,26 +11,27 @@ Vue.component('keyboard', {
     	};
   	},
 	methods: {
+	
 		play(note){
 		//adjusts frequency played by 50%, 100% or 200% 
 		var octave = this.octave;
  		//determines note duration
  		var sustain = parseInt(this.sustain);
- 		//determines color to change to
+ 		//determines color to change to 
  		var colorChanger = this.color;
-		//compressor evens out min/max volume
+  		//compressor evens out min/max volume
 		var compressor = context.createDynamicsCompressor();
-		compressor.threshold.value = -24;
+		compressor.threshold.value = -54;
 		compressor.knee.value = 40;
 		compressor.ratio.value = 12;
-		compressor.reduction.value = -20;
+		compressor.reduction.value = -40;
 		compressor.attack.value = 0;
 		compressor.release.value = 0.25;
 		compressor.connect(context.destination);
 		//produces sound
 		var oscillator = context.createOscillator();
 		//oscillator wave type (sine, triangle, square, or sawtooth)
-	 	oscillator.type = 'triangle';
+	 	oscillator.type = 'square';
 		//create volume controller
 		var gainNode = context.createGain();
 		//connect signal to audio to gain; gain to compressor (compressor to output)
