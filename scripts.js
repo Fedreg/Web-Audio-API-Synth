@@ -18,7 +18,7 @@ Vue.component('keyboard', {
  		//determines note duration
  		var sustain = parseInt(this.sustain);
  		//determines color to change to 
- 		var colorChanger = this.color;
+ 		var colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);//this.color;
   		//compressor evens out min/max volume
 		var compressor = context.createDynamicsCompressor();
 		compressor.threshold.value = -54;
@@ -60,18 +60,20 @@ var vm = new Vue({
 	data: {
 		frequencies: [
 		 	{note: 130.81}, //c
-		 	{note: 139.00}, //c#
 		 	{note: 146.83}, //d
-		 	{note: 156.00}, //d#
 		 	{note: 164.81}, //e
 		 	{note: 174.61}, //f
-		 	{note: 185.00}, //f#
 		 	{note: 196.00}, //g
-		 	{note: 208.00}, //g#
 		 	{note: 220.00}, //a
-			{note: 233.00}, //a#
 		 	{note: 246.94}, //b
 		 	{note: 261.63}, //c
+		 	{note: 293.66}, //d
+		 	{note: 329.63}, //e
+		 	{note: 349.23}, //f
+		 	{note: 392.00}, //g
+		 	{note: 440.00}, //a
+		 	{note: 493.88}, //b
+		 	{note: 523.25}, //c
 		 ]
 	}
 });
