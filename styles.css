@@ -78,9 +78,9 @@ label[for="nav-trigger"] {
 	flex-orientation: row;
 	margin: 0;
 	position: relative;
-	height: 200px;
+	height: 250px;
 	min-height: 100px;
-	width: 45%;
+	width: 50%;
 	min-width: 300px;
 	background-color: rgba(0,0,0,0);
 	padding: 0;
@@ -163,4 +163,9 @@ padding-top: 25px;
 margin-top: 20px;
 font-size: 1.2em;
 width: 9.375em;
+}
+
+#userString {
+background: #000;
+color: #555;
 }
