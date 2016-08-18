@@ -1,6 +1,18 @@
 //start new audio session. Do this only once
 var context = new (window.webkitAudioContext || window.AudioContext || window.mozAudioContext)
 
+
+  		//compressor evens out min/max volume
+		var compressor = context.createDynamicsCompressor();
+		compressor.threshold.value = -54;
+		compressor.knee.value = 40;
+		compressor.ratio.value = 12;
+		compressor.reduction.value = -40;
+		compressor.attack.value = 0;
+		compressor.release.value = 0.25;
+		compressor.connect(context.destination);
+
+
 //Vue
 Vue.component('keyboard', {
 	template: '#keyboard-template',
@@ -18,17 +30,7 @@ Vue.component('keyboard', {
  		//determines note duration
  		var sustain = parseInt(this.sustain);
  		//determines color to change to 
- 		var colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);//this.color;
-  		//compressor evens out min/max volume
-		var compressor = context.createDynamicsCompressor();
-		compressor.threshold.value = -54;
-		compressor.knee.value = 40;
-		compressor.ratio.value = 12;
-		compressor.reduction.value = -40;
-		compressor.attack.value = 0;
-		compressor.release.value = 0.25;
-		compressor.connect(context.destination);
-		//produces sound
+ 		var colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);//this.color;		//produces sound
 		var oscillator = context.createOscillator();
 		//oscillator wave type (sine, triangle, square, or sawtooth)
 	 	oscillator.type = 'square';

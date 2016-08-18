@@ -14,7 +14,7 @@
 					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="1" color="#FF1744"</keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="1" color="#651FFF"></keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="1" color="#651FFF" v-ref:kb1></keyboard>
 				</div>
 				<div class="keyboard">
 					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="4" sustain="1" color="#3D5AFE"></keyboard>
@@ -40,6 +40,7 @@
 					<div  class="white-keys" @click="play(frequency.note)"></div>
 				</template>	
 			</div>
+			<button @click="vm.$refs.kb1.console.log("hi");"</button>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 			<script type="text/javascript" src="scripts.js"></script>
 		</div>
