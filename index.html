@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/1.2.0/normalize.css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open-Sans:300,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body id="bod">
 		<div id="app">
@@ -40,7 +41,8 @@
 					<div  class="white-keys" @click="play(frequency.note)"></div>
 				</template>	
 			</div>
-			<button @click="vm.$refs.kb1.console.log("hi");"</button>
+			<pre>{{ $data | json }}</pre>
+			<input id="modal" type="text" v-model="message" @keydown.enter='playNote()' placeholder="enter any text to create some music"/>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 			<script type="text/javascript" src="scripts.js"></script>
 		</div>
