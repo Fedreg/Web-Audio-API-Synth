@@ -562,7 +562,7 @@ function playString() {
 var said = document.getElementById("userString");
 var msg = said.value;
 var noteArr = [];
-var interval = Math.random() * 1000;
+var interval = Math.trunc(Math.random() * 1000);
 
 for (var i = 0; i < msg.length; i++) {
 
@@ -580,25 +580,25 @@ for (var i = 0; i < msg.length; i++) {
 			setTimeout(function() {
 			    playSound(noteArr[index]);
 			    playAllNotes(++index);
-			}, Math.random() * 1000);
+			}, Math.random() * 2000);
 		}
 	}
 	
 	function playAllNotesb(index) {
-		if (noteArr.length > index * .5) {
+		if (noteArr.length > index * .1) {
 			setTimeout(function() {
 			    playSoundb(noteArr[index]);
 			    playAllNotesb(++index);
-			}, Math.random() * 500);
+			}, Math.random() * 1000);
 		}
 	}
 	
 	function playAllNotesc(index) {
-		if (noteArr.length > index * .5) {
+		if (noteArr.length > (index * .1)) {
 			setTimeout(function() {
 			    playSoundc(noteArr[index]);
 			    playAllNotesc(++index);
-			}, Math.random() * 500);
+			}, Math.random() * 1000);
 		}
 	}
 
@@ -607,8 +607,18 @@ for (var i = 0; i < msg.length; i++) {
 			setTimeout(function() {
 			    playSoundd(noteArr[index]);
 			    playAllNotesd(++index);
-			}, Math.random() * 1000);
+			}, Math.random() * 2000);
 		}
 	}
 
 }	
+
+//switch() {
+//	case "tonic":
+//		playSoundd('1'); playSoundc('5'); playSoundc('8');
+//		break;
+//	case "dominant":
+//		playSoundd('8'); playSoundc('12'); playSoundc('3');
+//		break;
+//};
+
