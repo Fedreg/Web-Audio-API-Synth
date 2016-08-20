@@ -53,12 +53,12 @@ Vue.component('keyboard', {
 		 	oscillator.start(context.currentTime + .05);
 	 		var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
 	 		//references current element to change its color
-	 		var currentDiv = event.currentTarget;
+	 		//var currentDiv = event.currentTarget;
 	 		//change background color for durarion of note length
-			currentDiv.style.backgroundColor = colorChanger;
-			setTimeout(function () {
-	    		currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
-	 		}, 1000 * sustain);  
+			//currentDiv.style.backgroundColor = colorChanger;
+			//setTimeout(function () {
+	    		//currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
+	 		//}, 1000 * sustain);  
 		}
 	}
 });
@@ -66,12 +66,29 @@ Vue.component('keyboard', {
 var vm = new Vue({
 	el: '#app',
 	methods: {
-		playNote: function(note) {
+		//playNote: function(note) {
+			//vm.$broadcast('playNoteOnChild', note);
+			//console.log("note: " + note+ " char: " + noteFromChar + "stringnote: " + stringnote);
+//		},
+		playString: function () {
 			var stringnote = this.stringnote;
-			var noteFromChar = stringnote.charCodeAt(0)%15+1;
-			var noteHz = Math.pow(1.059463, noteFromChar) * 130.81;
-			vm.$broadcast('playNoteOnChild', noteHz);
-			console.log("note: " + noteHz  + " char: " + noteFromChar + "stringnote: " + stringnote);
+			var noteArr = [];
+			var interval = Math.random() * 1000;
+
+			for (var i = 0; i < stringnote.length; i++) {
+				noteArr.push(stringnote.charCodeAt(i)%15+1);
+			} 
+
+			playAllNotes(0);	
+	
+			function playAllNotes(index) {
+				if (noteArr.length > index) {
+					setTimeout(function() {
+					    vm.$broadcast('playNoteOnChild', Math.pow(1.059463, noteArr[index]) * 130.81);
+					    playAllNotes(++index);
+					}, Math.random() * 1000);
+				}
+			}
 		}
 	},
 	data: {

@@ -12,7 +12,16 @@
 		<div id="app">
 			<div id="wrapper">
 				<div class="keyboard">
+					<keyboard octave="1" sustain="1" color="#FF1744" v-ref:k1 ></keyboard>
+				</div>
+				<div class="keyboard">
 					<keyboard octave="2" sustain="1" color="#FF1744" v-ref:k1 ></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard octave="4" sustain="1" color="#FF1744" v-ref:k1 ></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard octave="8" sustain="1" color="#FF1744" v-ref:k1 ></keyboard>
 				</div>
 				<template id="keyboard-template">
 					<div  class="white-keys" @click="play(110)"></div>
@@ -33,7 +42,7 @@
 				</template>	
 			</div>
 			<pre>{{ $data | json }}</pre>
-			<input id="modal" type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="playNote(stringnote)" placeholder="enter text and ress Enter to create music"/>
+			<input id="modal" type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="playString(stringnote)" placeholder="enter text and ress Enter to create music"/>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 			<script type="text/javascript" src="scripts.js"></script>
 		</div>
