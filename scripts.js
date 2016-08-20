@@ -25,7 +25,7 @@ Vue.component('keyboard', {
   	events: { 
   		playNoteOnChild: function(note) {
   		this.play(note);
-  		console.log(note);
+  		//console.log(note);
   		}
   	},
 	methods: {
@@ -67,7 +67,11 @@ var vm = new Vue({
 	el: '#app',
 	methods: {
 		playNote: function(note) {
-			vm.$broadcast('playNoteOnChild', note);
+			var stringnote = this.stringnote;
+			var noteFromChar = stringnote.charCodeAt(0)%15+1;
+			var noteHz = Math.pow(1.059463, noteFromChar) * 130.81;
+			vm.$broadcast('playNoteOnChild', noteHz);
+			console.log("note: " + noteHz  + " char: " + noteFromChar + "stringnote: " + stringnote);
 		}
 	},
 	data: {
@@ -88,6 +92,6 @@ var vm = new Vue({
 		 	{note: 440.00}, //a
 		 	{note: 493.88}, //b
 		 	{note: 523.25}, //c
-		 ]
+		 ]	//f3 = 440 * (1.059463..)3 = 523.3 Hz | f -9 = 440 * (1.059463..)-9 = 261.6 Hz 
 	}
 });
