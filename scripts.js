@@ -22,15 +22,13 @@ Vue.component('keyboard', {
       		frequencies: []
     	};
   	},
-  	events: { 'playNote': function(note) {
-  		play;
+  	events: { 
+  		playNoteOnChild: function(note) {
+  		this.play(note);
+  		console.log(note);
   		}
   	},
 	methods: {
-		handle: function (msg) {
-			alert(msg);
-			},
-		
 		play: function (note){
 			//adjusts frequency played by 50%, 100% or 200% 
 			var octave = this.octave;
@@ -68,12 +66,12 @@ Vue.component('keyboard', {
 var vm = new Vue({
 	el: '#app',
 	methods: {
-		playNote: function (message) {
-			this.$broadcast('play(note)');
-			console.log(message)
-			}},
+		playNote: function(note) {
+			vm.$broadcast('playNoteOnChild', note);
+		}
+	},
 	data: {
-		message: '',
+		stringnote: '',
 		frequencies: [
 		 	{note: 130.81}, //c
 		 	{note: 146.83}, //d

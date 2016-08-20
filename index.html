@@ -12,37 +12,14 @@
 		<div id="app">
 			<div id="wrapper">
 				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="1" color="#FF1744"</keyboard>
+					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="1" color="#FF1744" v-ref:k1 </keyboard>
 				</div>
-				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="1" color="#651FFF" v-ref:kb1></keyboard>
-				</div>
-				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="4" sustain="1" color="#3D5AFE"></keyboard>
-				</div>
-				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="2" sustain="1" 
-						color="#2979FF"></keyboard>
-				</div>
-				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="1" sustain="1" color="#00E5FF"</keyboard>
-				</div>
-				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="8" sustain="1" color="#1DE9B6"></keyboard>
-				</div>
-				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="4" sustain="1" color="#76FF03"></keyboard>
-				</div>
-				<div class="keyboard">
-					<keyboard v-for="frequency in frequencies" :frequency="frequency" octave="2" sustain="1" 
-						color="#FF3D00"></keyboard>
-				</div>			
 				<template id="keyboard-template">
 					<div  class="white-keys" @click="play(frequency.note)"></div>
 				</template>	
 			</div>
 			<pre>{{ $data | json }}</pre>
-			<input id="modal" type="text" v-model="message" @keydown.enter='playNote()' placeholder="enter any text to create some music"/>
+			<input id="modal" type="text" v-model="stringnote" @keydown.enter="playNote(stringnote)" placeholder="enter text and ress Enter to create music"/>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 			<script type="text/javascript" src="scripts.js"></script>
 		</div>

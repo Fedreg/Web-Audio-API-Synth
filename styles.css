@@ -179,6 +179,7 @@ width: 9.375em;
 	background-color: transparent;
 	width: 70%;
 	height: 10%;
+	min-height: 50px;
 	color: #ddd;
 }
 
