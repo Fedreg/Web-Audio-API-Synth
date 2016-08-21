@@ -12,14 +12,14 @@ var compressor = context.createDynamicsCompressor();
 
 
 //main function for crearing sound
-function playSound(note, time) {
+function playSound(note, time) {	
 	oscillator = context.createOscillator();
 	
 	//create volume controller
-	var gainNode = context.createGain();
+	var gainNode = context.createGain();  
 	
-	//connect signal to audio to gain; gain to compressor (compressor to output)
- 	oscillator.connect(gainNode);
+	//connect components together and to output
+	oscillator.connect(gainNode);
  	gainNode.connect(compressor); 	
  	
  	//adjusts frequency played by 50%, 100% or 200% 

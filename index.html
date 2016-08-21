@@ -251,24 +251,7 @@
 				<div class="white-keys" id="note15d"></div>
 			</div>
 			<ul id="chordDegree">
-				<li><div onclick="playSoundd('1'); playSoundc('5'); playSoundc('8');"> I </div>
-				</li>
-				<li><div onclick="playSoundd('3'); playSoundc('6'); playSoundc('10');"> ii </div>
-				</li>
-				<li><div onclick="playSoundd('5'); playSoundc('8'); playSoundc('12');"> iii </div>
-				</li>
-				<li><div onclick="playSoundd('6'); playSoundc('10'); playSoundc('1');"> IV </div>
-				</li>
-				<li><div onclick="playSoundd('8'); playSoundc('12'); playSoundc('3');"> V </div>
-				</li>
-				<li><div onclick="playSoundd('10'); playSoundc('13'); playSoundc('5');"> vi </div>
-				</li>
-				<li><div onclick="playSoundd('12'); playSoundc('15'); playSoundc('6');"> vii </div>
-				</li>
-				<li><input type="text" id="userString" value="enter text here"/>
-					<input type="button"	 value="play Song" onClick="playString();" />
-			</ul>
-		<script type="text/javascript" src="scripts.js"></script>
+			<input id="modal" type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="playString(stringnote)" placeholder="enter text and ress Enter to create music"/>		<script type="text/javascript" src="scripts.js"></script>
 		</div>
 	</body>
 
