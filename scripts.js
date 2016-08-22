@@ -1,7 +1,6 @@
 //start new audio session. Do this only once
 var context = new (window.webkitAudioContext || window.AudioContext || window.mozAudioContext)
 
-
   		//compressor evens out min/max volume
 		var compressor = context.createDynamicsCompressor();
 		compressor.threshold.value = -54;
@@ -12,11 +11,9 @@ var context = new (window.webkitAudioContext || window.AudioContext || window.mo
 		compressor.release.value = 0.25;
 		compressor.connect(context.destination);
 
-
-//Vue
 Vue.component('keyboard', {
 	template: '#keyboard-template',
-	props: ['frequency', 'octave', 'sustain', 'color'],
+	props: ['frequency', 'octave', 'sustain'],
 	data: function() {
     	return {
       		frequencies: []
@@ -24,34 +21,44 @@ Vue.component('keyboard', {
   	},
   	events: { 
   		playNoteOnChild: function(note) {
-  		this.play(note);
-  		//console.log(note);
+  		    var vEl = "k" + note;
+  			var currentDiv = "this.$els." + vEl;
+  			currentDiv.click();
+	  		/*this.play(Math.pow(1.059463, note) * 130.81);
+
+	  		var vEl = "k" + note;
+	  		console.log(vEl);
+	  		var currentDiv = "this.$els." + vEl;
+		    console.log(currentDiv);
+		    //change background color for durarion of note length
+		    var sustain = parseInt(this.sustain);
+		  	var colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);//this.color;
+			currentDiv.style.backgroundColor = colorChanger;
+			setTimeout(function () {
+		  		currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
+		 	}, 1000 * sustain);*/
   		}
   	},
 	methods: {
-		play: function (note){
-			//adjusts frequency played by 50%, 100% or 200% 
+		play: function (ev, note){
+			//console.log("note: " + note + " octave: " + octave + " sustain: " + sustain );
+			
 			var octave = this.octave;
-	 		//determines note duration
-	 		var sustain = parseInt(this.sustain);
-	 		//determines color to change to 
-	 		var colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);//this.color;		//produces sound
+	 		var sustain = Number(this.sustain);
+	 		var colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
 			var oscillator = context.createOscillator();
-			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'square';
-			//create volume controller
 			var gainNode = context.createGain();
+			var quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
+	 		var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);			
+			//oscillator wave type (sine, triangle, square, or sawtooth)
+		 	oscillator.type = 'sine';
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
-			//sets oscillator frequency
-		 	oscillator.frequency.value = note * octave;
-		 	console.log(oscillator.frequency.value);
-		 	//initialize gain at 0 and ramp up to full volume very quikcly (prevents audible 'pop')
+			oscillator.frequency.value = note * octave;
 		 	gainNode.gain.value = 0
-		 	var quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
 		 	oscillator.start(context.currentTime + .05);
-	 		var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
+
 	 		//references current element to change its color
 	 		//var currentDiv = event.currentTarget;
 	 		//change background color for durarion of note length
@@ -66,11 +73,9 @@ Vue.component('keyboard', {
 var vm = new Vue({
 	el: '#app',
 	methods: {
-		//playNote: function(note) {
-			//vm.$broadcast('playNoteOnChild', note);
-			//console.log("note: " + note+ " char: " + noteFromChar + "stringnote: " + stringnote);
-//		},
-		playString: function () {
+	    playString: function(ev, note) {
+	    	play(ev, note);}
+		/*playString: function () {
 			var stringnote = this.stringnote;
 			var noteArr = [];
 			var interval = Math.random() * 1000;
@@ -80,16 +85,18 @@ var vm = new Vue({
 			} 
 
 			playAllNotes(0);	
-	
+			
 			function playAllNotes(index) {
+				var note = noteArr[index];
 				if (noteArr.length > index) {
 					setTimeout(function() {
-					    vm.$broadcast('playNoteOnChild', Math.pow(1.059463, noteArr[index]) * 130.81);
+					    vm.$broadcast('playNoteOnChild', note);
+					  		console.log(note);
 					    playAllNotes(++index);
 					}, Math.random() * 1000);
 				}
 			}
-		}
+		}*/
 	},
 	data: {
 		stringnote: '',
@@ -111,4 +118,7 @@ var vm = new Vue({
 		 	{note: 523.25}, //c
 		 ]	//f3 = 440 * (1.059463..)3 = 523.3 Hz | f -9 = 440 * (1.059463..)-9 = 261.6 Hz 
 	}
+	
+	
+	
 });

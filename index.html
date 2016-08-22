@@ -12,37 +12,28 @@
 		<div id="app">
 			<div id="wrapper">
 				<div class="keyboard">
-					<keyboard octave="1" sustain="1" color="#FF1744" v-ref:k1 ></keyboard>
+					<keyboard :frequency="frequency" octave="4" sustain="1" ></keyboard>
 				</div>
-				<div class="keyboard">
-					<keyboard octave="2" sustain="1" color="#FF1744" v-ref:k1 ></keyboard>
-				</div>
-				<div class="keyboard">
-					<keyboard octave="4" sustain="1" color="#FF1744" v-ref:k1 ></keyboard>
-				</div>
-				<div class="keyboard">
-					<keyboard octave="8" sustain="1" color="#FF1744" v-ref:k1 ></keyboard>
-				</div>
+				
 				<template id="keyboard-template">
-					<div  class="white-keys" @click="play(110)"></div>
-					<div  class="white-keys" @click="play(220)"></div>
-					<div  class="white-keys" @click="play(330)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
-					<div  class="white-keys" @click="play(440)"></div>
+					<div  class="white-keys" v-el:k1 @click="play($event, 130)"></div>
+					<div  class="white-keys" v-el:k2 @click="play(390)"></div>
+					<div  class="white-keys" v-el:k3 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k4 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k5 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k6 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k7 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k8 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k9 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k10 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k11 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k12 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k13 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k14 @click="play(220)"></div>
+					<div  class="white-keys" v-el:k15 @click="play(220)"></div>
 				</template>	
 			</div>
-			<pre>{{ $data | json }}</pre>
-			<input id="modal" type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="playString(stringnote)" placeholder="enter text and ress Enter to create music"/>
+			<input id="modal" type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="play($event, 130)" placeholder="enter text and press Enter to create music"/>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 			<script type="text/javascript" src="scripts.js"></script>
 		</div>
