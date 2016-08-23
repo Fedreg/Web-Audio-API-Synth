@@ -60,16 +60,26 @@ Vue.component('keyboard', {
 		 	oscillator.start(context.currentTime + .05);
 
 	 		//references current element to change its color
-	 		//var currentDiv = event.currentTarget;
+	 		var currentDiv = event.currentTarget;
 	 		//change background color for durarion of note length
-			//currentDiv.style.backgroundColor = colorChanger;
-			//setTimeout(function () {
-	    		//currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
-	 		//}, 1000 * sustain);  
+			currentDiv.style.backgroundColor = colorChanger;
+			setTimeout(function () {
+	    		currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
+	 		}, 1000 * sustain);  
 		}
 	}
 });
 	
+Vue.component('musplayer', {
+	template: '#musplayer-template',
+		data: function() {
+    		return {
+      			frequencies: []
+    		};
+  		},
+});
+
+
 var vm = new Vue({
 	el: '#app',
 	methods: {

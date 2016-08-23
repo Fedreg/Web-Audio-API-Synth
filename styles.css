@@ -166,7 +166,7 @@ font-size: 1.2em;
 width: 9.375em;
 }
 	
-#modal {
+.musplayer {
 	position: fixed;
 	z-index: 1;
 	left: 50%;

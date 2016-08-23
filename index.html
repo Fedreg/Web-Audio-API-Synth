@@ -14,7 +14,7 @@
 				<div class="keyboard">
 					<keyboard :frequency="frequency" octave="4" sustain="1" ></keyboard>
 				</div>
-				
+				<musplayer class="musplayer"><musplayer>
 				<template id="keyboard-template">
 					<div  class="white-keys" v-el:k1 @click="play($event, 130)"></div>
 					<div  class="white-keys" v-el:k2 @click="play(390)"></div>
@@ -33,9 +33,11 @@
 					<div  class="white-keys" v-el:k15 @click="play(220)"></div>
 				</template>	
 			</div>
-			<input id="modal" type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="play($event, 130)" placeholder="enter text and press Enter to create music"/>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
-			<script type="text/javascript" src="scripts.js"></script>
+			<template id="musplayer-template">
+				<input type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="playtrigger" placeholder="enter text and press Enter to create music"/>
+			</template>
 		</div>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
+		<script type="text/javascript" src="scripts.js"></script>
 	</body>
 </html>
