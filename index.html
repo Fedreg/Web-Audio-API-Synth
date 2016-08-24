@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -34,7 +37,7 @@
 				</template>	
 			</div>
 			<template id="musplayer-template">
-				<input type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="playtrigger" placeholder="enter text and press Enter to create music"/>
+				<input type="text" v-model="stringnote" :stringnote="stringnote" @keydown.enter="sendnote()" placeholder="enter text and press Enter to create music"/>
 			</template>
 		</div>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
