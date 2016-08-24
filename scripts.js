@@ -11,20 +11,6 @@ var context = new (window.webkitAudioContext || window.AudioContext || window.mo
 		compressor.release.value = 0.25;
 		compressor.connect(context.destination);
 
-var bus = new Vue();
-
-Vue.component('musplayer', {
-	template: '#musplayer-template',
-	props: ['stringnote'],
-	methods: { 
-		sendnote: function() {
-			var stringnote = this.stringnote;
-			bus.$emit('test', stringnote)
-			console.log("sender: " + stringnote)		
-		} 
-	}		
-});
-
 Vue.component('keyboard', {
 	template: '#keyboard-template',
 	props: ['frequency', 'octave', 'sustain'],
@@ -34,17 +20,15 @@ Vue.component('keyboard', {
     	};
   	},
   	events: {
-  	 	
-  	 	listenner: function(stringnote){
-  	 		this.note = stringnote;
-  	 		//console.log(msg);
-  			bus.$on('test', function(stringnote) {
-  				console.log("receiver: " + stringnote)})
-  			}		
-  		},
+  	 	listenner: 
+  	 		function(num){
+  	 			var e = "k" + num;
+  	 			this.$els[e].click();
+  	 			console.log(e)
+  	 		}
+  	 	},	
 	methods: {
-
-  		play: function (ev, note){
+  		play: function (note){
 			//console.log("note: " + note + " octave: " + octave + " sustain: " + sustain );
 			
 			var octave = this.octave;
@@ -76,6 +60,15 @@ Vue.component('keyboard', {
 
 var vm = new Vue({
 	el: '#app',
+	methods: {
+		sendnote: function(){
+			var stringnote = this.stringnote
+			vm.$broadcast('listenner', stringnote[0])
+			vm.$broadcast('listenner', stringnote[1])
+			vm.$broadcast('listenner', stringnote[2])
+			
+		}
+	},
 	data: {
 		stringnote: '',
 		frequencies: [
