@@ -101,13 +101,8 @@ label[for="nav-trigger"] {
 	width: 4.0%;
 	position: absolute;
 	height: 55%;
-	background-color: #000;
+	background-color: rgba(0,0,0,0);
 }
-
-.n25 {
-	border-right: 1px solid #333;
-}
-
 
 li select {
 	font-size: 1em;
@@ -167,7 +162,7 @@ width: 9.375em;
 	position: fixed;
 	z-index: 1;
 	left: 50%;
-	top: 40%;
+	top: 50%;
 	transform: translate(-50%, 0);
 	font-size: 2em;
 	text-align: center;
