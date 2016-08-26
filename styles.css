@@ -79,7 +79,7 @@ label[for="nav-trigger"] {
 	flex-orientation: row;
 	margin: 0;
 	position: relative;
-	height: 300px;
+	height: 40vh;
 	min-height: 100px;
 	width: 50%;
 	min-width: 300px;

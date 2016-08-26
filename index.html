@@ -15,16 +15,16 @@
 		<div id="app">
 			<div id="wrapper">
 				<div class="keyboard">
-					<keyboard :frequency="frequency" octave="8" sustain="4" ></keyboard>
+					<keyboard :frequency="frequency" octave="2" sustain=".5" ></keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard :frequency="frequency" octave="4" sustain="4" ></keyboard>
+					<keyboard :frequency="frequency" octave="1" 	sustain=".5" ></keyboard>
 				</div>
-					<div class="keyboard">
-					<bkeyboard :chord="chord" octave="2" sustain="4" ></bkeyboard>
+				<div class="keyboard">
+					<bkeyboard :chord="chord" octave="2" sustain="2" ></bkeyboard>
 				</div>
-					<div class="keyboard">
-					<bkeyboard :chord="chord" octave="1" sustain="4" ></bkeyboard>
+				<div class="keyboard">
+					<bkeyboard :chord="chord" octave="1" sustain="2" ></bkeyboard>
 				</div>
 				<template id="keyboard-template">
 					<div  class="white-keys" v-el:k1 @click="play(130.81)"></div>
