@@ -1,7 +1,6 @@
 * {
 	box-sizing: border-box;
 	text-decoration: none;
-	transition: background 2s ease-out;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 }
@@ -79,7 +78,7 @@ label[for="nav-trigger"] {
 	flex-orientation: row;
 	margin: 0;
 	position: relative;
-	height: 35vh;
+	height: 40vh;
 	min-height: 100px;
 	width: 50%;
 	min-width: 300px;
@@ -93,6 +92,8 @@ label[for="nav-trigger"] {
 	height: 100%;
 	max-height: 25em;
 	border-right: 0;
+	transition: background 1s ease-out;
+
 }
 
 .black-keys {
@@ -102,6 +103,7 @@ label[for="nav-trigger"] {
 	position: absolute;
 	height: 55%;
 	background-color: rgba(0,0,0,0);
+	transition: background 1s ease-out;
 }
 
 li select {

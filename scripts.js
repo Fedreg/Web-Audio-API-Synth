@@ -1,11 +1,11 @@
 //start new audio session. Do this only once
-var context = new (window.webkitAudioContext || window.AudioContext || window.mozAudioContext)
+const context = new (window.webkitAudioContext || window.AudioContext || window.mozAudioContext)
 //compressor evens out min/max volume
-var compressor = context.createDynamicsCompressor();
+const compressor = context.createDynamicsCompressor();
 compressor.threshold.value = -54;
 compressor.knee.value = 40;
 compressor.ratio.value = 12;
-compressor.reduction.value = -40;
+compressor.reduction = -40;
 compressor.attack.value = 0;
 compressor.release.value = 0.25;
 compressor.connect(context.destination);
@@ -29,7 +29,7 @@ Vue.component('keyboard', {
   	 			
   	 				if (f < 26) {
   	 					this.$els[g].click();
-  	 					console.log(f + " clicked")
+  	 					console.log(f + " clicked" + compressor.reduction.value)
   	 				}
   	 			}
   	 		}
@@ -38,11 +38,11 @@ Vue.component('keyboard', {
   		play: function (note){			
 			var octave = this.octave;
 	 		var sustain = Number(this.sustain);
-	 		var colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
-			var oscillator = context.createOscillator();
-			var gainNode = context.createGain();
-			var quickFadeIn = gainNode.gain.setTargetAtTime(.35, context.currentTime, 0.1);
-	 		var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
+	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
+			const oscillator = context.createOscillator();
+			const gainNode = context.createGain();
+			const quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
+	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
 	 		var currentDiv = event.currentTarget;
 	 		
 	 		gainNode;			
@@ -88,11 +88,11 @@ Vue.component('bkeyboard', {
   		play: function (note){			
 			var octave = this.octave;
 	 		var sustain = Number(this.sustain);
-	 		var colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
-			var oscillator = context.createOscillator();
-			var gainNode = context.createGain();
-			var quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
-	 		var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
+	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
+			const oscillator = context.createOscillator();
+			const gainNode = context.createGain();
+			const quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
+	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);	
 	 		var currentDiv = event.currentTarget;
 	 					
 			//oscillator wave type (sine, triangle, square, or sawtooth)
@@ -135,6 +135,7 @@ var vm = new Vue({
 							
 						else if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay[index])) {
 							vm.$broadcast('listenner', musicToPlay[index])
+
 						    playAllNotes(++index);
 						}    
 						
@@ -176,3 +177,4 @@ var vm = new Vue({
 		}
 	}
 });
+
