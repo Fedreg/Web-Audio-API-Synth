@@ -12,24 +12,26 @@ compressor.connect(context.destination);
 
 Vue.component('keyboard', {
 	template: '#keyboard-template',
-	props: ['frequency', 'octave', 'sustain'],
+	props: ['chord', 'octave', 'sustain' , 'wave'],
 	data: function() {
     	return {
-      		frequencies: []
+      		chords: {}
     	};
   	},
   	events: {
   	 	listenner: 
-  	 		function(num){
+  	 		function(num){ // for notes
   	 			if (num != null) {
-	  	 			var e = "k" + num;
-  		 			var f = (Number(num) + 12);
-  		 			var g = "k" + f
+  	  	 			var e = "k" + num;
   	 				this.$els[e].click();
-  	 			
-  	 				if (f < 26) {
-  	 					this.$els[g].click();
-  	 					console.log(f + " clicked" + compressor.reduction.value)
+   	 			}
+  	 		},
+  	 	listenner2: //for chords
+  	 		function(num){
+  	 			if(num != null) {
+  	 				for (var i = 0; i < 3; i++) {
+  	 					var e = "k" + num[i];
+  	 					this.$els[e].click();
   	 				}
   	 			}
   	 		}
@@ -38,22 +40,23 @@ Vue.component('keyboard', {
   		play: function (note){			
 			var octave = this.octave;
 	 		var sustain = Number(this.sustain);
+	 		var wave = this.wave;
 	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
 			const oscillator = context.createOscillator();
 			const gainNode = context.createGain();
-			const quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
+			const quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, .1);
 	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
 	 		var currentDiv = event.currentTarget;
 	 		
 	 		gainNode;			
 			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'triangle';
+		 	oscillator.type = 'square';
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
 			oscillator.frequency.value = note * octave;
 		 	gainNode.gain.value = 0
-		 	oscillator.start(context.currentTime + .05);
+		 	oscillator.start(context.currentTime);
 
 	 		//change background color for durarion of note length
 			currentDiv.style.backgroundColor = colorChanger;
@@ -74,10 +77,16 @@ Vue.component('bkeyboard', {
   	},
   	events: {
   	 	listennerb: 
+  	 		function(num){ // for notes
+  	 			if (num != null) {
+  	  	 			var e = "kb" + num;
+  	 				this.$els[e].click();
+   	 			}
+  	 		},
+  	 	listennerb2: //for chords
   	 		function(num){
   	 			if(num != null) {
   	 				for (var i = 0; i < 3; i++) {
-  	 				
   	 					var e = "kb" + num[i];
   	 					this.$els[e].click();
   	 				}
@@ -91,18 +100,19 @@ Vue.component('bkeyboard', {
 	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
 			const oscillator = context.createOscillator();
 			const gainNode = context.createGain();
-			const quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
+			const quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, .1);
 	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);	
 	 		var currentDiv = event.currentTarget;
 	 					
 			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'triangle';
+		 	oscillator.type = 'square';
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
 			oscillator.frequency.value = note * octave;
 		 	gainNode.gain.value = 0
-		 	oscillator.start(context.currentTime + .05);
+
+		 	oscillator.start(context.currentTime);
 
 	 		//change background color for durarion of note length
 			currentDiv.style.backgroundColor = colorChanger;
@@ -118,36 +128,64 @@ var vm = new Vue({
 	methods: {
 		sendnote: function(){
 			var stringnote = this.stringnote
-			var chords = this.chords
+			var stringnoteb = this.stringnoteb
+			const chords = this.chords
 			var musicToPlay = stringnote.split(' ');
-			
-			console.log(musicToPlay)
+			var musicToPlay2 = stringnoteb.split(' ');
+		
 			playAllNotes(0);
-			
+			playAllNotesb(0);
+									
 			function playAllNotes(index) {
 				if (musicToPlay.length > index) {
 					setTimeout(function() {
 					
-						if (/([a-g]+#)|([A-G]+#)|[A-G]|[a-g]/g.test(musicToPlay[index])) {
-							vm.$broadcast('listennerb', chords[musicToPlay[index]])
+						if (/\b([a-g]+#)|([A-G]+#)|[A-G]|[a-g]\b/g.test(musicToPlay[index])) {
+							vm.$broadcast('listenner2', chords[musicToPlay[index]])
+							console.log("listenner 2 sent")
 							playAllNotes(++index);
 						}	
 							
 						else if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay[index])) {
 							vm.$broadcast('listenner', musicToPlay[index])
+							console.log("listenner  sent")
+							playAllNotes(++index);
+						}
+						
+						else
+						playAllNotes(++index);
 
-						    playAllNotes(++index);
+					}, 500); 
+				}
+			}
+			
+			function playAllNotesb(index) {
+				if (musicToPlay2.length > index) {
+					setTimeout(function() {
+					
+												
+						if (/([a-g]+#)|([A-G]+#)|[A-G]|[a-g]/g.test(musicToPlay2[index])) {
+							vm.$broadcast('listennerb2', chords[musicToPlay2[index]])
+							console.log("listennerb 2 sent")
+							playAllNotesb(++index);
+						}	
+							
+						else if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay2[index])) {
+							vm.$broadcast('listennerb', musicToPlay2[index])
+							console.log("listennerb sent")
+							playAllNotesb(++index);
 						}    
 						
-						else {
-							playAllNotes(++index);
-						} 
-					}, 250); 
+						else
+						playAllNotesb(++index);
+
+					}, 500); 
 				}
 			}
 		}
 	},
 	data: {
+		stringnoteb: '',
 		stringnote: '',
 		chords: {
 			'C':  [1,17,20],
