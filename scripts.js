@@ -56,7 +56,7 @@ Vue.component('keyboard', {
 	 		
 	 		gainNode;			
 			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'square';
+		 	oscillator.type = 'sawtooth';
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
@@ -119,7 +119,7 @@ Vue.component('bkeyboard', {
 	 		var currentDiv = event.currentTarget;
 	 					
 			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'square';
+		 	oscillator.type = 'sawtooth';
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
@@ -167,7 +167,7 @@ var vm = new Vue({
 						else
 						playAllNotes(++index);
 
-					}, 150); 
+					}, 350); 
 				}
 			}
 			
@@ -189,7 +189,7 @@ var vm = new Vue({
 						else
 						playAllNotesb(++index);
 
-					}, 150); 
+					}, 350); 
 				}
 			}
 		}
