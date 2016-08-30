@@ -81,9 +81,8 @@
 					<div  class="white-keys" v-el:kb25 @click="play(523.25)"></div>
 				</template>	
 			</div>
-				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.enter="sendnote()" placeholder="keyboard 1"/>
-				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.enter="sendnote()" placeholder="keyboard 2"/> 
-				<pre>{{ $musicToPlay | json }}</pre>
+				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.enter="sendnote()" placeholder="keyboard 1" v-el:mp1/>
+				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.enter="sendnote()" placeholder="keyboard 2" v-el:mp2/> 
 		</div>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>

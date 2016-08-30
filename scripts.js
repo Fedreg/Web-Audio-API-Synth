@@ -145,13 +145,17 @@ var vm = new Vue({
 			var stringnoteb = this.stringnoteb
 			const chords = this.chords
 			var musicToPlay = stringnote.split(' ');
-			var musicToPlay2 = stringnoteb.split(' ');
-		
+			var musicToPlay2 = stringnoteb.split(' ');									
+			var mp1 = this.$els.mp1
+			var mp2 = this.$els.mp2
 			playAllNotes(0);
 			playAllNotesb(0);
-									
+						
 			function playAllNotes(index) {
-				if (musicToPlay.length > index) {
+				if (musicToPlay.length > index) {	
+					mp1.style.opacity = '0'
+					mp2.style.opacity = '0'
+	
 					setTimeout(function() {
 					
 						if (/\b([a-g]+#)|([A-G]+#)|[A-G]|[a-g]\b/g.test(musicToPlay[index])) {
@@ -168,11 +172,22 @@ var vm = new Vue({
 						playAllNotes(++index);
 
 					}, 350); 
+				} 
+				
+				else {
+					setTimeout(function() {
+						mp1.style.opacity = '100'
+						mp2.style.opacity = '100'
+					}, 2000)
+		
 				}
 			}
 			
 			function playAllNotesb(index) {
 				if (musicToPlay2.length > index) {
+					mp1.style.opacity = '0'
+					mp2.style.opacity = '0'
+	
 					setTimeout(function() {
 					
 												
@@ -191,8 +206,15 @@ var vm = new Vue({
 
 					}, 350); 
 				}
+				
+				else {
+					setTimeout(function() {
+						mp1.style.opacity = '100'
+						mp2.style.opacity = '100'
+					}, 2000)
+				}
 			}
-		}
+		} 
 	},
 	data: {
 		stringnoteb: '',
