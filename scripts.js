@@ -4,10 +4,10 @@ const context = new (window.webkitAudioContext || window.AudioContext || window.
 const compressor = context.createDynamicsCompressor();
 compressor.threshold.value = -54;
 compressor.knee.value = 40;
-compressor.ratio.value = 12;
+compressor.ratio.value = 50;
 compressor.reduction = -40;
-compressor.attack.value = 0;
-compressor.release.value = 0.25;
+compressor.attack.value = -60;
+compressor.release.value = 5.25;
 compressor.connect(context.destination);
 
 Vue.component('keyboard', {
@@ -22,9 +22,15 @@ Vue.component('keyboard', {
   	 	listenner: 
   	 		function(num){ // for notes
   	 			if (num != null) {
-  	  	 			var e = "k" + num;
+  	  	 			var e = "k" + num;var f = (Number(num) + 12);
+  		 			var g = "k" + f
   	 				this.$els[e].click();
-   	 			}
+  	 			
+  	 				if (f < 26) {
+  	 					this.$els[g].click();
+  	 					console.log(f + " clicked")
+  	 				}
+  	 			}	
   	 		},
   	 	listenner2: //for chords
   	 		function(num){
@@ -44,7 +50,7 @@ Vue.component('keyboard', {
 	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
 			const oscillator = context.createOscillator();
 			const gainNode = context.createGain();
-			const quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, .1);
+			const quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, .1);
 	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
 	 		var currentDiv = event.currentTarget;
 	 		
@@ -57,6 +63,7 @@ Vue.component('keyboard', {
 			oscillator.frequency.value = note * octave;
 		 	gainNode.gain.value = 0
 		 	oscillator.start(context.currentTime);
+		 	oscillator.stop(context.currentTime + sustain + .05);
 
 	 		//change background color for durarion of note length
 			currentDiv.style.backgroundColor = colorChanger;
@@ -76,12 +83,19 @@ Vue.component('bkeyboard', {
     	};
   	},
   	events: {
+  	 	
   	 	listennerb: 
   	 		function(num){ // for notes
   	 			if (num != null) {
-  	  	 			var e = "kb" + num;
+  	  	 			var e = "kb" + num;var f = (Number(num) + 12);
+  		 			var g = "kb" + f
   	 				this.$els[e].click();
-   	 			}
+  	 			
+  	 				if (f < 26) {
+  	 					this.$els[g].click();
+  	 					console.log(f + " clicked")
+  	 				}
+  	 			}	
   	 		},
   	 	listennerb2: //for chords
   	 		function(num){
@@ -100,7 +114,7 @@ Vue.component('bkeyboard', {
 	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
 			const oscillator = context.createOscillator();
 			const gainNode = context.createGain();
-			const quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, .1);
+			const quickFadeIn = gainNode.gain.setTargetAtTime(.4, context.currentTime, .1);
 	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);	
 	 		var currentDiv = event.currentTarget;
 	 					
@@ -111,9 +125,9 @@ Vue.component('bkeyboard', {
 		 	gainNode.connect(compressor); 	
 			oscillator.frequency.value = note * octave;
 		 	gainNode.gain.value = 0
-
 		 	oscillator.start(context.currentTime);
-
+		 	oscillator.stop(context.currentTime + sustain + .05);
+		 	
 	 		//change background color for durarion of note length
 			currentDiv.style.backgroundColor = colorChanger;
 			setTimeout(function () {
@@ -142,20 +156,18 @@ var vm = new Vue({
 					
 						if (/\b([a-g]+#)|([A-G]+#)|[A-G]|[a-g]\b/g.test(musicToPlay[index])) {
 							vm.$broadcast('listenner2', chords[musicToPlay[index]])
-							console.log("listenner 2 sent")
 							playAllNotes(++index);
 						}	
 							
 						else if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay[index])) {
 							vm.$broadcast('listenner', musicToPlay[index])
-							console.log("listenner  sent")
 							playAllNotes(++index);
 						}
 						
 						else
 						playAllNotes(++index);
 
-					}, 500); 
+					}, 150); 
 				}
 			}
 			
@@ -166,20 +178,18 @@ var vm = new Vue({
 												
 						if (/([a-g]+#)|([A-G]+#)|[A-G]|[a-g]/g.test(musicToPlay2[index])) {
 							vm.$broadcast('listennerb2', chords[musicToPlay2[index]])
-							console.log("listennerb 2 sent")
 							playAllNotesb(++index);
 						}	
 							
 						else if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay2[index])) {
 							vm.$broadcast('listennerb', musicToPlay2[index])
-							console.log("listennerb sent")
 							playAllNotesb(++index);
 						}    
 						
 						else
 						playAllNotesb(++index);
 
-					}, 500); 
+					}, 150); 
 				}
 			}
 		}

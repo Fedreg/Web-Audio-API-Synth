@@ -15,16 +15,16 @@
 		<div id="app">
 			<div id="wrapper">
 				<div class="keyboard">
-					<keyboard :chord="chord" octave="4" sustain=".25" ></keyboard>
+					<keyboard :chord="chord" octave="4" sustain=".2" ></keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard :chord="chord" octave="2" sustain=".25" ></keyboard>
+					<keyboard :chord="chord" octave="2" sustain=".2" ></keyboard>
 				</div>
 				<div class="keyboard">
-					<bkeyboard :chord="chord" octave="1" sustain=".25" ></bkeyboard>
+					<bkeyboard :chord="chord" octave="1" sustain=".2" ></bkeyboard>
 				</div>
 				<div class="keyboard">
-					<bkeyboard :chord="chord" octave=".5" sustain=".25" ></bkeyboard>
+					<bkeyboard :chord="chord" octave=".5" sustain=".2" ></bkeyboard>
 				</div>
 				<template id="keyboard-template">
 					<div  class="white-keys" v-el:k1 transition="fade" @click="play(130.81)"></div>
@@ -40,17 +40,17 @@
 					<div  class="black-keys" v-el:k11 @click="play(233.00)"></div>
 					<div  class="white-keys" v-el:k12 @click="play(246.94)"></div>
 					<div  class="white-keys" v-el:k13 @click="play(261.63)"></div>
-					<div  class="white-keys" v-el:k14 @click="play(277.00)"></div>
-					<div  class="black-keys" v-el:k15 @click="play(293.66)"></div>
-					<div  class="white-keys" v-el:k16 @click="play(311.00)"></div>
-					<div  class="black-keys" v-el:k17 @click="play(329.63)"></div>
+					<div  class="black-keys" v-el:k14 @click="play(277.00)"></div>
+					<div  class="white-keys" v-el:k15 @click="play(293.66)"></div>
+					<div  class="black-keys" v-el:k16 @click="play(311.00)"></div>
+					<div  class="white-keys" v-el:k17 @click="play(329.63)"></div>
 					<div  class="white-keys" v-el:k18 @click="play(349.23)"></div>
-					<div  class="white-keys" v-el:k19 @click="play(370.00)"></div>
-					<div  class="black-keys" v-el:k20 @click="play(392.00)"></div>
-					<div  class="white-keys" v-el:k21 @click="play(415.00)"></div>
-					<div  class="black-keys" v-el:k22 @click="play(440.00)"></div>
-					<div  class="white-keys" v-el:k23 @click="play(466.00)"></div>
-					<div  class="black-keys" v-el:k24 @click="play(493.88)"></div>
+					<div  class="black-keys" v-el:k19 @click="play(370.00)"></div>
+					<div  class="white-keys" v-el:k20 @click="play(392.00)"></div>
+					<div  class="black-keys" v-el:k21 @click="play(415.00)"></div>
+					<div  class="white-keys" v-el:k22 @click="play(440.00)"></div>
+					<div  class="black-keys" v-el:k23 @click="play(466.00)"></div>
+					<div  class="white-keys" v-el:k24 @click="play(493.88)"></div>
 					<div  class="white-keys" v-el:k25 @click="play(523.25)"></div>
 				</template>
 				<template id="bkeyboard-template">
@@ -67,17 +67,17 @@
 					<div  class="black-keys" v-el:kb11 @click="play(233.00)"></div>
 					<div  class="white-keys" v-el:kb12 @click="play(246.94)"></div>
 					<div  class="white-keys" v-el:kb13 @click="play(261.63)"></div>
-					<div  class="white-keys" v-el:kb14 @click="play(277.00)"></div>
-					<div  class="black-keys" v-el:kb15 @click="play(293.66)"></div>
-					<div  class="white-keys" v-el:kb16 @click="play(311.00)"></div>
-					<div  class="black-keys" v-el:kb17 @click="play(329.63)"></div>
+					<div  class="black-keys" v-el:kb14 @click="play(277.00)"></div>
+					<div  class="white-keys" v-el:kb15 @click="play(293.66)"></div>
+					<div  class="black-keys" v-el:kb16 @click="play(311.00)"></div>
+					<div  class="white-keys" v-el:kb17 @click="play(329.63)"></div>
 					<div  class="white-keys" v-el:kb18 @click="play(349.23)"></div>
-					<div  class="white-keys" v-el:kb19 @click="play(370.00)"></div>
-					<div  class="black-keys" v-el:kb20 @click="play(392.00)"></div>
-					<div  class="white-keys" v-el:kb21 @click="play(415.00)"></div>
-					<div  class="black-keys" v-el:kb22 @click="play(440.00)"></div>
-					<div  class="white-keys" v-el:kb23 @click="play(466.00)"></div>
-					<div  class="black-keys" v-el:kb24 @click="play(493.88)"></div>
+					<div  class="black-keys" v-el:kb19 @click="play(370.00)"></div>
+					<div  class="white-keys" v-el:kb20 @click="play(392.00)"></div>
+					<div  class="black-keys" v-el:kb21 @click="play(415.00)"></div>
+					<div  class="white-keys" v-el:kb22 @click="play(440.00)"></div>
+					<div  class="black-keys" v-el:kb23 @click="play(466.00)"></div>
+					<div  class="white-keys" v-el:kb24 @click="play(493.88)"></div>
 					<div  class="white-keys" v-el:kb25 @click="play(523.25)"></div>
 				</template>	
 			</div>
