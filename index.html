@@ -15,16 +15,16 @@
 		<div id="app">
 			<div id="wrapper">
 				<div class="keyboard">
-					<keyboard :chord="chord" octave=".5" sustain="2" ></keyboard>
+					<keyboard :chord="chord" octave="2" sustain=".5" ></keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard :chord="chord" octave="2" sustain="2" ></keyboard>
+					<keyboard :chord="chord" octave="2" sustain=".5" ></keyboard>
 				</div>
 				<div class="keyboard">
-					<bkeyboard :chord="chord" octave="1" sustain="2" ></bkeyboard>
+					<bkeyboard :chord="chord" octave="1" sustain=".5" ></bkeyboard>
 				</div>
 				<div class="keyboard">
-					<bkeyboard :chord="chord" octave=".25" sustain="2" ></bkeyboard>
+					<bkeyboard :chord="chord" octave=".5" sustain=".5" ></bkeyboard>
 				</div>
 								<template id="keyboard-template">
 					<div  class="white-keys" v-el:k1 transition="fade" @click="play(130.81)"></div>
@@ -81,8 +81,8 @@
 					<div  class="white-keys" v-el:kb25 @click="play(523.25)"></div>
 				</template>	
 			</div>
-				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.enter="sendnote()" placeholder="keyboard 1" v-el:mp1/>
-				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.enter="sendnote()" placeholder="keyboard 2" v-el:mp2/> 
+				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.enter="sendnote()" placeholder="synth 1" v-el:mp1/>
+				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.enter="sendnote()" placeholder="synth 2" v-el:mp2/> 
 		</div>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>

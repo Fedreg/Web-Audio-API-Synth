@@ -56,7 +56,7 @@ Vue.component('keyboard', {
 	 		
 	 		gainNode;			
 			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'sawtooth';
+		 	oscillator.type = 'square';
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
@@ -119,7 +119,7 @@ Vue.component('bkeyboard', {
 	 		var currentDiv = event.currentTarget;
 	 					
 			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'sawtooth';
+		 	oscillator.type = 'square';
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
@@ -144,8 +144,9 @@ var vm = new Vue({
 			var stringnote = this.stringnote
 			var stringnoteb = this.stringnoteb
 			const chords = this.chords
-			var musicToPlay = stringnote.split(' ');
-			var musicToPlay2 = stringnoteb.split(' ');									
+			var musicToPlay = stringnote.split(' ')
+			var musicToPlay2 = stringnoteb.split(' ')		
+			var tempo = 100			
 			var mp1 = this.$els.mp1
 			var mp2 = this.$els.mp2
 			playAllNotes(0);
@@ -171,14 +172,14 @@ var vm = new Vue({
 						else
 						playAllNotes(++index);
 
-					}, 350); 
+					}, tempo); 
 				} 
 				
 				else {
 					setTimeout(function() {
 						mp1.style.opacity = '100'
 						mp2.style.opacity = '100'
-					}, 2000)
+					}, tempo + 1000)
 		
 				}
 			}
@@ -204,14 +205,14 @@ var vm = new Vue({
 						else
 						playAllNotesb(++index);
 
-					}, 350); 
+					}, tempo); 
 				}
 				
 				else {
 					setTimeout(function() {
 						mp1.style.opacity = '100'
 						mp2.style.opacity = '100'
-					}, 2000)
+					}, tempo + 1000)
 				}
 			}
 		} 

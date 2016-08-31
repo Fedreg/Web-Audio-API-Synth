@@ -93,16 +93,17 @@ label[for="nav-trigger"] {
 	max-height: 25em;
 	border-right: 0;
 	transition: all 3000ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+
 }
 
 .black-keys {
 	margin-left: -2%;
 	float: left;
 	width: 4.0%;
-	position: absolute;
 	height: 55%;
 	background-color: rgba(0,0,0,0);
 	transition: all 3000ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+
 }
 
 li select {
@@ -122,15 +123,6 @@ li a {
 	border-radius: 0;
 	padding: .5em;
 	width: 10em;
-}
-
-#chordDegree li {
-	display: inline;
-	color: white;
-	font-size: 2em;
-	text-decoration: none;
-	float: left;
-	padding-right: 2em;
 }
 
 #menu, #menub, #menuc, #menud {
@@ -166,11 +158,11 @@ width: 9.375em;
 	transform: translate(-50%, 0);
 	font-size: 1.2em;
 	text-align: center;
-	border: 1px solid #555;
+	border: 1px solid #ddd;
 	background-color: transparent;
 	width: 40%;
 	height: 50px;
-	color: #888;
+	color: #ddd;
 	
 	transition: opacity 2s ease-in-out; 
 }
