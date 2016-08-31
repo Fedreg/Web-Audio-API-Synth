@@ -69,7 +69,8 @@ Vue.component('keyboard', {
 			currentDiv.style.backgroundColor = colorChanger;
 			setTimeout(function () {
 	    		currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
-	 		}, 1000 * sustain);  
+	    		currentDiv.style.transition = 'all 3s ease-in'
+	 		}, 1000 * sustain);  currentDiv.style.transition = 'none'
 		}
 	}
 });
@@ -132,7 +133,8 @@ Vue.component('bkeyboard', {
 			currentDiv.style.backgroundColor = colorChanger;
 			setTimeout(function () {
 	    		currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
-	 		}, 1000 * sustain);  
+	    		currentDiv.style.transition = 'all 3s ease-in'
+	 		}, 1000 * sustain);  currentDiv.style.transition = 'none'
 		}
 	}
 });
@@ -146,7 +148,7 @@ var vm = new Vue({
 			const chords = this.chords
 			var musicToPlay = stringnote.split(' ')
 			var musicToPlay2 = stringnoteb.split(' ')		
-			var tempo = 100			
+			var tempo = 250
 			var mp1 = this.$els.mp1
 			var mp2 = this.$els.mp2
 			playAllNotes(0);

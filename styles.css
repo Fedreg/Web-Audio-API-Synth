@@ -92,7 +92,7 @@ label[for="nav-trigger"] {
 	height: 100%;
 	max-height: 25em;
 	border-right: 0;
-	transition: all 3000ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+
 
 }
 
@@ -102,7 +102,7 @@ label[for="nav-trigger"] {
 	width: 4.0%;
 	height: 55%;
 	background-color: rgba(0,0,0,0);
-	transition: all 3000ms cubic-bezier(0.175, 0.885, 0.320, 1.275); 
+
 
 }
 
@@ -113,6 +113,7 @@ li select {
 	border: none;
 	padding: .1em;
 	width: 9.375em;
+
 }
 
 li a {
@@ -163,8 +164,7 @@ width: 9.375em;
 	width: 40%;
 	height: 50px;
 	color: #ddd;
-	
-	transition: opacity 2s ease-in-out; 
+	transition: opacity 2.5s ease-out; 
 }
 
 .musplayer {
