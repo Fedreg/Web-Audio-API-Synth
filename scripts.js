@@ -148,14 +148,14 @@ var vm = new Vue({
 			const chords = this.chords
 			var musicToPlay = stringnote.split(' ')
 			var musicToPlay2 = stringnoteb.split(' ')		
-			var tempo = 250
+			var tempo = 200
 			var mp1 = this.$els.mp1
 			var mp2 = this.$els.mp2
+			
 			playAllNotes(0);
-			playAllNotesb(0);
 						
 			function playAllNotes(index) {
-				if (musicToPlay.length > index) {	
+				if (musicToPlay.length > index || musicToPlay2.length > index) {	
 					mp1.style.opacity = '0'
 					mp2.style.opacity = '0'
 	
@@ -163,16 +163,24 @@ var vm = new Vue({
 					
 						if (/\b([a-g]+#)|([A-G]+#)|[A-G]|[a-g]\b/g.test(musicToPlay[index])) {
 							vm.$broadcast('listenner2', chords[musicToPlay[index]])
-							playAllNotes(++index);
 						}	
 							
-						else if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay[index])) {
+						if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay[index])) {
 							vm.$broadcast('listenner', musicToPlay[index])
-							playAllNotes(++index);
 						}
 						
-						else
+						if (/([a-g]+#)|([A-G]+#)|[A-G]|[a-g]/g.test(musicToPlay2[index])) {
+							vm.$broadcast('listennerb2', chords[musicToPlay2[index]])
+						}	
+							
+						if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay2[index])) {
+							vm.$broadcast('listennerb', musicToPlay2[index])
+						}    
+
+						if (/\s{1}/g.test(musicToPlay[index]) ||  /\s{1}/g.test(musicToPlay2[index])) 
 						playAllNotes(++index);
+						
+						playAllNotes(++index);						
 
 					}, tempo); 
 				} 
@@ -182,42 +190,10 @@ var vm = new Vue({
 						mp1.style.opacity = '100'
 						mp2.style.opacity = '100'
 					}, tempo + 1000)
-		
-				}
-			}
-			
-			function playAllNotesb(index) {
-				if (musicToPlay2.length > index) {
-					mp1.style.opacity = '0'
-					mp2.style.opacity = '0'
-	
-					setTimeout(function() {
-					
-												
-						if (/([a-g]+#)|([A-G]+#)|[A-G]|[a-g]/g.test(musicToPlay2[index])) {
-							vm.$broadcast('listennerb2', chords[musicToPlay2[index]])
-							playAllNotesb(++index);
-						}	
-							
-						else if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay2[index])) {
-							vm.$broadcast('listennerb', musicToPlay2[index])
-							playAllNotesb(++index);
-						}    
-						
-						else
-						playAllNotesb(++index);
-
-					}, tempo); 
-				}
-				
-				else {
-					setTimeout(function() {
-						mp1.style.opacity = '100'
-						mp2.style.opacity = '100'
-					}, tempo + 1000)
-				}
-			}
-		} 
+					//playAllNotes(0);
+				}  
+			} 
+		}		
 	},
 	data: {
 		stringnoteb: '',

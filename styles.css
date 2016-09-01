@@ -102,8 +102,6 @@ label[for="nav-trigger"] {
 	width: 4.0%;
 	height: 55%;
 	background-color: rgba(0,0,0,0);
-
-
 }
 
 li select {
@@ -164,7 +162,7 @@ width: 9.375em;
 	width: 40%;
 	height: 50px;
 	color: #ddd;
-	transition: opacity 2.5s ease-out; 
+	transition: opacity 3s ease-out; 
 }
 
 .musplayer {
