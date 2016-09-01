@@ -148,7 +148,7 @@ var vm = new Vue({
 			const chords = this.chords
 			var musicToPlay = stringnote.split(' ')
 			var musicToPlay2 = stringnoteb.split(' ')		
-			var tempo = 200
+			var tempo = 50
 			var mp1 = this.$els.mp1
 			var mp2 = this.$els.mp2
 			

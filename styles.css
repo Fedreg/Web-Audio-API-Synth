@@ -32,7 +32,7 @@ body {
 	flex-orientation: column;
 	justify-content: space-between;
 	flex-wrap: wrap;
-    min-width: 100%;
+    max-width: 100%;
     min-height: 100%;
     background: #000;
     position: relative;
@@ -75,12 +75,12 @@ label[for="nav-trigger"] {
 
 .keyboard {
 	display: flex;
-	flex-orientation: row;
+	flex-orientation: column;
 	margin: 0;
 	position: relative;
-	height: 40vh;
+	height: 9vh;
 	min-height: 100px;
-	width: 50%;
+	width: 10%;
 	min-width: 300px;
 	background-color: rgba(0,0,0,0);
 	padding: 0;
