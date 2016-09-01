@@ -40,7 +40,6 @@ body {
     bottom: 100%;
     left: 0;
     z-index: 1;
-    padding: 5%;
 }
 
 .nav-trigger {
@@ -78,12 +77,11 @@ label[for="nav-trigger"] {
 	flex-orientation: column;
 	margin: 0;
 	position: relative;
-	height: 9vh;
-	min-height: 100px;
-	width: 10%;
-	min-width: 300px;
+	height: 12vh;
+	width: 16%;
 	background-color: rgba(0,0,0,0);
 	padding: 0;
+
 }
 
 .white-keys {
