@@ -56,7 +56,7 @@ Vue.component('keyboard', {
 	 		
 	 		gainNode;			
 			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'square';
+		 	oscillator.type = wave;
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
@@ -77,7 +77,7 @@ Vue.component('keyboard', {
 
 Vue.component('bkeyboard', {
 	template: '#bkeyboard-template',
-	props: ['chord', 'octave', 'sustain'],
+	props: ['chord', 'octaveb', 'sustainb', 'waveb'],
 	data: function() {
     	return {
       		chords: {}
@@ -110,8 +110,9 @@ Vue.component('bkeyboard', {
   	 	},	
 	methods: {
   		play: function (note){			
-			var octave = this.octave;
-	 		var sustain = Number(this.sustain);
+			var octave = this.octaveb;
+	 		var sustain = Number(this.sustainb);
+	 		var wave = this.waveb;
 	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
 			const oscillator = context.createOscillator();
 			const gainNode = context.createGain();
@@ -120,7 +121,7 @@ Vue.component('bkeyboard', {
 	 		var currentDiv = event.currentTarget;
 	 					
 			//oscillator wave type (sine, triangle, square, or sawtooth)
-		 	oscillator.type = 'square';
+		 	oscillator.type = wave;
 			//connect signal to audio to gain; gain to compressor (compressor to output)
 		 	oscillator.connect(gainNode);
 		 	gainNode.connect(compressor); 	
@@ -148,7 +149,8 @@ var vm = new Vue({
 			const chords = this.chords
 			var musicToPlay = stringnote.split(' ')
 			var musicToPlay2 = stringnoteb.split(' ')		
-			var tempo = 50
+			var bpm = this.bpm
+			var tempo = 60000/bpm * 1/2 //basic rhythm is in 8th notes(1/2 of a quarter note)
 			var mp1 = this.$els.mp1
 			var mp2 = this.$els.mp2
 			
@@ -196,6 +198,13 @@ var vm = new Vue({
 		}		
 	},
 	data: {
+		wave: '',
+		waveb: '',
+		octave: '',
+		octaveb: '',
+		sustain: '',
+		sustainb: '',
+		bpm: 120,
 		stringnoteb: '',
 		stringnote: '',
 		chords: {
