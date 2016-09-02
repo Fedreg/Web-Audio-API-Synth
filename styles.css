@@ -35,7 +35,7 @@ body {
     min-width: 100%;
     min-height: 100%;
     background: #000;
-    position: relative;
+    position: absolute;
     top: 0;
     bottom: 100%;
     left: 0;
@@ -56,7 +56,7 @@ label[for="nav-trigger"] {
     width: 30px;
     height: 30px;
     font-size: 2em;
-    color: white;
+    color: #555;
     background-size: contain;
 }
 

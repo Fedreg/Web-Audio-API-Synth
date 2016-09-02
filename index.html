@@ -13,21 +13,82 @@
 	</head>
 	<body id="bod">
 		<div id="app">
+			<ul id="navigation">
+			<input type="number" class="nav-item" v-model="bpm" :bpm="bpm" placeholder="tempo" v-el:tempo/>
+			<div id="menu">
+				<li class="nav-item">
+					<select id="waveSelect" v-model="wave" :wave="wave">
+					    <option selected="selected" value="sine">WAVE: SINE</option>
+					    <option value="square">WAVE: SQUARE</option>
+					    <option value="triangle">WAVE: TRIANGLE</option>
+					    <option value="sawtooth">WAVE: SAWTOOTH</option>
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="octave" v-model="octave" :octave="octave">
+						<option value="2.0">OCTAVE 0</option>
+						<option value="1.0">OCTAVE -1</option>
+						<option value="0.5">OCTAVE -2</option>
+						<option selected="selected" value="4.0">OCTAVE +1</option>
+						<option value="8.0">OCTAVE +2</option>				
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="sustain" v-model="sustain" :sustain="sustain">
+						<option value="0.25">SIXTEENTH NOTE</option>
+						<option selected="selected" value="0.5">EIGHTH NOTE</option>
+						<option value="1.0">QUARTER NOTE</option>
+						<option value="2.0">HALF NOTE</option>
+						<option value="4.0">WHOLE NOTE</option>				
+	
+					</select>
+				</li>
+			</div>
+			<div id="menub">
+				<li class="nav-item">
+					<select id="waveSelectb" v-model="waveb" :waveb="waveb">
+					    <option selected="selected" value="sine">WAVE: SINE</option>
+					    <option value="square">WAVE: SQUARE</option>
+					    <option value="triangle">WAVE: TRIANGLE</option>
+					    <option value="sawtooth">WAVE: SAWTOOTH</option>
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="octaveb" v-model="octaveb" :octaveb="octaveb">
+						<option selected="selected" value="2.0">OCTAVE 0</option>
+						<option value="1.0">OCTAVE -1</option>
+						<option value="0.5">OCTAVE -2</option>
+						<option value="4.0">OCTAVE +1</option>
+						<option value="8.0">OCTAVE +2</option>				
+					</select>
+				</li>
+				<li class="nav-item">
+					<select id="sustainb" v-model="sustainb" :sustainb="sustainb">
+						<option value="0.25">SIXTEENTH NOTE</option>
+						<option value="0.5">EIGHTH NOTE</option>
+						<option selected="selected" value="1.0">QUARTER NOTE</option>
+						<option value="2.0">HALF NOTE</option>
+						<option value="4.0">WHOLE NOTE</option>				
+					</select>
+				</li>
+			</div>
+			<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+			<label id="burger" for="nav-trigger">&#9776;</label>
 			<div id="wrapper">
 				<div class="keyboard">
-					<keyboard :chord="chord" octave="2" sustain=".5" ></keyboard>
+					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain"></keyboard>
 				</div>
 				<div class="keyboard">
-					<keyboard :chord="chord" octave="2" sustain=".5" ></keyboard>
+					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain"></keyboard>
 				</div>
 				<div class="keyboard">
-					<bkeyboard :chord="chord" octave="1" sustain=".5" ></bkeyboard>
+					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" ></bkeyboard>
 				</div>
 				<div class="keyboard">
-					<bkeyboard :chord="chord" octave=".5" sustain=".5" ></bkeyboard>
+					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb"></bkeyboard>
 				</div>
 								<template id="keyboard-template">
-					<div  class="white-keys" v-el:k1 transition="fade" @click="play(130.81)"></div>
+					<div  class="white-keys" v-el:k1 @click="play(130.81)"></div>
 					<div  class="black-keys" v-el:k2 @click="play(139.00)"></div>
 					<div  class="white-keys" v-el:k3 @click="play(146.83)"></div>
 					<div  class="black-keys" v-el:k4 @click="play(156.00)"></div>
@@ -81,8 +142,8 @@
 					<div  class="white-keys" v-el:kb25 @click="play(523.25)"></div>
 				</template>	
 			</div>
-				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.enter="sendnote()" placeholder="synth 1" v-el:mp1/>
-				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.enter="sendnote()" placeholder="synth 2" v-el:mp2/> 
+				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.Enter="sendnote()" placeholder="synth 1" v-el:mp1/>
+				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="synth 2" v-el:mp2/> 
 		</div>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>
