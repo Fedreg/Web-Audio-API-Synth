@@ -121,7 +121,7 @@ Vue.component('bkeyboard', {
 	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
 			const oscillator = context.createOscillator();
 			const gainNode = context.createGain();
-			const quickFadeIn = gainNode.gain.setTargetAtTime(.4, context.currentTime, .1);
+			const quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, .1);
 	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.05);	
 	 		var currentDiv = event.currentTarget;
 	 		  	 					console.log(sustain, quickFadeOut)

@@ -4,11 +4,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Web Audio API Keyboard</title>
+		<title>Web Audio Skethpad</title>
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/1.2.0/normalize.css">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Open-Sans:300,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body id="bod">
@@ -75,7 +74,12 @@
 			<input type="checkbox" id="nav-trigger" class="nav-trigger" />
 			<label id="burger" for="nav-trigger">&#9776;</label>
 			<div id="wrapper">
-				
+				<div class="keyboard">
+					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
+				</div>
+				<div class="keyboard">
+					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
+				</div>
 				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.Enter="sendnote()" placeholder="Synth 1" v-el:mp1 />			
 				<div class="keyboard">
 					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
@@ -87,9 +91,10 @@
 				<div class="keyboard">
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm" ></bkeyboard>
 				</div>
-				<div class="keyboard">	<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
+				<div class="keyboard">	
+					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
 				</div>
-								<template id="keyboard-template">
+				<template id="keyboard-template">
 					<div  class="white-keys" v-el:k1 @click="play(130.81)"></div>
 					<div  class="white-keys" v-el:k2 @click="play(139.00)"></div>
 					<div  class="white-keys" v-el:k3 @click="play(146.83)"></div>
@@ -144,8 +149,6 @@
 					<div  class="white-keys" v-el:kb25 @click="play(523.25)"></div>
 				</template>	
 			</div>
-		<!--		<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.Enter="sendnote()" placeholder="synth 1" v-el:mp1/>
-				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="synth 2" v-el:mp2/> -->
 		</div>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>
