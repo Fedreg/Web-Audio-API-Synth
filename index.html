@@ -84,10 +84,9 @@
 				<div class="keyboard">
 					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
-				<div class="keyboard">
-					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
-				</div>
-				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="Synth 2" v-el:mp2/> 				
+					<div class="keyboard">	
+					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
+				</div>				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="Synth 2" v-el:mp2/> 				
 				<div class="keyboard">
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm" ></bkeyboard>
 				</div>
