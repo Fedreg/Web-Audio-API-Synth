@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/1.2.0/normalize.css">
-		<link href='https://fonts.googleapis.com/css?family=Open-Sans:300,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body id="bod">
 		<div id="app">
@@ -71,6 +71,10 @@
 					</select>
 				</li>
 			</div>
+			<div id="menuc">
+				<li class="nav-item">
+						<input type="checkbox" id="loop" v-model="loop" :loop="loop">
+						<label for="loop">LOOPING</label>
 			<input type="checkbox" id="nav-trigger" class="nav-trigger" />
 			<label id="burger" for="nav-trigger">&#9776;</label>
 			<div id="wrapper">

@@ -53,8 +53,8 @@ label[for="nav-trigger"] {
     top: 15px;
     left: 15px;
     z-index: 2;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     font-size: 2em;
     color: #555;
     background-size: contain;
@@ -62,7 +62,7 @@ label[for="nav-trigger"] {
 
 .nav-item {
 	background-color: #000;
-	font-size: 1.2em;
+	font-size: 1em;
 	color: #fff;
 	width: 150px;
 }
@@ -110,7 +110,7 @@ li select {
 li a {
 	background: none;
 	color: #3ce4f7;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	border: 2px solid #3ce4f7;
 	border-radius: 0;
 	padding: .5em;
@@ -130,7 +130,7 @@ padding-top: 25px;
 	color: #3ce4f7;
 }
 
-#menuc li select {
+#menuc {
 	color: #fa0a8b; 
 }
 

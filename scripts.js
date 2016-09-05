@@ -159,6 +159,7 @@ var vm = new Vue({
 			var tempo = 60/bpm * 1/2 * 1000//basic rhythm is in 8th notes(1/2 of a quarter note/in ms)
 			var mp1 = this.$els.mp1
 			var mp2 = this.$els.mp2
+			var loop = this.loop
 			
 			playAllNotes(0);
 						
@@ -188,17 +189,20 @@ var vm = new Vue({
 						if (/\s{1}/g.test(musicToPlay[index]) ||  /\s{1}/g.test(musicToPlay2[index])) 
 						playAllNotes(++index);
 						
-						playAllNotes(++index);						
-
+						playAllNotes(++index);
+						
 					}, tempo); 
 				} 
+				
+				else if (loop === true) {
+					playAllNotes(0);
+				}
 				
 				else {
 					setTimeout(function() {
 						mp1.style.opacity = '100'
 						mp2.style.opacity = '100'
-					}, tempo + 1000)
-					//playAllNotes(0);
+					}, tempo + 500)
 				}  
 			} 
 		}		
