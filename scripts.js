@@ -4,10 +4,10 @@ const context = new (window.webkitAudioContext || window.AudioContext || window.
 const compressor = context.createDynamicsCompressor();
 compressor.threshold.value = -54;
 compressor.knee.value = 40;
-compressor.ratio.value = 50;
+compressor.ratio.value = 20;
 compressor.reduction = -40;
-compressor.attack.value = -60;
-compressor.release.value = 5.25;
+compressor.attack.value = .5;
+compressor.release.value = .5;
 compressor.connect(context.destination);
 
 var bus = new Vue()
@@ -15,13 +15,9 @@ var bus = new Vue()
 //play notes when clicked as well as when sent via text input
 Vue.component('keyboard', {
 	template: '#keyboard-template',
-	props: ['chord', 'octave', 'sustain' , 'wave', 'bpm'],
-	data: function() {
-    	return {
-      	chords: {}
-    	};
-  	},
-  	created: {
+	props: ['chords', 'octave', 'sustain' , 'wave', 'bpm'],
+	
+  created: {
   	 	listenner: function() {
   	 		bus.$on(function(num){ // for notes
   	 			if (num != null) {
@@ -87,13 +83,8 @@ Vue.component('keyboard', {
 //play notes when clicked as well as when sent via text input
 Vue.component('bkeyboard', {
 	template: '#bkeyboard-template',
-	props: ['chord', 'octaveb', 'sustainb', 'waveb', 'bpm'],
-	data: function() {
-    	return {
-      		chords: {}
-     	};
-  	},
-  	created: {
+	props: ['chords', 'octaveb', 'sustainb', 'waveb', 'bpm'],
+	created: {
   	 	listennerb: function() {
   	 		bus.$on(function(num){ // for notes
   	 			if (num != null) {
@@ -158,13 +149,6 @@ Vue.component('bkeyboard', {
 Vue.component('musplayer', {
 	template: '#musplaer-template',
 	props: ['bpm', 'stringnote', 'stringnoteb'],
-	data: {
-		function() {
-    	return {
-      		chords: {}
-     	};
-  	}
-  },
 	methods: {
 		//sends notes from text entry to play function
 		sendnote: function(){
@@ -226,14 +210,14 @@ Vue.component('musplayer', {
 
 var vm = new Vue({
 	el: '#app',
-	data: {
+		data: {
 		wave: 'square',
 		waveb: 'square',
 		octave: '0',
 		octaveb: '-1',
 		sustain: '.5',
 		sustainb: '1',
-		bpm: 180,
+		bpm: '180',
 		stringnoteb: '',
 		stringnote: '',
 		chords: {
