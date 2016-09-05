@@ -10,38 +10,43 @@ compressor.attack.value = -60;
 compressor.release.value = 5.25;
 compressor.connect(context.destination);
 
+var bus = new Vue()
+
+//play notes when clicked as well as when sent via text input
 Vue.component('keyboard', {
 	template: '#keyboard-template',
 	props: ['chord', 'octave', 'sustain' , 'wave', 'bpm'],
 	data: function() {
     	return {
-      		chords: {}
+      	chords: {}
     	};
   	},
-  	events: {
-  	 	listenner: 
-  	 		function(num){ // for notes
+  	created: {
+  	 	listenner: function() {
+  	 		bus.$on(function(num){ // for notes
   	 			if (num != null) {
   	  	 			var e = "k" + num;
   	  	 			var f = (Number(num) + 12);
-  		 			var g = "k" + f
-  	 				this.$els[e].click();
+  		 				var g = "k" + f
+  	 					this.$refs[e].click();
   	 			
-  	 				if (f < 26) {
-  	 					this.$els[g].click();
-  	 				}
+  	 					if (f < 26) {
+  	 						this.$refs[g].click();
+  	 					}
   	 			}	
-  	 		},
-  	 	listenner2: //for chords
-  	 		function(num){
+  	 		})
+  	 	},
+  	 	listenner2: function() { //for chords
+  	 		bus.$on(function(num){
   	 			if(num != null) {
   	 				for (var i = 0; i < 3; i++) {
   	 					var e = "k" + num[i];
-  	 					this.$els[e].click();
+  	 					this.$refs[e].click();
   	 				}
   	 			}
-  	 		}
-  	 	},	
+  	 		})
+  	 	}
+  	 },
 	methods: {
   		play: function (note){			
 			var octave = this.octave;
@@ -79,38 +84,41 @@ Vue.component('keyboard', {
 	}
 });
 
+//play notes when clicked as well as when sent via text input
 Vue.component('bkeyboard', {
 	template: '#bkeyboard-template',
 	props: ['chord', 'octaveb', 'sustainb', 'waveb', 'bpm'],
 	data: function() {
     	return {
       		chords: {}
-    	};
+     	};
   	},
-  	events: {
-  	 	
-  	 	listennerb: 
-  	 		function(num){ // for notes
+  	created: {
+  	 	listennerb: function() {
+  	 		bus.$on(function(num){ // for notes
   	 			if (num != null) {
-  	  	 			var e = "kb" + num;var f = (Number(num) + 12);
-  		 			var g = "kb" + f
-  	 				this.$els[e].click();
+  	  	 			var e = "kb" + num;
+  	  	 			var f = (Number(num) + 12);
+  		 				var g = "kb" + f
+  	 					this.$refs[e].click();
   	 			
-  	 				if (f < 26) {
-  	 					this.$els[g].click();
-  	 				}
+  	 					if (f < 26) {
+  	 						this.$refs[g].click();
+  	 					}
   	 			}	
-  	 		},
-  	 	listennerb2: //for chords
-  	 		function(num){
+  	 		})
+  	 	},
+  	 	listennerb2: function() { //for chords
+  	 		bus.$on(function(num){
   	 			if(num != null) {
   	 				for (var i = 0; i < 3; i++) {
   	 					var e = "kb" + num[i];
-  	 					this.$els[e].click();
+  	 					this.$refs[e].click();
   	 				}
   	 			}
-  	 		}
-  	 	},	
+  	 		})
+  	 	}
+  	 },
 	methods: {
   		play: function (note){			
 			var octave = this.octaveb;
@@ -146,9 +154,19 @@ Vue.component('bkeyboard', {
 	}
 });
 
-var vm = new Vue({
-	el: '#app',
+//takes text entry and sends notes to play functions
+Vue.component('musplayer', {
+	template: '#musplaer-template',
+	props: ['bpm', 'stringnote', 'stringnoteb'],
+	data: {
+		function() {
+    	return {
+      		chords: {}
+     	};
+  	}
+  },
 	methods: {
+		//sends notes from text entry to play function
 		sendnote: function(){
 			var stringnote = this.stringnote
 			var stringnoteb = this.stringnoteb
@@ -157,12 +175,13 @@ var vm = new Vue({
 			var musicToPlay2 = stringnoteb.split(' ')		
 			var bpm = this.bpm
 			var tempo = 60/bpm * 1/2 * 1000//basic rhythm is in 8th notes(1/2 of a quarter note/in ms)
-			var mp1 = this.$els.mp1
-			var mp2 = this.$els.mp2
+			var mp1 = this.$refs.mp1
+			var mp2 = this.$refs.mp2
 			
 			playAllNotes(0);
 						
 			function playAllNotes(index) {
+				//plays through entire length of either text entry
 				if (musicToPlay.length > index || musicToPlay2.length > index) {	
 					mp1.style.opacity = '0'
 					mp2.style.opacity = '0'
@@ -170,19 +189,19 @@ var vm = new Vue({
 					setTimeout(function() {
 					
 						if (/\b([a-g]+#)|([A-G]+#)|[A-G]|[a-g]\b/g.test(musicToPlay[index])) {
-							vm.$broadcast('listenner2', chords[musicToPlay[index]])
+							vm.$emit('listenner2', chords[musicToPlay[index]])
 						}	
 							
 						if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay[index])) {
-							vm.$broadcast('listenner', musicToPlay[index])
+							vm.$emit('listenner', musicToPlay[index])
 						}
 						
 						if (/([a-g]+#)|([A-G]+#)|[A-G]|[a-g]/g.test(musicToPlay2[index])) {
-							vm.$broadcast('listennerb2', chords[musicToPlay2[index]])
+							vm.$emit('listennerb2', chords[musicToPlay2[index]])
 						}	
 							
 						if (/\b(0?[1-9]|1[0-9]|2[0-5])\b/g.test(musicToPlay2[index])) {
-							vm.$broadcast('listennerb', musicToPlay2[index])
+							vm.$emit('listennerb', musicToPlay2[index])
 						}    
 
 						if (/\s{1}/g.test(musicToPlay[index]) ||  /\s{1}/g.test(musicToPlay2[index])) 
@@ -201,16 +220,20 @@ var vm = new Vue({
 					//playAllNotes(0);
 				}  
 			} 
-		}		
-	},
+		}
+	}
+});
+
+var vm = new Vue({
+	el: '#app',
 	data: {
-		wave: '',
-		waveb: '',
-		octave: '',
-		octaveb: '',
-		sustain: '',
-		sustainb: '',
-		bpm: 120,
+		wave: 'square',
+		waveb: 'square',
+		octave: '0',
+		octaveb: '-1',
+		sustain: '.5',
+		sustainb: '1',
+		bpm: 180,
 		stringnoteb: '',
 		stringnote: '',
 		chords: {
@@ -239,6 +262,6 @@ var vm = new Vue({
 			'B':  [12,16,7],
 			'b':  [12,15,7],
 		}
-	}
+	}	
 });
 

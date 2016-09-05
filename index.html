@@ -13,11 +13,11 @@
 	<body id="bod">
 		<div id="app">
 			<ul id="navigation">
-			<input type="number" class="nav-item" v-model="bpm" :bpm="bpm" placeholder="BPM" v-el:tempo/>
+			<input type="number" class="nav-item" v-model="bpm" :bpm="bpm" placeholder="BPM" ref="tempo"/>
 			<div id="menu">
 				<li class="nav-item">
 					<select id="waveSelect" v-model="wave" :wave="wave">
-					    <option selected="selected" value="sine">WAVE: SINE</option>
+					    <option v-refvalue="sine">WAVE: SINE</option>
 					    <option value="square">WAVE: SQUARE</option>
 					    <option value="triangle">WAVE: TRIANGLE</option>
 					    <option value="sawtooth">WAVE: SAWTOOTH</option>
@@ -28,14 +28,14 @@
 						<option value="2.0">OCTAVE 0</option>
 						<option value="1.0">OCTAVE -1</option>
 						<option value="0.5">OCTAVE -2</option>
-						<option selected="selected" value="4.0">OCTAVE +1</option>
+						<option v-refvalue="4.0">OCTAVE +1</option>
 						<option value="8.0">OCTAVE +2</option>				
 					</select>
 				</li>
 				<li class="nav-item">
 					<select id="sustain" v-model="sustain" :sustain="sustain">
 						<option value="0.25">SIXTEENTH NOTE</option>
-						<option selected="selected" value="0.5">EIGHTH NOTE</option>
+						<option v-refvalue="0.5">EIGHTH NOTE</option>
 						<option value="1.0">QUARTER NOTE</option>
 						<option value="2.0">HALF NOTE</option>
 						<option value="4.0">WHOLE NOTE</option>				
@@ -46,7 +46,7 @@
 			<div id="menub">
 				<li class="nav-item">
 					<select id="waveSelectb" v-model="waveb" :waveb="waveb">
-					    <option selected="selected" value="sine">WAVE: SINE</option>
+					    <option v-refvalue="sine">WAVE: SINE</option>
 					    <option value="square">WAVE: SQUARE</option>
 					    <option value="triangle">WAVE: TRIANGLE</option>
 					    <option value="sawtooth">WAVE: SAWTOOTH</option>
@@ -54,7 +54,7 @@
 				</li>
 				<li class="nav-item">
 					<select id="octaveb" v-model="octaveb" :octaveb="octaveb">
-						<option selected="selected" value="2.0">OCTAVE 0</option>
+						<option v-refvalue="2.0">OCTAVE 0</option>
 						<option value="1.0">OCTAVE -1</option>
 						<option value="0.5">OCTAVE -2</option>
 						<option value="4.0">OCTAVE +1</option>
@@ -65,7 +65,7 @@
 					<select id="sustainb" v-model="sustainb" :sustainb="sustainb">
 						<option value="0.25">SIXTEENTH NOTE</option>
 						<option value="0.5">EIGHTH NOTE</option>
-						<option selected="selected" value="1.0">QUARTER NOTE</option>
+						<option v-refvalue="1.0">QUARTER NOTE</option>
 						<option value="2.0">HALF NOTE</option>
 						<option value="4.0">WHOLE NOTE</option>				
 					</select>
@@ -80,76 +80,81 @@
 				<div class="keyboard">
 					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
-				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.Enter="sendnote()" placeholder="Synth 1" v-el:mp1 />			
+				
 				<div class="keyboard">
 					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
 					<div class="keyboard">	
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
-				</div>				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="Synth 2" v-el:mp2/> 				
+				</div>				
 				<div class="keyboard">
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm" ></bkeyboard>
 				</div>
 				<div class="keyboard">	
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
 				</div>
+				<template id="musplayer-template">
+					<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.Enter="sendnote()" placeholder="Synth 1" ref="mp1" />
+					<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="Synth 2" ref="mp2"/>
+				</template>
 				<template id="keyboard-template">
-					<div  class="white-keys" v-el:k1 @click="play(130.81)"></div>
-					<div  class="white-keys" v-el:k2 @click="play(139.00)"></div>
-					<div  class="white-keys" v-el:k3 @click="play(146.83)"></div>
-					<div  class="white-keys" v-el:k4 @click="play(156.00)"></div>
-					<div  class="white-keys" v-el:k5 @click="play(164.81)"></div>
-					<div  class="white-keys" v-el:k6 @click="play(174.61)"></div>
-					<div  class="white-keys" v-el:k7 @click="play(185.00)"></div>
-					<div  class="white-keys" v-el:k8 @click="play(196.00)"></div>
-					<div  class="white-keys" v-el:k9 @click="play(208.00)"></div>
-					<div  class="white-keys" v-el:k10 @click="play(220.00)"></div>
-					<div  class="white-keys" v-el:k11 @click="play(233.00)"></div>
-					<div  class="white-keys" v-el:k12 @click="play(246.94)"></div>
-					<div  class="white-keys" v-el:k13 @click="play(261.63)"></div>
-					<div  class="white-keys" v-el:k14 @click="play(277.00)"></div>
-					<div  class="white-keys" v-el:k15 @click="play(293.66)"></div>
-					<div  class="white-keys" v-el:k16 @click="play(311.00)"></div>
-					<div  class="white-keys" v-el:k17 @click="play(329.63)"></div>
-					<div  class="white-keys" v-el:k18 @click="play(349.23)"></div>
-					<div  class="white-keys" v-el:k19 @click="play(370.00)"></div>
-					<div  class="white-keys" v-el:k20 @click="play(392.00)"></div>
-					<div  class="white-keys" v-el:k21 @click="play(415.00)"></div>
-					<div  class="white-keys" v-el:k22 @click="play(440.00)"></div>
-					<div  class="white-keys" v-el:k23 @click="play(466.00)"></div>
-					<div  class="white-keys" v-el:k24 @click="play(493.88)"></div>
-					<div  class="white-keys" v-el:k25 @click="play(523.25)"></div>
+					<div  class="white-keys" ref="k1" @click="play(130.81)"></div>
+					<div  class="white-keys" ref="k2" @click="play(139.00)"></div>
+					<div  class="white-keys" ref="k3" @click="play(146.83)"></div>
+					<div  class="white-keys" ref="k4" @click="play(156.00)"></div>
+					<div  class="white-keys" ref="k5" @click="play(164.81)"></div>
+					<div  class="white-keys" ref="k6" @click="play(174.61)"></div>
+					<div  class="white-keys" ref="k7" @click="play(185.00)"></div>
+					<div  class="white-keys" ref="k8" @click="play(196.00)"></div>
+					<div  class="white-keys" ref="k9" @click="play(208.00)"></div>
+					<div  class="white-keys" ref="k10" @click="play(220.00)"></div>
+					<div  class="white-keys" ref="k11" @click="play(233.00)"></div>
+					<div  class="white-keys" ref="k12" @click="play(246.94)"></div>
+					<div  class="white-keys" ref="k13" @click="play(261.63)"></div>
+					<div  class="white-keys" ref="k14" @click="play(277.00)"></div>
+					<div  class="white-keys" ref="k15" @click="play(293.66)"></div>
+					<div  class="white-keys" ref="k16" @click="play(311.00)"></div>
+					<div  class="white-keys" ref="k17" @click="play(329.63)"></div>
+					<div  class="white-keys" ref="k18" @click="play(349.23)"></div>
+					<div  class="white-keys" ref="k19" @click="play(370.00)"></div>
+					<div  class="white-keys" ref="k20" @click="play(392.00)"></div>
+					<div  class="white-keys" ref="k21" @click="play(415.00)"></div>
+					<div  class="white-keys" ref="k22" @click="play(440.00)"></div>
+					<div  class="white-keys" ref="k23" @click="play(466.00)"></div>
+					<div  class="white-keys" ref="k24" @click="play(493.88)"></div>
+					<div  class="white-keys" ref="k25" @click="play(523.25)"></div>
 				</template>
 				<template id="bkeyboard-template">
-					<div  class="white-keys" v-el:kb1 @click="play(130.81)"></div>
-					<div  class="white-keys" v-el:kb2 @click="play(139.00)"></div>
-					<div  class="white-keys" v-el:kb3 @click="play(146.83)"></div>
-					<div  class="white-keys" v-el:kb4 @click="play(156.00)"></div>
-					<div  class="white-keys" v-el:kb5 @click="play(164.81)"></div>
-					<div  class="white-keys" v-el:kb6 @click="play(174.61)"></div>
-					<div  class="white-keys" v-el:kb7 @click="play(185.00)"></div>
-					<div  class="white-keys" v-el:kb8 @click="play(196.00)"></div>
-					<div  class="white-keys" v-el:kb9 @click="play(208.00)"></div>
-					<div  class="white-keys" v-el:kb10 @click="play(220.00)"></div>
-					<div  class="white-keys" v-el:kb11 @click="play(233.00)"></div>
-					<div  class="white-keys" v-el:kb12 @click="play(246.94)"></div>
-					<div  class="white-keys" v-el:kb13 @click="play(261.63)"></div>
-					<div  class="white-keys" v-el:kb14 @click="play(277.00)"></div>
-					<div  class="white-keys" v-el:kb15 @click="play(293.66)"></div>
-					<div  class="white-keys" v-el:kb16 @click="play(311.00)"></div>
-					<div  class="white-keys" v-el:kb17 @click="play(329.63)"></div>
-					<div  class="white-keys" v-el:kb18 @click="play(349.23)"></div>
-					<div  class="white-keys" v-el:kb19 @click="play(370.00)"></div>
-					<div  class="white-keys" v-el:kb20 @click="play(392.00)"></div>
-					<div  class="white-keys" v-el:kb21 @click="play(415.00)"></div>
-					<div  class="white-keys" v-el:kb22 @click="play(440.00)"></div>
-					<div  class="white-keys" v-el:kb23 @click="play(466.00)"></div>
-					<div  class="white-keys" v-el:kb24 @click="play(493.88)"></div>
-					<div  class="white-keys" v-el:kb25 @click="play(523.25)"></div>
+					<div  class="white-keys" ref="kb1" @click="play(130.81)"></div>
+					<div  class="white-keys" ref="kb2" @click="play(139.00)"></div>
+					<div  class="white-keys" ref="kb3" @click="play(146.83)"></div>
+					<div  class="white-keys" ref="kb4" @click="play(156.00)"></div>
+					<div  class="white-keys" ref="kb5" @click="play(164.81)"></div>
+					<div  class="white-keys" ref="kb6" @click="play(174.61)"></div>
+					<div  class="white-keys" ref="kb7" @click="play(185.00)"></div>
+					<div  class="white-keys" ref="kb8" @click="play(196.00)"></div>
+					<div  class="white-keys" ref="kb9" @click="play(208.00)"></div>
+					<div  class="white-keys" ref="kb10" @click="play(220.00)"></div>
+					<div  class="white-keys" ref="kb11" @click="play(233.00)"></div>
+					<div  class="white-keys" ref="kb12" @click="play(246.94)"></div>
+					<div  class="white-keys" ref="kb13" @click="play(261.63)"></div>
+					<div  class="white-keys" ref="kb14" @click="play(277.00)"></div>
+					<div  class="white-keys" ref="kb15" @click="play(293.66)"></div>
+					<div  class="white-keys" ref="kb16" @click="play(311.00)"></div>
+					<div  class="white-keys" ref="kb17" @click="play(329.63)"></div>
+					<div  class="white-keys" ref="kb18" @click="play(349.23)"></div>
+					<div  class="white-keys" ref="kb19" @click="play(370.00)"></div>
+					<div  class="white-keys" ref="kb20" @click="play(392.00)"></div>
+					<div  class="white-keys" ref="kb21" @click="play(415.00)"></div>
+					<div  class="white-keys" ref="kb22" @click="play(440.00)"></div>
+					<div  class="white-keys" ref="kb23" @click="play(466.00)"></div>
+					<div  class="white-keys" ref="kb24" @click="play(493.88)"></div>
+					<div  class="white-keys" ref="kb25" @click="play(523.25)"></div>
 				</template>	
 			</div>
 		</div>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
+		<script type="text/javascript" src="
+https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.4/vue.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>
 	</body>
 </html>
