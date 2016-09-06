@@ -73,8 +73,12 @@ Vue.component('keyboard', {
 			currentDiv.style.backgroundColor = colorChanger;
 			setTimeout(function () {
 	    		currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
+	    		currentDiv.style.zIndex = '2'
 	    		currentDiv.style.transition = 'all 3s ease-in'
+	    		currentDiv.style.transform = 'scale(2, 0.5)'
 	 		}, 1000 * sustain);  currentDiv.style.transition = 'none'
+	 		currentDiv.style.transform = 'inherit'
+	 		currentDiv.style.zIndex = '1'
 		}
 	}
 });
@@ -140,8 +144,13 @@ Vue.component('bkeyboard', {
 			currentDiv.style.backgroundColor = colorChanger;
 			setTimeout(function () {
 	    		currentDiv.style.backgroundColor = 'rgba(0,0,0,0)';
-	    		currentDiv.style.transition = 'all 3s ease-in';
-	 		}, 1000 * sustain);  currentDiv.style.transition = 'none';
+	    		currentDiv.style.zIndex = '2'
+	    		currentDiv.style.transition = 'all 3s ease-in'
+	    		currentDiv.style.transform = 'scale(2, 0.5)'
+	 		}, 1000 * sustain);  
+	 		currentDiv.style.transition = 'none'
+	 		currentDiv.style.transform = 'inherit'
+	 		currentDiv.style.zIndex = '1'
 		}
 	}
 });
@@ -202,7 +211,7 @@ var vm = new Vue({
 					setTimeout(function() {
 						mp1.style.opacity = '100'
 						mp2.style.opacity = '100'
-					}, tempo + 500)
+					}, tempo + 1000)
 				}  
 			} 
 		}		
@@ -214,7 +223,7 @@ var vm = new Vue({
 		octaveb: '',
 		sustain: '',
 		sustainb: '',
-		bpm: 120,
+		bpm: 240,
 		stringnoteb: '',
 		stringnote: '',
 		chords: {
