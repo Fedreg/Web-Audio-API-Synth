@@ -1,14 +1,11 @@
-
-
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Web Audio Skethpad</title>
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/1.2.0/normalize.css">
-		<link href='https://fonts.googleapis.com/css?family=Open-Sans:300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	</head>
 	<body id="bod">
 		<div id="app">
@@ -38,8 +35,7 @@
 						<option value="0.5">EIGHTH NOTE</option>
 						<option value="1.0">QUARTER NOTE</option>
 						<option value="2.0">HALF NOTE</option>
-						<option value="4.0">WHOLE NOTE</option>				
-	
+						<option value="4.0">WHOLE NOTE</option>
 					</select>
 				</li>
 			</div>
@@ -58,7 +54,7 @@
 						<option value="1.0">OCTAVE -1</option>
 						<option value="0.5">OCTAVE -2</option>
 						<option value="4.0">OCTAVE +1</option>
-						<option value="8.0">OCTAVE +2</option>				
+						<option value="8.0">OCTAVE +2</option>	
 					</select>
 				</li>
 				<li class="nav-item">
@@ -67,7 +63,7 @@
 						<option value="0.5">EIGHTH NOTE</option>
 						<option value="1.0">QUARTER NOTE</option>
 						<option value="2.0">HALF NOTE</option>
-						<option value="4.0">WHOLE NOTE</option>				
+						<option value="4.0">WHOLE NOTE</option>
 					</select>
 				</li>
 			</div>
@@ -80,13 +76,12 @@
 				<div class="keyboard">
 					<keyboard :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
-				
 				<div class="keyboard">
 					<keyboard :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
 					<div class="keyboard">	
 					<bkeyboard :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
-				</div>				
+				</div>
 				<div class="keyboard">
 					<bkeyboard :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm" ></bkeyboard>
 				</div>
