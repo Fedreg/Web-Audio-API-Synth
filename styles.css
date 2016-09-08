@@ -101,20 +101,9 @@ label[for="nav-trigger"] {
 li select {
 	font-size: 1em;
 	background: none;
-	color: #fff;
 	border: none;
 	padding: .1em;
 	width: 9.375em;
-}
-
-li a {
-	background: none;
-	color: #3ce4f7;
-	font-size: 1.2em;
-	border: 2px solid #3ce4f7;
-	border-radius: 0;
-	padding: .5em;
-	width: 10em;
 }
 
 #menu, #menub, #menuc, #menud {
@@ -138,12 +127,6 @@ padding-top: 25px;
 	color: #ad3cf7; 
 }
 
-#theme {
-margin-top: 20px;
-font-size: 1.2em;
-width: 9.375em;
-}
-	
 .musplayer, .musplayer2 {
 	z-index: 1;
 	margin: 0 auto;

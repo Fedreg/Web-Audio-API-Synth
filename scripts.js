@@ -171,7 +171,8 @@ var vm = new Vue({
 			var loop = this.loop
 			
 			playAllNotes(0);
-						
+			
+			//takes text entry, pushes each note into an array (split by ' ') and feeds each array into playAllNotes function.  playAllNotes filters via RegEx and sends each array item up to "keyboard' and b'bkeyboard' components to be played.  Rhythm set by setTimeout function
 			function playAllNotes(index) {
 				if (musicToPlay.length > index || musicToPlay2.length > index) {	
 					mp1.style.opacity = '0'
