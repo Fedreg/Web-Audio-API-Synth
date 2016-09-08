@@ -1,4 +1,4 @@
-DEMO   https://fedreg.github.io/Web-Audio-API-Synth
+DEMO   https://fedreg.github.io/Web-Audio-Sketchpad
 
 
 A Music Generator utilizing the Web Audio API
