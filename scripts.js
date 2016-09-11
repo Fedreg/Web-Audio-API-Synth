@@ -49,15 +49,13 @@ Vue.component('keyboard', {
 			var tempo = bpm/60;
 	 		var sustain = Number(this.sustain) * 1/tempo ;
 	 		var wave = this.wave;
-	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
-			const oscillator = context.createOscillator();
+	 		const colorChanger = randomColor({luminosity: 'bright', hue: 'blue'});
+	 		const oscillator = context.createOscillator();
 			const gainNode = context.createGain();
 			const quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, .1);
-	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.05);
+	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain/4, sustain/8);
 	 		var currentDiv = event.currentTarget;
-	 		console.log(sustain);
-	 		console.log(quickFadeOut);
-	 		
+	 		 		
 	 		gainNode;			
 			//oscillator wave type (sine, triangle, square, or sawtooth)
 		 	oscillator.type = wave;
@@ -67,7 +65,7 @@ Vue.component('keyboard', {
 			oscillator.frequency.value = note * octave;
 		 	gainNode.gain.value = 0
 		 	oscillator.start(context.currentTime);
-		 	oscillator.stop(context.currentTime + sustain + .5);
+		 	oscillator.stop(context.currentTime + sustain + sustain/4);
 
 	 		//change background color for durarion of note length
 			currentDiv.style.backgroundColor = colorChanger;
@@ -122,14 +120,13 @@ Vue.component('bkeyboard', {
 			var tempo = bpm/60;
 	 		var sustain = this.sustainb * 1/tempo;
 	 		var wave = this.waveb;
-	 		const colorChanger = '#'+Math.floor(Math.random()*16777215).toString(16);
+	 		const colorChanger = randomColor({luminosity: 'bright', hue: 'blue'});
 			const oscillator = context.createOscillator();
 			const gainNode = context.createGain();
 			const quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, .1);
-	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.05);	
+	 		const quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain/4, sustain/8);	
 	 		var currentDiv = event.currentTarget;
-	 		  	 					console.log(sustain, quickFadeOut)
-	 					
+	 		  	 						
 			//oscillator wave type (sine, triangle, square, or sawtooth)
 		 	oscillator.type = wave;
 			//connect signal to audio to gain; gain to compressor (compressor to output)
@@ -138,7 +135,7 @@ Vue.component('bkeyboard', {
 			oscillator.frequency.value = note * octave;
 		 	gainNode.gain.value = 0
 		 	oscillator.start(context.currentTime);
-		 	oscillator.stop(context.currentTime + sustain + .5);
+		 	oscillator.stop(context.currentTime + sustain + sustain/4);
 		 	
 	 		//change background color for durarion of note length
 			currentDiv.style.backgroundColor = colorChanger;
@@ -168,6 +165,7 @@ var vm = new Vue({
 			var tempo = 60/bpm * .25 * 1000//basic rhythm is in 8th notes(1/2 of a quarter note/in ms)
 			var mp1 = this.$els.mp1
 			var mp2 = this.$els.mp2
+			var title = this.$els.title
 			var loop = this.loop
 			
 			playAllNotes(0);
@@ -177,6 +175,7 @@ var vm = new Vue({
 				if (musicToPlay.length > index || musicToPlay2.length > index) {	
 					mp1.style.opacity = '0'
 					mp2.style.opacity = '0'
+					title.style.opacity = '0'
 	
 					setTimeout(function() {
 					
@@ -212,6 +211,7 @@ var vm = new Vue({
 					setTimeout(function() {
 						mp1.style.opacity = '100'
 						mp2.style.opacity = '100'
+						title.style.opacity = '100'
 					}, tempo + 1000)
 				}  
 			} 
@@ -224,7 +224,7 @@ var vm = new Vue({
 		octaveb: '',
 		sustain: '',
 		sustainb: '',
-		bpm: 240,
+		bpm: 120,
 		stringnoteb: '',
 		stringnote: '',
 		chords: {

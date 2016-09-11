@@ -72,22 +72,30 @@
 				<li class="nav-item">
 						<input type="checkbox" id="loop" v-model="loop" :loop="loop">
 						<label for="loop">LOOPING</label>
+			</div>
+			</ul>
 			<input type="checkbox" id="nav-trigger" class="nav-trigger" />
 			<label id="burger" for="nav-trigger">&#9776;</label>
 			<div id="wrapper">
-				<div class="keyboard">
-					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
+				<div class="title" v-el:title>
+					<h1>Web Audio Sketchpad</h1>
+					<h4>enter a number between 1 - 25 to play notes</h4>
+					<h4>enter a letter between a - g for chords. lowercase is minor; UPPECASE is major</h4>
+					<h4>use menu on the left to change tempo, sound, sustain, octave, or for additional instructions</4>
 				</div>
 				<div class="keyboard">
 					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
-				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.Enter="sendnote()" placeholder="Synth 1" v-el:mp1 />			
+				<div class="keyboard">
+					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
+				</div>
+				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keyup="sendnote()" placeholder="enter text here for synth 1" v-el:mp1 />			
 				<div class="keyboard">
 					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
 					<div class="keyboard">	
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
-				</div>				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="Synth 2" v-el:mp2/> 				
+				</div>				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keyup="sendnote()" placeholder="enter text here fos synth 2" v-el:mp2/>
 				<div class="keyboard">
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm" ></bkeyboard>
 				</div>
@@ -150,6 +158,8 @@
 				</template>	
 			</div>
 		</div>
+		<script src="
+https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.4.4/randomColor.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>
 	</body>
