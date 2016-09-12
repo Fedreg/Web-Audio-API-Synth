@@ -4,75 +4,75 @@
 		<title>Web Audio Skethpad</title>
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/1.2.0/normalize.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body id="bod">
 		<div id="app">
 			<ul id="navigation">
-			<input type="number" class="nav-item" v-model="bpm" :bpm="bpm" placeholder="BPM" v-el:tempo/>
-			<div id="menu">
-				<li class="nav-item">
-					<select id="waveSelect" v-model="wave" :wave="wave">
-					    <option value="sine">WAVE: SINE</option>
-					    <option value="square">WAVE: SQUARE</option>
-					    <option value="triangle">WAVE: TRIANGLE</option>
-					    <option selected="selected" value="sawtooth">WAVE: SAWTOOTH</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="octave" v-model="octave" :octave="octave">
-						<option value="2.0">OCTAVE 0</option>
-						<option selected="selected" value="1.0">OCTAVE -1</option>
-						<option value="0.5">OCTAVE -2</option>
-						<option value="4.0">OCTAVE +1</option>
-						<option value="8.0">OCTAVE +2</option>				
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="sustain" v-model="sustain" :sustain="sustain">
-						<option value="0.25">SIXTEENTH NOTE</option>
-						<option selected="selected" value="0.5">EIGHTH NOTE</option>
-						<option value="1.0">QUARTER NOTE</option>
-						<option value="2.0">HALF NOTE</option>
-						<option value="4.0">WHOLE NOTE</option>				
-	
-					</select>
-				</li>
-			</div>
-			<div id="menub">
-				<li class="nav-item">
-					<select id="waveSelectb" v-model="waveb" :waveb="waveb">
-					    <option value="sine">WAVE: SINE</option>
-					    <option value="square">WAVE: SQUARE</option>
-					    <option value="triangle">WAVE: TRIANGLE</option>
-					    <option selected="selected" value="sawtooth">WAVE: SAWTOOTH</option>
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="octaveb" v-model="octaveb" :octaveb="octaveb">
-						<option value="2.0">OCTAVE 0</option>
-						<option value="1.0">OCTAVE -1</option>
-						<option selected="selected" value="0.5">OCTAVE -2</option>
-						<option value="4.0">OCTAVE +1</option>
-						<option value="8.0">OCTAVE +2</option>				
-					</select>
-				</li>
-				<li class="nav-item">
-					<select id="sustainb" v-model="sustainb" :sustainb="sustainb">
-						<option value="0.25">SIXTEENTH NOTE</option>
-						<option value="0.5">EIGHTH NOTE</option>
-						<option selected="selected" value="1.0">QUARTER NOTE</option>
-						<option value="2.0">HALF NOTE</option>
-						<option value="4.0">WHOLE NOTE</option>				
-					</select>
-				</li>
-			</div>
-			<div id="menuc">
-				<li class="nav-item">
-						<input type="checkbox" id="loop" v-model="loop" :loop="loop">
-						<label for="loop">LOOPING</label>
-			</div>
+				<input type="number" class="nav-item" v-model="bpm" :bpm="bpm" placeholder="BPM" v-el:tempo/>
+				<div id="menu">
+					<li class="nav-item">
+						<select id="waveSelect" v-model="wave" :wave="wave">
+						    <option value="sine">WAVE: SINE</option>
+						    <option value="square">WAVE: SQUARE</option>
+						    <option value="triangle">WAVE: TRIANGLE</option>
+						    <option selected="selected" value="sawtooth">WAVE: SAWTOOTH</option>
+						</select>
+					</li>
+					<li class="nav-item">
+						<select id="octave" v-model="octave" :octave="octave">
+							<option value="2.0">OCTAVE 0</option>
+							<option selected="selected" value="1.0">OCTAVE -1</option>
+							<option value="0.5">OCTAVE -2</option>
+							<option value="4.0">OCTAVE +1</option>
+							<option value="8.0">OCTAVE +2</option>				
+						</select>
+					</li>
+					<li class="nav-item">
+						<select id="sustain" v-model="sustain" :sustain="sustain">
+							<option value="0.25">SIXTEENTH NOTE</option>
+							<option selected="selected" value="0.5">EIGHTH NOTE</option>
+							<option value="1.0">QUARTER NOTE</option>
+							<option value="2.0">HALF NOTE</option>
+							<option value="4.0">WHOLE NOTE</option>				
+		
+						</select>
+					</li>
+				</div>
+				<div id="menub">
+					<li class="nav-item">
+						<select id="waveSelectb" v-model="waveb" :waveb="waveb">
+						    <option value="sine">WAVE: SINE</option>
+						    <option value="square">WAVE: SQUARE</option>
+						    <option value="triangle">WAVE: TRIANGLE</option>
+						    <option selected="selected" value="sawtooth">WAVE: SAWTOOTH</option>
+						</select>
+					</li>
+					<li class="nav-item">
+						<select id="octaveb" v-model="octaveb" :octaveb="octaveb">
+							<option value="2.0">OCTAVE 0</option>
+							<option value="1.0">OCTAVE -1</option>
+							<option selected="selected" value="0.5">OCTAVE -2</option>
+							<option value="4.0">OCTAVE +1</option>
+							<option value="8.0">OCTAVE +2</option>				
+						</select>
+					</li>
+					<li class="nav-item">
+						<select id="sustainb" v-model="sustainb" :sustainb="sustainb">
+							<option value="0.25">SIXTEENTH NOTE</option>
+							<option value="0.5">EIGHTH NOTE</option>
+							<option selected="selected" value="1.0">QUARTER NOTE</option>
+							<option value="2.0">HALF NOTE</option>
+							<option value="4.0">WHOLE NOTE</option>				
+						</select>
+					</li>
+				</div>
+				<div id="menuc">
+					<li class="nav-item">
+							<input type="checkbox" id="loop" v-model="loop" :loop="loop">
+							<label for="loop">LOOPING</label>
+				</div>
 			</ul>
 			<input type="checkbox" id="nav-trigger" class="nav-trigger" />
 			<label id="burger" for="nav-trigger">&#9776;</label>
@@ -89,13 +89,14 @@
 				<div class="keyboard">
 					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
-				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keyup="sendnote()" placeholder="enter text here for synth 1" v-el:mp1 />			
+				<input type="text" class="musplayer" v-model="stringnote" :stringnote="stringnote" @keydown.Enter="sendnote()" placeholder="enter text here for synth 1" v-el:mp1 />			
 				<div class="keyboard">
 					<keyboard :chord="chord" :wave="wave" :octave="octave" :sustain="sustain" :bpm="bpm"></keyboard>
 				</div>
 					<div class="keyboard">	
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
-				</div>				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keyup="sendnote()" placeholder="enter text here fos synth 2" v-el:mp2/>
+				</div>
+				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="enter text here fos synth 2" v-el:mp2/>
 				<div class="keyboard">
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm" ></bkeyboard>
 				</div>
