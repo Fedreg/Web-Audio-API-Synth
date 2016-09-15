@@ -34,10 +34,10 @@ function playSound(note, time) {
  	
  	//initialize gain at 0 and ramp up to full volume very quikcly (prevents audible 'pop')
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, 0.1);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, 0.1);
  	
  	//starts oscillator. Delayed start can be achieved by adding time(in secs) after currentTime
- 	oscillator.start(context.currentTime + .05);
+ 	oscillator.start(context.currentTime);
  	
  	/**
  	 *	AUDIO EFFECTS
@@ -82,7 +82,7 @@ function playSound(note, time) {
 		};
 		
 		distortion.curve = makeDistortionCurve(300);
-		distortion.oversample = '3x';
+		distortion.oversample = '2x';
 		
 		gainNode;
 		gainNode.gain.value =  0; 
@@ -103,7 +103,8 @@ function playSound(note, time) {
  	var sustain = parseFloat(document.getElementById('sustain').value);
  	
  	//stops oscillator by exponentially ramping down sound over .015 seconds to avoid audible click
- 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
+ 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.05);
+ 	oscillator.stop(context.currentTime + sustain + .5);
  	
 	//change key color on keypress
 
@@ -139,8 +140,8 @@ function playSoundb(note, time) {
  	oscillator.type = document.getElementById('waveSelectb').value;
  	
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, .1);
- 	oscillator.start(context.currentTime + .05);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, .1);
+ 	oscillator.start(context.currentTime);
  	
  	/**
  	 *	AUDIO EFFECTS
@@ -201,7 +202,8 @@ function playSoundb(note, time) {
  	
   	var sustain = parseFloat(document.getElementById('sustainb').value);
  	
- 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
+ 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.05);
+ 	oscillator.stop(context.currentTime + sustain + .5);
  	
  	//change key color on keypress
 	var divId = "note" + String(note) + "b";
@@ -232,8 +234,8 @@ function playSoundc(note, time) {
  	oscillator.type = document.getElementById('waveSelectc').value;
  	
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, .1);
- 	oscillator.start(context.currentTime + .05);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, .1);
+ 	oscillator.start(context.currentTime);
  	
  	/**
  	 *	AUDIO EFFECTS
@@ -294,7 +296,8 @@ function playSoundc(note, time) {
  	
   	var sustain = parseFloat(document.getElementById('sustainc').value);
  	
- 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
+ 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.05);
+ 	oscillator.stop(context.currentTime + sustain + .5);
  	
  	//change key color on keypress
 	var divId = "note" + String(note) + "c";
@@ -325,8 +328,8 @@ function playSoundd(note, time) {
  	oscillator.type = document.getElementById('waveSelectd').value;
  	
  	gainNode.gain.value = 0
- 	var quickFadeIn = gainNode.gain.setTargetAtTime(.15, context.currentTime, .1);
- 	oscillator.start(context.currentTime + .05);
+ 	var quickFadeIn = gainNode.gain.setTargetAtTime(.5, context.currentTime, .1);
+ 	oscillator.start(context.currentTime);
  	
  	/**
  	 *	AUDIO EFFECTS
@@ -356,10 +359,10 @@ function playSoundd(note, time) {
 		var distortion = context.createWaveShaper();
 				
 		function makeDistortionCurve(amount) {
-		  var k = typeof amount === 'number' ? amount : 25,
+		  var k = typeof amount === 'number' ? amount : 10,
 		    n_samples = 44100,
 		    curve = new Float32Array(n_samples),
-		    deg = Math.PI / 90,
+		    deg = Math.PI / 40,
 		    i = 0,
 		    x;
 		  for ( ; i < n_samples; ++i ) {
@@ -387,7 +390,8 @@ function playSoundd(note, time) {
  	
   	var sustain = parseFloat(document.getElementById('sustaind').value);
  	
- 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.1);
+ 	var quickFadeOut = gainNode.gain.setTargetAtTime(0, context.currentTime + sustain, 0.05);
+ 	oscillator.stop(context.currentTime + sustain + .5);
  	
  	//change key color on keypress
 	var divId = "note" + String(note) + "d";
