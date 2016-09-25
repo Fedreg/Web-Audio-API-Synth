@@ -72,6 +72,11 @@
 					<li class="nav-item">
 							<input type="checkbox" id="loop" v-model="loop" :loop="loop">
 							<label for="loop">LOOPING</label>
+					</li>
+				</div>
+				<div id="menud">
+					<li class="nav-item">
+						<a href="https://github.com/Fedreg/Web-Audio-Sketchpad/blob/master/readme.MD" target="blank">INSTRUCTIONS</a>
 				</div>
 			</ul>
 			<input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -96,7 +101,7 @@
 					<div class="keyboard">	
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm"></bkeyboard>
 				</div>
-				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="enter text here fos synth 2" v-el:mp2/>
+				<input type="text" class="musplayer2" v-model="stringnoteb" :stringnoteb="stringnoteb" @keydown.Enter="sendnote()" placeholder="enter text here for synth 2" v-el:mp2/>
 				<div class="keyboard">
 					<bkeyboard :chord="chord" :waveb="waveb" :octaveb="octaveb" :sustainb="sustainb" :bpm="bpm" ></bkeyboard>
 				</div>
